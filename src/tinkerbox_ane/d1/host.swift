@@ -1,0 +1,365 @@
+// Swift releases output buffers that the Python binding retains.
+// Pipe: R = RoPE tables, S = streamed decision, Q = quit; integers are little-endian.
+
+import CoreAI
+import Darwin
+import Foundation
+
+let maskMin = Float16(-30000)  // model.MASK_MIN
+let input = "hidden_in"
+let output = "hidden_out"
+
+struct HostError: Error, CustomStringConvertible {
+  let description: String
+  init(_ description: String) { self.description = description }
+}
+
+func readExact(_ count: Int) -> [UInt8]? {
+  var buffer = [UInt8](repeating: 0, count: count)
+  var done = 0
+  while done < count {
+    let n = buffer.withUnsafeMutableBytes { read(0, $0.baseAddress! + done, count - done) }
+    if n <= 0 { return nil }
+    done += n
+  }
+  return buffer
+}
+
+func readHalves(_ count: Int) -> [Float16]? {
+  var values = [Float16](repeating: 0, count: count)
+  let complete = values.withUnsafeMutableBytes { raw in
+    var done = 0
+    while done < raw.count {
+      let n = read(0, raw.baseAddress! + done, raw.count - done)
+      if n <= 0 { return false }
+      done += n
+    }
+    return true
+  }
+  return complete ? values : nil
+}
+
+// Keep framework stdout logs out of the reply pipe.
+nonisolated(unsafe) var replyFD: Int32 = 1
+
+func protectReplies() {
+  replyFD = dup(1)
+  dup2(2, 1)
+}
+
+func writeAll(_ bytes: [UInt8]) {
+  var done = 0
+  while done < bytes.count {
+    let n = bytes.withUnsafeBytes { write(replyFD, $0.baseAddress! + done, bytes.count - done) }
+    if n <= 0 { exit(1) }  // Python is gone
+    done += n
+  }
+}
+
+func u32(_ bytes: [UInt8], _ at: Int) -> Int {
+  Int(bytes[at]) | Int(bytes[at + 1]) << 8 | Int(bytes[at + 2]) << 16 | Int(bytes[at + 3]) << 24
+}
+
+func le32(_ value: Int) -> [UInt8] { (0..<4).map { UInt8(truncatingIfNeeded: value >> (8 * $0)) } }
+
+func halves(_ bytes: [UInt8]) -> [Float16] {
+  bytes.withUnsafeBytes { Array($0.bindMemory(to: Float16.self)) }
+}
+
+func sendJSON(_ object: [String: Any]) {
+  let data = try! JSONSerialization.data(withJSONObject: object)
+  writeAll(le32(data.count) + [UInt8](data))
+}
+
+func sendError(_ message: String) {
+  let text = [UInt8](message.utf8)
+  writeAll([1] + le32(text.count) + text)
+}
+
+// Core AI pads some axes; use strides for every fp16 array access.
+func write4(_ array: inout NDArray, _ body: (UnsafeMutablePointer<Float16>, [Int], [Int]) -> Void) {
+  let view = array.mutableView(as: Float16.self)
+  view.withUnsafeMutablePointer { pointer, shape, strides in
+    body(pointer, (0..<shape.count).map { shape[$0] }, (0..<strides.count).map { strides[$0] })
+  }
+}
+
+func read4<R>(_ array: NDArray, _ body: (UnsafePointer<Float16>, [Int], [Int]) -> R) -> R {
+  array.rawView().withUnsafeBytes { raw, shape, strides in
+    body(
+      raw.assumingMemoryBound(to: Float16.self),
+      (0..<shape.count).map { shape[$0] }, (0..<strides.count).map { strides[$0] })
+  }
+}
+
+func descriptor(_ value: InferenceValue.Descriptor?, _ name: String) throws -> NDArrayDescriptor {
+  guard case .ndArray(let nd)? = value else { throw HostError("\(name) is not an ndarray") }
+  return nd
+}
+
+func loadAsset(_ url: URL) async throws -> AIModel {
+  // Core AI rejects an asset directory that is itself a symbolic link.
+  let canonicalURL = url.resolvingSymlinksInPath()
+  var options = SpecializationOptions(preferredComputeUnitKind: .neuralEngine)
+  options.expectFrequentReshapes = false
+  // Recover invalid persistent function caches before processing input.
+  for attempt in 0..<2 {
+    do {
+      let model = try await AIModel.specialize(
+        contentsOf: canonicalURL, options: options, cachePolicy: .persistent)
+      for name in model.functionNames {
+        guard try model.loadFunction(named: name) != nil else {
+          throw HostError("missing function \(name)")
+        }
+      }
+      return model
+    } catch {
+      let message = String(reflecting: error)
+      if attempt == 1 || !message.contains("nilError") { throw error }
+      FileHandle.standardError.write(
+        Data(
+          "REBUILD_INVALID_SPECIALIZATION asset=\(url.lastPathComponent) error=\(message)\n".utf8))
+      try AIModelCache.default.deleteEntry(for: canonicalURL, options: options)
+    }
+  }
+  fatalError("unreachable")
+}
+@_silgen_name("installStaging") func installStaging()
+
+func column(_ array: NDArray, _ column: Int) -> [Float16] {
+  read4(array) { p, shape, s in (0..<shape[1]).map { p[$0 * s[1] + column * s[3]] } }
+}
+
+func fillInput(_ array: inout NDArray, _ x: [Float16]) {
+  write4(&array) { p, shape, s in
+    for c in 0..<shape[1] {
+      for t in 0..<shape[3] { p[c * s[1] + t * s[3]] = x[c * shape[3] + t] }
+    }
+  }
+}
+
+struct FusedManifest: Decodable {
+  let width: Int, context: Int, hidden: Int
+  let kv_heads: Int, head_dim: Int, conv_taps: Int
+  let asset: String, tiers: [Int], conv_layers: [Int], attention_layers: [Int]
+}
+
+final class Model {
+  let manifest: FusedManifest
+  let root: URL
+  let width: Int, context: Int, hiddenSize: Int
+  let tiers: [Int], convCount: Int, cacheCount: Int
+  let tailElements: Int, kvHeads: Int, headDim: Int
+  var activeModel: AIModel?
+  var function: InferenceFunction?
+  var packed: NDArray?
+  var inputs: [String: NDArray] = [:]
+  var cos: [Float16] = [], sin: [Float16] = [], positions = 0
+  var tier = 0, visible = 0
+  var tailCount: Int { convCount * tailElements }
+  init(root: URL) throws {
+    self.root = root
+    let spec = try JSONDecoder().decode(
+      FusedManifest.self, from: Data(contentsOf: root.appendingPathComponent("model.json")))
+    manifest = spec
+    width = manifest.width
+    context = manifest.context
+    hiddenSize = manifest.hidden
+    kvHeads = manifest.kv_heads
+    headDim = manifest.head_dim
+    tiers = spec.tiers.map { $0 - spec.width }
+    convCount = manifest.conv_layers.count
+    cacheCount = manifest.attention_layers.count * 2
+    tailElements = manifest.hidden * (manifest.conv_taps - 1)
+  }
+  func ensureTier(_ needed: Int, keep: Int) async throws {
+    guard let next = tiers.first(where: { $0 >= needed }) else {
+      throw HostError("ANE context capacity exceeded")
+    }
+    guard next != tier else { return }
+    let old = packed
+    let oldTier = tier
+    function = nil
+    packed = nil
+    malloc_zone_pressure_relief(nil, 0)
+    let total = next + width
+    if activeModel == nil {
+      let model = try await loadAsset(root.appendingPathComponent(manifest.asset))
+      guard Set(model.functionNames) == Set(manifest.tiers.map { "c\($0)" }) else {
+        throw HostError("fused asset function set does not match manifest")
+      }
+      activeModel = model
+    }
+    let model = activeModel!
+    let name = "c\(total)"
+    guard let f = try model.loadFunction(named: name) else {
+      throw HostError("missing fused function \(name)")
+    }
+    var grown = NDArray(
+      descriptor: try descriptor(f.descriptor.inputDescriptor(of: "packed_state"), "packed_state"))
+    let count = tailCount + cacheCount * kvHeads * next * headDim
+    write4(&grown) { dst, shape, ds in
+      precondition(shape == [1, 1, 1, count])
+      precondition(ds[3] == 1)
+      memset(dst, 0, count * 2)
+      if keep > 0, let old {
+        read4(old) { src, _, ss in
+          precondition(ss[3] == 1 && ds[3] == 1)
+          memcpy(dst, src, self.tailCount * 2)
+          for cache in 0..<self.cacheCount {
+            for h in 0..<self.kvHeads {
+              let a = self.tailCount + (cache * self.kvHeads + h) * oldTier * self.headDim
+              let b = self.tailCount + (cache * self.kvHeads + h) * next * self.headDim
+              memcpy(dst.advanced(by: b), src.advanced(by: a), keep * self.headDim * 2)
+            }
+          }
+        }
+      }
+    }
+    packed = grown
+    function = f
+    tier = next
+    visible = 0
+    for name in [input, "cos", "sin"] where inputs[name] == nil {
+      inputs[name] = NDArray(
+        descriptor: try descriptor(f.descriptor.inputDescriptor(of: name), name))
+    }
+    inputs["past_mask"] = NDArray(
+      descriptor: try descriptor(f.descriptor.inputDescriptor(of: "past_mask"), "past_mask"))
+    write4(&inputs["past_mask"]!) { p, shape, s in
+      for r in 0..<shape[2] { for c in 0..<shape[3] { p[r * s[2] + c * s[3]] = maskMin } }
+    }
+  }
+  func setVisible(_ count: Int) {
+    guard count != visible else { return }
+    let (lo, hi, value) = count > visible ? (visible, count, Float16(0)) : (count, visible, maskMin)
+    write4(&inputs["past_mask"]!) { p, shape, s in
+      for r in 0..<shape[2] { for c in lo..<hi { p[r * s[2] + c * s[3]] = value } }
+    }
+    visible = count
+  }
+  func setRope(cos: [Float16], sin: [Float16], positions: Int) throws {
+    guard positions >= context, cos.count == sin.count, cos.count == positions * headDim else {
+      throw HostError("invalid RoPE")
+    }
+    (self.cos, self.sin, self.positions) = (cos, sin, positions)
+  }
+  func hidden(tokens: Int) async throws -> [Float16] {
+    guard positions > 0, tokens >= 1, tokens <= context
+    else { throw HostError("invalid request") }
+    try await ensureTier(0, keep: 0)
+    write4(&packed!) { p, _, s in
+      precondition(s[3] == 1)
+      memset(p, 0, self.tailCount * 2)
+    }
+    let answerChunk = (tokens - 1) / width
+    let answerColumn = (tokens - 1) % width
+    var result: [Float16] = []
+    for chunk in 0...answerChunk {
+      let offset = chunk * width
+      let last = chunk == answerChunk
+      try await ensureTier(offset + (last ? 0 : width), keep: offset)
+      setVisible(offset)
+      writeAll([0])
+      guard let values = readHalves(width * hiddenSize) else {
+        throw HostError("incomplete embedding chunk")
+      }
+      fillInput(&inputs[input]!, values)
+      for (name, table) in [("cos", cos), ("sin", sin)] {
+        write4(&inputs[name]!) { p, shape, s in
+          for i in 0..<shape[2] {
+            for t in 0..<shape[3] {
+              p[i * s[2] + t * s[3]] = table[i * self.positions + offset + t]
+            }
+          }
+        }
+      }
+      var args = inputs
+      args["packed_state"] = packed!
+      var out = try await function!.run(inputs: args)
+      args.removeAll(keepingCapacity: false)
+      guard let hidden = out.remove(output)?.ndArray,
+        let state = out.remove("packed_state_out")?.ndArray
+      else { throw HostError("missing packed output") }
+      if last {
+        result = column(hidden, answerColumn)
+      } else {
+        read4(state) { src, shape, ss in
+          precondition(
+            shape == [
+              1, 1, 1,
+              self.tailCount + self.cacheCount * self.kvHeads * self.width * self.headDim,
+            ])
+          write4(&self.packed!) { dst, _, ds in
+            precondition(ss[3] == 1 && ds[3] == 1)
+            memcpy(dst, src, self.tailCount * 2)
+            for cache in 0..<self.cacheCount {
+              for h in 0..<self.kvHeads {
+                let a = self.tailCount + (cache * self.kvHeads + h) * self.width * self.headDim
+                let b =
+                  self.tailCount + (cache * self.kvHeads + h) * self.tier * self.headDim + offset
+                  * self.headDim
+                memcpy(dst.advanced(by: b), src.advanced(by: a), self.width * self.headDim * 2)
+              }
+            }
+          }
+        }
+      }
+    }
+    try await ensureTier(0, keep: 0)
+    return result
+  }
+}
+
+@main struct Host {
+  static func main() async {
+    let args = CommandLine.arguments
+    if args.count == 2 && args[1] == "--architecture" {
+      print(AIModel.deviceArchitectureName)
+      exit(0)
+    }
+    guard args.count == 2 else {
+      FileHandle.standardError.write("usage: d1host <bundle>\n".data(using: .utf8)!)
+      exit(2)
+    }
+    protectReplies()
+    installStaging()
+    let model: Model
+    do {
+      model = try Model(root: URL(fileURLWithPath: args[1]))
+      sendJSON(["width": model.width, "context": model.context, "hidden": model.hiddenSize])
+    } catch {
+      sendJSON(["error": "\(error)"])
+      exit(1)
+    }
+    while let op = readExact(1)?.first {
+      switch op {
+      case UInt8(ascii: "R"):
+        guard let header = readExact(8) else { exit(1) }
+        let (dim, positions) = (u32(header, 0), u32(header, 4))
+        guard let c = readExact(dim * positions * 2), let s = readExact(dim * positions * 2) else {
+          exit(1)
+        }
+        do {
+          try model.setRope(cos: halves(c), sin: halves(s), positions: positions)
+          writeAll([0])
+        } catch { sendError("\(error)") }
+      case UInt8(ascii: "S"):
+        guard let header = readExact(4) else { exit(1) }
+        let tokens = u32(header, 0)
+        do {
+          let h = try await model.hidden(tokens: tokens)
+          var reply: [UInt8] = [0]
+          h.withUnsafeBytes { reply += $0 }
+          writeAll(reply)
+        } catch { sendError("\(error)") }
+      case UInt8(ascii: "Q"):
+        exit(0)
+      default:
+        sendError("unknown op \(op)")
+        exit(1)
+      }
+    }
+    exit(0)
+  }
+}

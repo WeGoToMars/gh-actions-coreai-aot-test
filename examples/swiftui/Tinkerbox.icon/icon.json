@@ -1,0 +1,156 @@
+{
+  "fill" : "system-dark",
+  "groups" : [
+    {
+      "blur-material" : 0.5,
+      "layers" : [
+        {
+          "blend-mode" : "overlay",
+          "fill" : "system-light",
+          "glass" : true,
+          "image-name" : "Nodes.svg",
+          "name" : "Nodes"
+        }
+      ],
+      "position" : {
+        "scale" : 0.73,
+        "translation-in-points" : [
+          0,
+          0
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "linear-gradient" : [
+              "extended-srgb:0.00000,0.75294,0.90980,0.60000",
+              "extended-srgb:0.00000,0.75294,0.90980,1.00000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.34367104935776643,
+                "y" : 0
+              },
+              "stop" : {
+                "x" : 0.6009256697416091,
+                "y" : 1
+              }
+            }
+          },
+          "image-name" : "Long 2.svg",
+          "name" : "Long 2"
+        },
+        {
+          "fill" : {
+            "linear-gradient" : [
+              "extended-srgb:0.00000,0.76471,0.81569,1.00000",
+              "extended-srgb:0.00000,0.76471,0.81569,0.73000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 1,
+                "y" : 0.6613228497752757
+              },
+              "stop" : {
+                "x" : 0,
+                "y" : 0.333324949658973
+              }
+            }
+          },
+          "image-name" : "Long 1.svg",
+          "name" : "Long 1"
+        }
+      ],
+      "name" : "Group",
+      "position" : {
+        "scale" : 0.77,
+        "translation-in-points" : [
+          0,
+          0
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "linear-gradient" : [
+              "extended-srgb:0.00000,0.75294,0.90980,1.00000",
+              "extended-srgb:0.00000,0.76471,0.81569,0.74000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.07025558145312731,
+                "y" : 0
+              },
+              "stop" : {
+                "x" : 0.9113914688663222,
+                "y" : 0.934964099431834
+              }
+            }
+          },
+          "image-name" : "Short.svg",
+          "name" : "Short",
+          "position" : {
+            "scale" : 0.73,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "name" : "Group",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "image-name" : "Glow.svg",
+          "name" : "Glow"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

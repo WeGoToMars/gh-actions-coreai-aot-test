@@ -1,0 +1,29 @@
+"""LiquidAI d1-3B on the Apple Neural Engine."""
+
+from pathlib import Path
+
+REPO = "LiquidAI/d1-3B"
+REVISION = "051bcc464b01b9f92942b364d9586b0ef5912432"
+ARTIFACT_REPO = "wegotomars/d1-3B-CoreAI-ANE"
+ARTIFACT_REVISION = "v1.0.0"
+RESIDUAL_SCALE = 64.0  # Keep ANE residual products above the subnormal threshold.
+CHUNK = 128
+CONTEXT = 32768
+TIERS = (256, 4096, 8192, 12288, 16384, 20480, 24576, 28672, 32768)
+SOURCE = Path("artifacts/build/d1_fp16_fused128_ctx32768")
+DEFAULT_ASSET = Path("artifacts/d1_fp16_fused128_ctx32768")
+INPUT, OUTPUT = "hidden_in", "hidden_out"
+
+
+def checkpoint() -> Path:
+    from huggingface_hub import snapshot_download
+
+    return Path(snapshot_download(REPO, revision=REVISION))
+
+
+def load(asset=None):
+    """Load the synchronous System One API; use as a context manager."""
+    from tinkerbox_ane.d1.bundle import download_bundle
+    from tinkerbox_ane.d1.runtime import load as load_model
+
+    return load_model(download_bundle() if asset is None else Path(asset))
