@@ -14,6 +14,52 @@ BINARY = Path(__file__).with_name("fused-host")
 BUILD_DIR = Path.home() / "Library/Caches/tinkerbox-ane/d1"
 
 
+SUPPORTED_ARCHITECTURES: dict[str, str] = {
+    "h18g": "Apple M6",
+    "h17s": "Apple M5 Pro / Max / Ultra",
+    "h17g": "Apple M5",
+    "h16s": "Apple M4 Pro / Max",
+    "h16g": "Apple M4",
+}
+
+UNSUPPORTED_ARCHITECTURES: dict[str, str] = {
+    "h15s": "Apple M3 Pro / Max",
+    "h15g": "Apple M3",
+    "h15m": "Apple M3",
+    "h14s": "Apple M2 Pro / Max",
+    "h14g": "Apple M2",
+    "h13s": "Apple M1 Pro / Max",
+    "h13g": "Apple M1",
+}
+
+
+def chip_name(architecture: str) -> str:
+    """Return a human-readable chip name for an Apple Silicon architecture code."""
+    if architecture in SUPPORTED_ARCHITECTURES:
+        return SUPPORTED_ARCHITECTURES[architecture]
+    if architecture in UNSUPPORTED_ARCHITECTURES:
+        return UNSUPPORTED_ARCHITECTURES[architecture]
+    return f"Apple Silicon ({architecture})"
+
+
+def validate_architecture(architecture: str) -> None:
+    """Validate that the given architecture is supported by tinkerbox-ane."""
+    if architecture in UNSUPPORTED_ARCHITECTURES:
+        chip = UNSUPPORTED_ARCHITECTURES[architecture]
+        supported = ", ".join(SUPPORTED_ARCHITECTURES.values())
+        raise RuntimeError(
+            f"{chip} ({architecture}) is not supported. The fused 3B ANE model requires "
+            f"Apple Silicon M4 or newer due to Neural Engine hardware and offline compiler constraints "
+            f"(supported: {supported})."
+        )
+    if architecture not in SUPPORTED_ARCHITECTURES:
+        supported = ", ".join(f"{name} [{code}]" for code, name in SUPPORTED_ARCHITECTURES.items())
+        raise RuntimeError(
+            f"Architecture '{architecture}' is not supported. The fused 3B ANE model requires "
+            f"Apple Silicon M4 or newer (supported: {supported})."
+        )
+
+
 @lru_cache(maxsize=1)
 def device_architecture() -> str:
     result = subprocess.run([str(BINARY), "--architecture"], capture_output=True, text=True, check=True)
@@ -28,8 +74,16 @@ class Host:
         spec = read_bundle(asset)
         if Path(spec["asset"]).suffix != ".aimodelc":
             raise ValueError("load requires a fused AOT bundle; run python -m tinkerbox_ane.d1.compile first")
-        if spec.get("architecture") and spec["architecture"] != device_architecture():
-            raise ValueError(f"bundle targets {spec['architecture']}, not this Mac")
+        current = device_architecture()
+        if spec.get("architecture") and spec["architecture"] != current:
+            target_chip = chip_name(spec["architecture"])
+            current_chip = chip_name(current)
+            hint = ""
+            if current in UNSUPPORTED_ARCHITECTURES:
+                hint = f" Note that {current_chip} ({current}) is not supported by tinkerbox-ane (requires M4 or newer)."
+            raise ValueError(
+                f"Bundle targets {target_chip} ({spec['architecture']}), but this Mac is {current_chip} ({current}).{hint}"
+            )
         # Stage on the asset volume: APFS clones must stay on the same filesystem.
         self._directory = tempfile.TemporaryDirectory(prefix=".d1host-", dir=asset.parent)
         clones = Path(self._directory.name) / "clones"

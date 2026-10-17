@@ -1,21 +1,37 @@
 import math
+import subprocess
 import sys
 
 import pytest
 from huggingface_hub import try_to_load_from_cache
 
 from tinkerbox_ane.d1 import DEFAULT_ASSET, REPO, REVISION, load
-
-pytestmark = pytest.mark.skipif(
-    sys.platform != 'darwin' or not (DEFAULT_ASSET / 'model.json').is_file(),
-    reason='requires the local Core AI bundle',
+from tinkerbox_ane.d1.host import (
+    BINARY,
+    SUPPORTED_ARCHITECTURES,
+    UNSUPPORTED_ARCHITECTURES,
+    device_architecture,
 )
+
+
+@pytest.mark.skipif(sys.platform != 'darwin', reason='fused-host is only built for macOS')
+def test_host_binary_architecture_handshake():
+    """Verify native fused-host binary exists, executes, and returns a recognized architecture."""
+    assert BINARY.is_file(), f"native host binary missing: {BINARY}"
+    result = subprocess.run([str(BINARY), "--architecture"], capture_output=True, text=True, check=True)
+    arch = result.stdout.strip()
+    assert arch, "host binary returned empty architecture string"
+    assert arch in SUPPORTED_ARCHITECTURES or arch in UNSUPPORTED_ARCHITECTURES, f"unexpected architecture: {arch}"
+    assert device_architecture() == arch
+
 
 GREETING = {'type': 'noul', 'instructions': 'Is this a greeting?'}
 
 
 @pytest.fixture
 def model(monkeypatch):
+    if sys.platform != 'darwin' or not (DEFAULT_ASSET / 'model.json').is_file():
+        pytest.skip('requires the local Core AI bundle')
     if not isinstance(try_to_load_from_cache(REPO, 'model.safetensors', revision=REVISION), str):
         pytest.skip('requires the pinned checkpoint in the local cache')
     monkeypatch.setenv('HF_HUB_OFFLINE', '1')
