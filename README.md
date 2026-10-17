@@ -2,7 +2,7 @@
 
 Run [LiquidAI/d1-3B](https://huggingface.co/LiquidAI/d1-3B) on Apple's Neural Engine through Core AI. FP16 backbone, 128-token chunks, 32,768-token context. Tokenization, embeddings and answer readout run on the CPU.
 
-Requires Apple Silicon, macOS 27, and Python 3.12 or 3.13.
+Requires Apple Silicon (M4 or newer), macOS 27, and Python 3.12 or 3.13. Earlier generations (M1–M3) are not supported due to Neural Engine hardware and offline compiler constraints.
 
 ## Quickstart
 
@@ -61,9 +61,38 @@ uv run python -m tinkerbox_ane.d1.export
 uv run python -m tinkerbox_ane.d1.compile
 ```
 
-Export writes `artifacts/build/d1_fp16_fused128_ctx32768`; compilation produces the final bundle in `artifacts/d1_fp16_fused128_ctx32768`. Load the local result with `d1.load(d1.DEFAULT_ASSET)`. Rebuilds require fresh `--out` directories.
+Export writes intermediate artifacts to `artifacts/build/d1_fp16_fused128_ctx32768`, and compilation produces the final deployment bundle in `artifacts/d1_fp16_fused128_ctx32768`. Load the local result with `d1.load(d1.DEFAULT_ASSET)`.
 
-Compilation verifies source identity, all nine functions, and ANE placement. Without cached sudo authentication, worker cancellation is best effort and emits a warning.
+Key compiler options:
+- `--force`: Rebuild an existing bundle. The compiler verifies the new artifact before replacing the previous build.
+- `--architecture <arch>`: Target a specific architecture instead of the current machine.
+- `--allow-unsupported`: Attempt compilation for an architecture outside the verified support list.
+
+Compilation verifies source identity, function manifests, and full ANE placement. Without cached sudo credentials, worker cancellation on failure or timeout is best effort and emits a warning.
+
+Reusable Core AI compilation and Hugging Face publishing utilities are provided in `tinkerbox_ane.coreai` and `tinkerbox_ane.publish`. See the [model publishing guide](docs/model-publishing.md) for compiling and publishing additional models.
+
+### Publishing d1 Releases
+
+Use the d1 publishing CLI to build and upload multi-architecture release bundles:
+
+```sh
+# Compile bundles for specific architectures without uploading
+uv run python -m tinkerbox_ane.d1.publish --arch h17s h16g --no-upload
+
+# Publish prepared bundles and create a release tag
+uv run python -m tinkerbox_ane.d1.publish --arch h17s h16g --upload-only --tag v1.0.1
+```
+
+Omitting `--arch` targets all supported architectures. The upload synchronizes the remote `macos27` tree with the selected architectures, pruning omitted targets and obsolete files while keeping existing release tags intact.
+
+Common publishing options:
+- `--arch`: Target architectures to build (defaults to all supported architectures).
+- `--tag`: New release tag to create on Hugging Face (must not already exist).
+- `--source`, `--staging`, `--repo`: Source export directory, local staging path, and Hugging Face repository.
+- `--metadata`: Directory containing release metadata files (`LICENSE`, `NOTICE`, `README.md`).
+
+When releasing a new version, update `ARTIFACT_REVISION` in `src/tinkerbox_ane/d1/__init__.py` so `d1.load()` resolves the new tag by default. (The legacy script `scripts/publish_all_chips.py` forwards to this CLI.)
 
 ## Validation
 
