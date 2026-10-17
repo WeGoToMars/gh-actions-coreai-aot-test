@@ -4,49 +4,31 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import plistlib
 import re
+
+from tinkerbox_ane.coreai import source_hash, verify_aot
 
 
 def download_bundle() -> Path:
     from huggingface_hub import snapshot_download
 
     from tinkerbox_ane.d1 import ARTIFACT_REPO, ARTIFACT_REVISION
-    from tinkerbox_ane.d1.host import BUILD_DIR, device_architecture
+    from tinkerbox_ane.d1.host import BUILD_DIR, chip_name, device_architecture, validate_architecture
 
     architecture = device_architecture()
+    validate_architecture(architecture)
+
     folder = f"macos27/{architecture}"
     root = BUILD_DIR / "models" / ARTIFACT_REVISION
     snapshot_download(ARTIFACT_REPO, revision=ARTIFACT_REVISION,
                       allow_patterns=f"{folder}/*", local_dir=root)
     bundle = root / folder
     if not (bundle / "model.json").is_file():
-        raise ValueError(f"no AOT bundle for {architecture} in {ARTIFACT_REPO}@{ARTIFACT_REVISION}")
+        chip = chip_name(architecture)
+        raise RuntimeError(
+            f"Failed to download AOT bundle for {chip} ({architecture}) from {ARTIFACT_REPO}@{ARTIFACT_REVISION}."
+        )
     return bundle
-
-
-def source_hash(asset: Path) -> str:
-    if asset.suffix == ".aimodelc":
-        return json.loads((asset / "metadata.json").read_text())["sourceHash"].lower()
-    return (asset / "main.hash").read_bytes().hex()
-
-
-def verify_aot(asset: Path, expected: str) -> None:
-    if asset.suffix != ".aimodelc" or source_hash(asset) != expected:
-        raise ValueError(f"{asset}: AOT asset does not match the source identity")
-    manifests = list(asset.rglob("manifest.plist"))
-    if len(manifests) != 1:
-        raise ValueError(f"{asset}: expected one compiled manifest")
-    manifest = plistlib.loads(manifests[0].read_bytes())
-    modules = next(iter(manifest["Package Version"].values()))["Optimized Modules"]
-    if not modules:
-        raise ValueError(f"{asset}: missing compiled modules")
-    for module in modules.values():
-        entries = module.get("Entry Function Attributes")
-        if not isinstance(entries, dict) or not entries or not all(
-            "mps.fullyPlacedOnANE" in attributes for attributes in entries.values()
-        ):
-            raise ValueError(f"{asset}: compiled entries are not fully placed on ANE")
 
 
 def read_bundle(root: Path) -> dict:

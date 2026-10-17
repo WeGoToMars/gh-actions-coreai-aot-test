@@ -1,20 +1,25 @@
-"""Compile one fused AOT deployment with a deadline and SSD-write watchdog."""
+"""Compile d1 fused AOT deployment bundles for Apple Neural Engine."""
 
 from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
-import subprocess
-import tempfile
 
+from tinkerbox_ane.coreai import compile_asset
 from tinkerbox_ane.d1 import DEFAULT_ASSET, SOURCE
-from tinkerbox_ane.d1.bundle import read_bundle, verify_aot
-from tinkerbox_ane.d1.guard import run
-from tinkerbox_ane.d1.host import device_architecture
+from tinkerbox_ane.d1.bundle import read_bundle
+from tinkerbox_ane.d1.host import device_architecture, validate_architecture
 
 
-def compile_model(source: Path = SOURCE, out: Path = DEFAULT_ASSET) -> Path:
+def compile_model(
+    source: Path = SOURCE,
+    out: Path = DEFAULT_ASSET,
+    architecture: str | None = None,
+    force: bool = False,
+    allow_unsupported: bool = False,
+) -> Path:
+    """Compile d1, then write its deployment manifest after verification."""
     source, out = Path(source).resolve(), Path(out).resolve()
     if source == out:
         raise ValueError("keep source exports and deployment bundles in separate directories")
@@ -22,28 +27,16 @@ def compile_model(source: Path = SOURCE, out: Path = DEFAULT_ASSET) -> Path:
     src = source / spec["asset"]
     if src.suffix != ".aimodel":
         raise ValueError("compile requires a source .aimodel bundle")
-    architecture = device_architecture()
-    out.mkdir(parents=True, exist_ok=True)
+    if architecture is None:
+        architecture = device_architecture()
+    if (not architecture or Path(architecture).name != architecture
+            or "\\" in architecture or architecture in {".", ".."}):
+        raise ValueError(f"invalid architecture: {architecture!r}")
+    if not allow_unsupported:
+        validate_architecture(architecture)
     target = out / f"fused.{architecture}.aimodelc"
-    if not target.exists():
-        with tempfile.TemporaryDirectory(prefix=".compile-", dir=out) as temporary:
-            produced = Path(temporary) / target.name
-            command = ["xcrun", "coreai-build", "compile", str(src), "--architecture", architecture,
-                       "--platform", "macOS", "--min-deployment-version", "27.0",
-                       "--preferred-compute", "neural-engine", "--output", str(produced)]
-            check = run(command, out / "compile", timeout=600)
-            if not check["passed"]:
-                raise RuntimeError("fused AOT compilation failed; see compile.json and compile.log")
-            verify_aot(produced, spec["source_hash"])
-            produced.rename(target)
-    verify_aot(target, spec["source_hash"])
-    inspected = subprocess.run(["xcrun", "coreai-build", "inspect", str(target), "--json"],
-                               capture_output=True, text=True, check=True, timeout=60)
-    info = json.loads(inspected.stdout)
-    expected = {f"c{capacity}" for capacity in spec["tiers"]}
-    functions = {function["name"] for function in info["summary"]["functions"]}
-    if functions != expected:
-        raise ValueError(f"compiled function set differs: {functions}")
+    compile_asset(src, target, architecture=architecture, min_deployment_version="27.0",
+                  expected_functions=(f"c{capacity}" for capacity in spec["tiers"]), force=force)
     spec.update(asset=target.name, architecture=architecture, min_os="27.0", deployment="aot-fused")
     manifest = out / ".model.json"
     manifest.write_text(json.dumps(spec, indent=2) + "\n")
@@ -55,8 +48,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path, nargs="?", default=SOURCE)
     parser.add_argument("--out", type=Path, default=DEFAULT_ASSET)
+    parser.add_argument("--architecture", "-a", type=str, default=None,
+                        help="Target architecture (defaults to current device)")
+    parser.add_argument("--force", action="store_true", help="Recompile an existing target")
+    parser.add_argument("--allow-unsupported", action="store_true",
+                        help="Attempt compilation for an unsupported architecture")
     args = parser.parse_args()
-    print(compile_model(args.source, args.out))
+    print(compile_model(args.source, args.out, architecture=args.architecture, force=args.force,
+                        allow_unsupported=args.allow_unsupported))
 
 
 if __name__ == "__main__":
