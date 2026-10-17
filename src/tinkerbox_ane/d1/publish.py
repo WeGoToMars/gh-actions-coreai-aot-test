@@ -61,15 +61,18 @@ def upload_to_hub(
                          f"macos27/{architecture}/{spec['asset']}/**"))
     if len(identities) != 1:
         raise ValueError("release requires bundles with the same source identity")
-    root = staging if metadata_dir is None else Path(metadata_dir)
+    fallback_root = Path(metadata_dir) if metadata_dir is not None else Path(".")
     for name in ("LICENSE", "NOTICE", "README.md"):
-        source = root / name
-        if name == "LICENSE" and metadata_dir is not None and not source.is_file():
-            source = root / "LICENSES/LFM-Open-License-v1.0.txt"
+        target = staging / name
+        if target.is_file() and metadata_dir is None:
+            continue
+        source = fallback_root / name
+        if name == "LICENSE" and not source.is_file():
+            source = fallback_root / "LICENSES/LFM-Open-License-v1.0.txt"
         if not source.is_file():
             raise ValueError(f"missing release metadata: {source}")
-        if source.resolve() != (staging / name).resolve():
-            shutil.copy2(source, staging / name)
+        if source.resolve() != target.resolve():
+            shutil.copy2(source, target)
     return publish.upload_to_hub(repo, staging, tag, allow_patterns=patterns,
                                  delete_patterns=["macos27/**"], token=token)
 
@@ -83,7 +86,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--arch", nargs="+", default=list(DEFAULT_ARCHITECTURES))
     parser.add_argument("--force", action="store_true", help="Recompile existing bundles")
     parser.add_argument("--allow-unsupported", action="store_true")
-    parser.add_argument("--metadata", type=Path, default=Path("."))
+    parser.add_argument("--metadata", type=Path, default=None,
+                        help="Directory with release metadata (defaults to staging, then repo root)")
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--no-upload", action="store_true", help="Compile only")
     modes.add_argument("--upload-only", action="store_true", help="Publish existing bundles")
