@@ -1,6 +1,6 @@
 [project]
 name = "tinkerbox-ane"
-version = "1.0.0"
+version = "1.0.1"
 description = "LiquidAI d1-3B decision model on the Apple Neural Engine via Core AI"
 readme = "README.md"
 license-files = ["LICENSES/*.txt", "NOTICE"]
