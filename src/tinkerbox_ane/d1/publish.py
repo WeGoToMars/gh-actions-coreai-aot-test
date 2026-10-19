@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from collections.abc import Iterable
 from functools import partial
+import json
 from pathlib import Path
 import shutil
 
@@ -48,8 +49,9 @@ def upload_to_hub(
     if architectures is None:
         architectures = sorted(p.name for p in (staging / "macos27").iterdir()
                                if p.is_dir() and not p.name.startswith("."))
-    patterns = ["LICENSE", "NOTICE", "README.md"]
+    patterns = ["LICENSE", "NOTICE", "README.md", "config.json"]
     identities = set()
+    bundles = {}
     for architecture in architectures:
         directory = staging / "macos27" / architecture
         spec = read_bundle(directory, KIND)
@@ -57,12 +59,17 @@ def upload_to_hub(
                 or spec["asset"] != f"fused.{architecture}.aimodelc"):
             raise ValueError(f"{directory}: bundle does not target {architecture}")
         identities.add(spec["source_hash"])
+        bundles[architecture] = f"macos27/{architecture}/model.json"
         patterns.extend((f"macos27/{architecture}/model.json",
                          f"macos27/{architecture}/{spec['asset']}/**"))
         if spec.get("vision_asset"):
             patterns.append(f"macos27/{architecture}/{spec['vision_asset']}/**")
     if len(identities) != 1:
         raise ValueError("release requires bundles with the same source identity")
+    # One shared release index is also the Hub's default download-counting file.
+    (staging / "config.json").write_text(json.dumps({
+        "version": 2, "source_hash": next(iter(identities)), "bundles": bundles,
+    }, indent=2) + "\n")
     fallback_root = Path(metadata_dir) if metadata_dir is not None else Path(".")
     for name in ("LICENSE", "NOTICE", "README.md"):
         target = staging / name

@@ -27,13 +27,14 @@ def download_bundle(model: str, repo: str, revision: str, progress=None) -> Path
     folder = f"macos27/{architecture}"
     root = CACHE / model / revision
     bundle = root / folder
-    fetch = dict(repo_id=repo, revision=revision, allow_patterns=f"{folder}/*", local_dir=root)
+    fetch = dict(repo_id=repo, revision=revision, allow_patterns=["config.json", f"{folder}/*"], local_dir=root)
     try:
         if progress is None:
             snapshot_download(**fetch)
         else:
             files = HfApi().model_info(repo, revision=revision, files_metadata=True).siblings
-            total = sum(f.size or 0 for f in files if f.rfilename.startswith(f"{folder}/"))
+            total = sum(f.size or 0 for f in files
+                        if f.rfilename == "config.json" or f.rfilename.startswith(f"{folder}/"))
             with ThreadPoolExecutor(1) as pool:
                 done = pool.submit(snapshot_download, **fetch)
                 # Partial files grow under the local cache folder until they are moved into place.

@@ -5,7 +5,7 @@ from pathlib import Path
 from tinkerbox_ane.models import entry
 
 MODEL = "d1-3b"
-KIND = "d1ane-fused"
+KIND = "lfm2.5-vl"
 REPO = "LiquidAI/d1-3B"
 REVISION = "051bcc464b01b9f92942b364d9586b0ef5912432"
 ARTIFACT_REPO, ARTIFACT_REVISION = entry(MODEL)["repo"], entry(MODEL)["revision"]

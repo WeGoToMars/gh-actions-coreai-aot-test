@@ -21,7 +21,7 @@ def source(tmp_path):
     asset = root / "fused.aimodel"
     asset.mkdir(parents=True)
     (asset / "main.hash").write_bytes(bytes.fromhex("11" * 32))
-    spec = dict(kind="d1ane-fused", version=2, width=128, context=256, tiers=[256],
+    spec = dict(kind="lfm2.5-vl", version=2, width=128, context=256, tiers=[256],
                 hidden=8, heads=2, kv_heads=1, head_dim=4, conv_taps=2,
                 conv_layers=[0], attention_layers=[1], asset=asset.name,
                 source_hash="11" * 32)
@@ -144,6 +144,10 @@ def test_upload_to_hub_assembles_release_and_synchronizes_patterns(release, monk
     assert (staging / "LICENSE").read_text() == "license"
     assert (staging / "NOTICE").read_text() == "NOTICE"
     assert (staging / "README.md").read_text() == "README.md"
+    assert json.loads((staging / "config.json").read_text()) == {
+        "version": 2, "source_hash": "11" * 32,
+        "bundles": {"h17s": "macos27/h17s/model.json"},
+    }
 
     hub.upload_folder.assert_called_once()
     kwargs = hub.upload_folder.call_args.kwargs
@@ -152,6 +156,7 @@ def test_upload_to_hub_assembles_release_and_synchronizes_patterns(release, monk
     assert "LICENSE" in kwargs["allow_patterns"]
     assert "NOTICE" in kwargs["allow_patterns"]
     assert "README.md" in kwargs["allow_patterns"]
+    assert "config.json" in kwargs["allow_patterns"]
     assert "macos27/h17s/model.json" in kwargs["allow_patterns"]
     assert "macos27/h17s/fused.h17s.aimodelc/**" in kwargs["allow_patterns"]
     assert kwargs["delete_patterns"] == ["macos27/**"]
