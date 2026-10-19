@@ -30,7 +30,7 @@ A model's `compile_model()` function can delegate to `tinkerbox_ane.coreai.compi
 - **Verification:** Validates source identity, full ANE placement (`mps.fullyPlacedOnANE`), target architecture, and minimum deployment version before accepting an asset.
 - **Safe Replacement:** Compiles into a temporary directory and verifies the result before replacing an existing target.
 - **Rebuilds:** Pass `force=True` to recompile an existing target when sources or build configurations change.
-- **Watchdog Protection:** Monitors compilation time, SSD write budgets, and free disk space, writing reports to `compile.json` and `compile.log` in the target's parent directory.
+- **Watchdog Protection:** Monitors compilation time, SSD write budgets, and free disk space, writing reports to `compile.json` and `compile.log` in the target's parent directory (pass `report=` to name them per asset).
 
 ## Publishing to Hugging Face Hub
 
@@ -69,5 +69,5 @@ commit = upload_to_hub(
 python -m tinkerbox_ane.d1.publish --arch h17s h16g --no-upload
 
 # Publish prepared bundles and create a release tag
-python -m tinkerbox_ane.d1.publish --arch h17s h16g --upload-only --tag v1.0.1
+python -m tinkerbox_ane.d1.publish --arch h17s h16g --upload-only --tag v2.0.0
 ```

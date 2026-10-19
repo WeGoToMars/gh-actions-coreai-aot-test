@@ -1,24 +1,31 @@
 [project]
 name = "tinkerbox-ane"
-version = "1.0.1"
-description = "LiquidAI d1-3B decision model on the Apple Neural Engine via Core AI"
+version = "2.0.0"
+description = "Optimized AI model runtime for practical tasks on Apple Neural Engine."
 readme = "README.md"
 license-files = ["LICENSES/*.txt", "NOTICE"]
 requires-python = ">=3.12,<3.14"
 dependencies = [
     "torch==2.9.0",
+    "torchvision==0.24.0",
     "transformers==5.19.0",
     "huggingface-hub==2.2.0",
     "safetensors==0.8.0",
     "numpy==2.4.6",
+    "pillow>=10.0.0",
 ]
+
 
 [project.urls]
 Homepage = "https://github.com/WeGoToMars/tinkerbox"
 Issues = "https://github.com/WeGoToMars/tinkerbox/issues"
 
 [dependency-groups]
-dev = ["coreai-torch==0.4.3", "pytest==9.1.1"]
+dev = [
+    "accelerate>=1.15.0",
+    "coreai-torch==0.4.3",
+    "pytest==9.1.1",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -33,8 +40,8 @@ packages = ["src/tinkerbox_ane"]
 cache-keys = [
     { file = "pyproject.toml" },
     { file = "hatch_build.py" },
-    { file = "src/tinkerbox_ane/d1/host.swift" },
-    { file = "src/tinkerbox_ane/d1/cow-staging.m" },
+    { file = "src/tinkerbox_ane/host.swift" },
+    { file = "src/tinkerbox_ane/cow-staging.m" },
 ]
 
 [tool.pytest.ini_options]
