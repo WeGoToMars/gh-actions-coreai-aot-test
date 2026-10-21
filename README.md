@@ -1,3 +1,5 @@
+<img width="1920" height="388" alt="banner" src="https://github.com/user-attachments/assets/52cfb1e7-c841-4898-9a94-d199db85f2d7" />
+
 # Tinkerbox for Apple Neural Engine
 
 Run models on Apple's Neural Engine through Core AI. Critical inference always runs on the Neural Engine, the CPU does only supplementary work, and the GPU stays idle.
