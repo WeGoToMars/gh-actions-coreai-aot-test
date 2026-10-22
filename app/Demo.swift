@@ -42,17 +42,30 @@ enum RunMode: String, CaseIterable {
 struct RunTotals {
     var elapsedMs = 0.0
     var tokens = 0
+    var flops: Double? = 0  // nil once a pass did not report its compute
+    var neuralEngineMs: Double? = 0
+
+    mutating func add(_ result: ItemResult, elapsedMs: Double) {
+        self.elapsedMs += elapsedMs
+        tokens += result.tokens
+        flops = flops.flatMap { total in result.flops.map { total + $0 } }
+        neuralEngineMs = neuralEngineMs.flatMap { total in result.neuralEngineMs.map { total + $0 } }
+    }
 }
 
 // The catalog and the one model the worker has loaded, shared by every task page.
 @MainActor @Observable final class Demo {
     var catalog = Catalog()
+    let storage = Storage()
+    let downloads = Downloads()
     var model = Runtime.selectedModel(for: .decision)
-    var ready = false
-    var loading = true
-    var status = "Preparing runtime…"
-    var progress: Double?
+    var ready: Bool { runtime.state.reply?.modelId == model }
+    // The selected model's download, then the runtime loading it.
+    var loading: Bool { downloads.contains(model) || runtime.state.loading }
+    var status: String { downloads.contains(model) ? "Downloading model…" : runtime.state.status }
+    var progress: Double? { downloads.contains(model) ? downloads.progress[model] : runtime.state.progress }
     var busy = false  // a request from the app is running
+    var unloading = false
     var error: String?
     var setupMs: Double?
     var modelName: String?
@@ -70,41 +83,41 @@ struct RunTotals {
 
     var current: CatalogModel? { catalog.models.first { $0.id == model } }
 
+    func isDownloaded(_ id: String) -> Bool { catalog.downloaded.contains(id) && !downloads.contains(id) }
+
     // The models a task can switch to without a download; the Models library lists the rest.
     func models(for task: ModelTask) -> [CatalogModel] {
         catalog.models.filter { model in
-            model.kind == task && model.isSupported && (catalog.downloaded.contains(model.id) || model.id == self.model)
+            model.kind == task && model.isSupported && (isDownloaded(model.id) || model.id == self.model)
         }
+    }
+
+    // Downloads run beside the runtime, so they never hold up requests or model switches.
+    private func fetch(_ id: String) async throws {
+        // The worker loads a local bundle given at launch instead.
+        guard !isDownloaded(id), ProcessInfo.processInfo.environment["TINKERBOX_ASSET"] == nil else { return }
+        defer {
+            catalog.scanDownloads()
+            Task { await storage.refresh() }
+        }
+        try await downloads.fetch(id)
     }
 
     func load() async {
         // A model switch supersedes an earlier load; ignore that load's outcome.
         generation += 1
         let current = generation
-        loading = true
-        ready = false
-        error = nil
-        status = "Preparing runtime…"
-        progress = nil
-        modelName = nil
-        cpuModel = nil
-        architecture = nil
-        settings = []
-        info = []
-        settingValues = Runtime.settings(for: model)
+        forgetLoadedModel()
         defer {
             if current == generation {
-                loading = false
-                progress = nil
                 catalog.scanDownloads()
+                Task { await storage.refresh() }  // the load may have downloaded files
             }
         }
         do {
-            let reply = try await runtime.start(model: model) { [weak self] message, progress in
-                guard let self, current == self.generation else { return }
-                self.status = message
-                self.progress = progress
-            }
+            try await fetch(model)
+            guard current == generation else { return }
+            let reply = try await runtime.start(model: model)
             guard current == generation else { return }
             setupMs = reply.setupMs
             modelName = reply.modelName
@@ -113,18 +126,60 @@ struct RunTotals {
             questionTrees = reply.questionTrees == true
             settings = reply.settings ?? []
             info = reply.info ?? []
-            ready = reply.ready == true
+        } catch is CancellationError {
+            // Its download was stopped to remove the model.
         } catch {
             if current == generation { self.error = error.localizedDescription }
         }
     }
 
+    private func forgetLoadedModel() {
+        error = nil
+        modelName = nil
+        cpuModel = nil
+        architecture = nil
+        settings = []
+        info = []
+        settingValues = Runtime.settings(for: model)
+    }
+
+    // The previous model keeps serving Shortcuts until the chosen one has downloaded.
     func choose(_ choice: CatalogModel) async {
-        guard let task = choice.kind, choice.isSupported, choice.id != model || !ready else { return }
+        guard let task = choice.kind, choice.isSupported, !storage.removing.contains(choice.id),
+              choice.id != model || !ready else { return }
+        generation += 1
+        let current = generation
+        model = choice.id  // reserve its files before yielding to the runtime
+        forgetLoadedModel()  // its settings are not the chosen model's
+        do { try await fetch(choice.id) } catch {
+            if current == generation && !(error is CancellationError) { self.error = error.localizedDescription }
+            return
+        }
+        guard current == generation else { return }
         await runtime.select(model: choice.id, for: task)
-        model = choice.id
+        guard current == generation else { return }
         setupMs = nil
         await load()
+    }
+
+    func unload() async {
+        busy = true
+        unloading = true
+        defer { busy = false; unloading = false }
+        await runtime.unload()
+    }
+
+    // The model the runtime has loaded or is loading, and the selected one once downloaded, keep their files.
+    func keeps(_ id: String) -> Bool { id == runtime.state.model || (id == model && isDownloaded(id)) }
+
+    // Removing a model stops its download first. Outdated revisions are never loaded, so any model can lose them.
+    func remove(_ id: String, outdated: Bool = false) async {
+        if !outdated {
+            guard !keeps(id) else { return }
+            await downloads.stop(id)
+        }
+        await storage.remove(id, outdated: outdated)
+        catalog.scanDownloads()
     }
 }
 
@@ -183,11 +238,11 @@ struct RunTotals {
         }
     }
 
-    // Models without question trees answer each question in its own pass.
-    var runMode: RunMode { demo.questionTrees && questions.count > 1 ? mode : .sequential }
+    // One request lets models without question trees share image encoding across their sequential passes.
+    var runMode: RunMode { demo.questionTrees && questions.count > 1 ? mode : .parallel }
 
     var canRun: Bool {
-        demo.ready && !demo.busy && !(isBlank(state) && images.isEmpty)
+        !demo.loading && !demo.busy && !(isBlank(state) && images.isEmpty)
             && questions.allSatisfy { $0.validation == nil && !isBlank($0.instructions) }
     }
 
@@ -264,25 +319,27 @@ struct RunTotals {
         let item = Item(state: state, images: images.map(\.path))
         var totals = RunTotals()
         do {
+            if !demo.ready {
+                await demo.load()
+                guard demo.ready else { return }
+            }
             if runMode == .parallel {
                 let result = try await demo.runtime.decide(Request(items: [item], questions: questions.map(\.question)))
                 for (index, answer) in result.results[0].answers.enumerated() { questions[index].answer = answer }
-                totals = RunTotals(elapsedMs: result.elapsedMs, tokens: result.results[0].tokens)
+                totals.add(result.results[0], elapsedMs: result.elapsedMs)
             } else {
                 // Answers appear as each pass finishes.
                 for index in questions.indices {
                     let result = try await demo.runtime.decide(Request(items: [item], questions: [questions[index].question]))
                     questions[index].answer = result.results[0].answers[0]
                     questions[index].elapsedMs = result.elapsedMs
-                    totals.elapsedMs += result.elapsedMs
-                    totals.tokens += result.results[0].tokens
+                    totals.add(result.results[0], elapsedMs: result.elapsedMs)
                 }
             }
             lastRun = totals
             times.append(totals.elapsedMs)
         } catch {
             self.error = error.localizedDescription
-            if await !demo.runtime.isConnected { demo.ready = false }
         }
     }
 
@@ -290,6 +347,12 @@ struct RunTotals {
     var throughput: Double? {
         guard let lastRun, lastRun.elapsedMs > 0 else { return nil }
         return Double(lastRun.tokens) * 1000 / lastRun.elapsedMs
+    }
+
+    /// Counted FLOPs per second of Neural Engine time over the last run, in TFLOPS.
+    var computeRate: Double? {
+        guard let flops = lastRun?.flops, let milliseconds = lastRun?.neuralEngineMs, milliseconds > 0 else { return nil }
+        return flops / milliseconds / 1e9
     }
 
     func percentile(_ fraction: Double) -> Double? {
@@ -428,7 +491,7 @@ func duration(_ milliseconds: Double?) -> String {
 }
 
 enum Destination: Hashable {
-    case task(ModelTask), models
+    case task(ModelTask), models, storage
 }
 
 struct AppView: View {
@@ -452,7 +515,11 @@ struct AppView: View {
                 }
                 Section("Library") {
                     Label("Models", systemImage: "square.stack.3d.up").tag(Destination.models)
+                    Label("Storage", systemImage: "internaldrive").tag(Destination.storage)
                 }
+            }
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                StorageSummary(storage: demo.storage) { destination = .storage }
             }
             .navigationSplitViewColumnWidth(min: 160, ideal: 180)
         } detail: {
@@ -460,13 +527,20 @@ struct AppView: View {
                 switch destination ?? .task(.decision) {
                 case .task(.decision): DecisionView(playground: decisions) { destination = .models }
                 case .models: ModelsView(demo: demo)
+                case .storage: StorageView(demo: demo)
                 }
             }
             .safeAreaInset(edge: .bottom, spacing: 0) { SystemFooter() }
         }
         .task { await demo.load() }
         .task { await demo.catalog.refresh() }
+        .task { await Updates.shared.check() }
         .onChange(of: demo.model) { decisions.reset() }
+        .alert("Could not update storage", isPresented: Binding(get: { demo.storage.error != nil },
+                                                                set: { if !$0 { demo.storage.error = nil } })) {
+        } message: {
+            Text(demo.storage.error ?? "")
+        }
     }
 }
 
@@ -479,7 +553,9 @@ struct ModelToolbar: ToolbarContent {
 
     var body: some ToolbarContent {
         ToolbarItem {
-            if demo.loading {
+            if demo.unloading {
+                Text("Unloading model…").foregroundStyle(.secondary)
+            } else if demo.loading {
                 HStack(spacing: 8) {
                     if let progress = demo.progress {
                         ProgressView(value: progress).frame(width: 80)
@@ -496,13 +572,18 @@ struct ModelToolbar: ToolbarContent {
                     .labelStyle(.titleAndIcon)
                     .foregroundStyle(.green)
                     .fixedSize()
+                    .help("Unloads after 5 minutes without inference.")
+            } else {
+                Label("Model unloaded", systemImage: "moon")
+                    .foregroundStyle(.secondary)
+                    .help("Loads automatically on the next run. Unloads after 5 minutes without inference.")
             }
         }
         // Status text, not a control, so it sits outside the glass capsule.
         .sharedBackgroundVisibility(.hidden)
         ToolbarItem {
             Menu {
-                Picker("Model", selection: Binding(get: { demo.model }, set: { id in
+                Picker("Model for Decision and Shortcuts", selection: Binding(get: { demo.model }, set: { id in
                     guard let model = demo.catalog.models.first(where: { $0.id == id }) else { return }
                     Task { await demo.choose(model) }
                 })) {
@@ -512,15 +593,21 @@ struct ModelToolbar: ToolbarContent {
                 Divider()
                 Button("Manage Models…", action: showModels)
             } label: {
-                Label(demo.current?.name ?? "Models", systemImage: "square.stack.3d.up")
+                Label(demo.current.map { "Model: \($0.name)" } ?? "Select Model", systemImage: "square.stack.3d.up")
                     .labelStyle(.titleAndIcon)
             }
             .disabled(demo.busy)
-            .help("Switch or download models")
+            .help("Used by Decision and Shortcuts. Open to select or download a model.")
+        }
+        ToolbarItem {
+            Button("Unload", systemImage: "eject") { Task { await demo.unload() } }
+                .labelStyle(.titleAndIcon)
+                .disabled(!demo.ready || demo.loading || demo.busy)
+                .help("Unload the model from memory. The next run loads it again.")
         }
         ToolbarItem {
             Toggle("Model Settings", systemImage: "gearshape", isOn: $showingInspector)
-                .help("Show the model's settings")
+                .help("Model settings")
         }
     }
 }
@@ -533,7 +620,7 @@ struct ModelInspector: View {
         Form {
             Section("Settings") {
                 if demo.settings.isEmpty {
-                    Text(demo.ready ? "This model has no settings." : "Shown once the model loads.")
+                    Text(demo.loading ? "Loading settings…" : demo.ready ? "No model settings." : "Load the model to view settings.")
                         .foregroundStyle(.secondary)
                 }
                 ForEach(demo.settings) { setting in
@@ -543,7 +630,7 @@ struct ModelInspector: View {
                         demo.settingValues[setting.key] = $0 == setting.defaultValue ? nil : $0
                     }
                     VStack(alignment: .leading, spacing: 6) {
-                        Stepper(value: value, in: setting.min...setting.max) {
+                        Stepper(value: value, in: setting.min...setting.max, step: setting.step ?? 1) {
                             LabeledContent(setting.title, value: "\(value.wrappedValue)")
                         }
                         Text(setting.help).font(.caption).foregroundStyle(.secondary)
@@ -580,12 +667,12 @@ struct DecisionView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
-                if !demo.ready {
+                if !demo.ready && (demo.loading || demo.error != nil) {
                     HStack {
-                        Text("First launch downloads Python, packages and model files.")
+                        Text("First launch downloads Python, dependencies and model files.")
                             .font(.caption).foregroundStyle(.secondary)
                         Spacer()
-                        Button("Setup log") { NSWorkspace.shared.open(Runtime.logURL) }
+                        Button("View log") { NSWorkspace.shared.open(Runtime.logURL) }
                         if !demo.loading {
                             Button("Retry") { Task { await demo.load() } }
                         }
@@ -603,7 +690,7 @@ struct DecisionView: View {
                         Button {
                             withAnimation { textCollapsed.toggle() }
                         } label: {
-                            Label("Input text · optional with images",
+                            Label("Input text (optional)",
                                   systemImage: textCollapsed ? "chevron.right" : "chevron.down")
                                 .font(.headline)
                         }
@@ -643,7 +730,7 @@ struct DecisionView: View {
                     Button {
                         Task { await playground.run() }
                     } label: {
-                        Label(demo.busy ? "Running…" : playground.questions.count == 1 ? "Run decision"
+                        Label(demo.busy && !demo.unloading ? "Running…" : playground.questions.count == 1 ? "Run decision"
                               : "Run \(playground.questions.count) questions", systemImage: "play.fill")
                     }
                     .buttonStyle(.borderedProminent)
@@ -658,20 +745,21 @@ struct DecisionView: View {
                             .labelsHidden()
                             .fixedSize()
                             .disabled(demo.busy)
-                            .help("Parallel answers every question in one shared pass over the input; "
-                                  + "sequential gives each question its own pass.")
+                            .help("Parallel shares one pass across questions. Sequential runs each question separately.")
                         } else {
-                            Text("One pass per question").font(.caption).foregroundStyle(.secondary)
+                            Text("One pass per question")
+                                .font(.caption).foregroundStyle(.secondary)
+                                .help("Each question runs sequentially and reads the full input again.")
                         }
                     }
-                    if demo.busy { ProgressView().controlSize(.small) }
+                    if demo.busy && !demo.unloading { ProgressView().controlSize(.small) }
                     if let error = playground.previewError {
                         Text(error).font(.caption).foregroundStyle(.red).lineLimit(2)
                     } else if let preview = playground.preview {
                         Text(preview.tiles > 0 ? "\(preview.tokens.formatted()) tokens · \(preview.tiles) image tiles"
                              : "\(preview.tokens.formatted()) tokens")
                             .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
-                            .help("What the next run reads; each image tile is one vision pass")
+                            .help("Input for the next run; each image tile uses one vision pass")
                     }
                     Spacer()
                     if let setup = demo.setupMs {
@@ -693,6 +781,10 @@ struct DecisionView: View {
 
                 HStack(spacing: 40) {
                     metric("Last run", duration(playground.lastRun?.elapsedMs))
+                    metric("Compute", playground.computeRate.map { String(format: "%.1f TFLOPS", $0) } ?? "—")
+                        .help(playground.lastRun?.neuralEngineMs.map {
+                            "Matmul, convolution and attention FLOPs counted from the model graph, including padding, divided by \(duration($0)) of Neural Engine time"
+                        } ?? "Neural Engine compute rate of the last run")
                     metric("Throughput", playground.throughput.map { String(format: "%.0f tok/s", $0) } ?? "—")
                     metric("Median", duration(playground.percentile(0.5)))
                     metric("p95", duration(playground.percentile(0.95)))
@@ -799,7 +891,7 @@ struct DecisionView: View {
                 playground.add(urls)
                 return true
             }
-            Text("Drop, paste or add pictures. Large pictures are split into tiles; see Model Settings.")
+            Text("Drop or paste images here.")
                 .font(.caption).foregroundStyle(.secondary)
         }
         .padding(.bottom, 6)
@@ -825,7 +917,7 @@ struct QuestionCard: View {
             HStack(spacing: 10) {
                 Text("\(number)").font(.headline.monospacedDigit()).foregroundStyle(.secondary)
                 Picker("Type", selection: $draft.type) {
-                    ForEach(QuestionType.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                    ForEach(QuestionType.allCases, id: \.self) { Text($0.title).tag($0) }
                 }
                 .labelsHidden()
                 .fixedSize()
@@ -845,7 +937,7 @@ struct QuestionCard: View {
                 draft.elapsedMs = nil
             }
             if draft.type != .noul {
-                Text(draft.type == .choice ? "Options · one per line" : "Score levels · lowest to highest")
+                Text(draft.type == .choice ? "Options · one per line" : "Levels · one per line, lowest to highest")
                     .font(.subheadline.weight(.semibold))
                 TextEditor(text: draft.type == .choice ? $draft.choices : $draft.levels)
                     .font(.body)
@@ -855,9 +947,12 @@ struct QuestionCard: View {
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.quaternary))
                     .frame(height: 80)
                     .accessibilityLabel(draft.type == .choice ? "Question \(number) options" : "Question \(number) levels")
-                Text(draft.validation ?? (draft.type == .choice
-                     ? "Each line is a named choice." : "Levels are numbered from 0; the answer is the expected score."))
-                    .font(.caption).foregroundStyle(draft.validation == nil ? Color.secondary : .red)
+                if let validation = draft.validation {
+                    Text(validation).font(.caption).foregroundStyle(.red)
+                } else if draft.type == .score {
+                    Text("Levels start at 0. The score is a probability-weighted average.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
             }
             if let answer = draft.answer {
                 Divider()
@@ -899,7 +994,7 @@ struct QuestionCard: View {
 // Every catalog model, grouped by task, with downloads in progress shown in their row.
 struct ModelsView: View {
     let demo: Demo
-    @State private var removalError: String?
+    @State private var pending: CatalogModel?
     @Environment(\.openURL) private var openURL
 
     // In catalog order; the remote catalog can list tasks this app does not run yet.
@@ -923,22 +1018,31 @@ struct ModelsView: View {
         .navigationTitle("Models")
         .navigationSubtitle(demo.catalog.isRemote
                             ? "Catalog from github.com/WeGoToMars/tinkerbox"
-                            : "Offline · showing the models included with this app")
+                            : "Showing built-in catalog")
         .toolbar {
             Button("Refresh", systemImage: "arrow.clockwise") { Task { await demo.catalog.refresh() } }
         }
-        .alert("Could not remove the model", isPresented: Binding(get: { removalError != nil },
-                                                                  set: { if !$0 { removalError = nil } })) {
-        } message: {
-            Text(removalError ?? "")
+        .confirmationDialog("Delete \(pending?.name ?? "")?", isPresented: Binding(
+            get: { pending != nil }, set: { if !$0 { pending = nil } }), presenting: pending) { model in
+            Button("Delete", role: .destructive) { Task { await demo.remove(model.id) } }
+        } message: { model in
+            if let stored = demo.storage.report?.models.first(where: { $0.id == model.id }) {
+                Text(StorageView.removal(of: stored))
+            } else {
+                Text("Deletes the model's bundles, compiled copies and checkpoint. Using this model again requires a download.")
+            }
         }
         .task { await demo.catalog.refresh() }
     }
 
     private func row(_ model: CatalogModel) -> some View {
-        let downloaded = demo.catalog.downloaded.contains(model.id)
+        let downloaded = demo.isDownloaded(model.id)
+        let downloading = demo.downloads.contains(model.id)
+        // Partial downloads count, so an interrupted one can be deleted.
+        let stored = demo.catalog.downloaded.contains(model.id) || downloading
+            || demo.storage.report?.models.contains { $0.id == model.id } == true
         let inputs = model.inputs?.map { $0 == "image" ? "Images" : $0.capitalized }.joined(separator: " + ")
-        let details = [inputs, model.context.map { "\($0 / 1024)K context" },
+        let details = [inputs, model.context.map { "\($0 / 1024)K-token context" },
                        model.downloadBytes.map { ByteCountFormatter.string(fromByteCount: $0, countStyle: .file) },
                        model.license].compactMap { $0 }
         return HStack(alignment: .center, spacing: 12) {
@@ -970,38 +1074,86 @@ struct ModelsView: View {
             .help("Open on Hugging Face")
             if !model.isSupported {
                 Text(Catalog.isNewer(model.minVersion, than: Catalog.appVersion)
-                     ? "Requires Tinkerbox \(model.minVersion)" : "Requires a newer Tinkerbox")
+                     ? "Requires Tinkerbox \(model.minVersion)" : "Update Tinkerbox to use this model")
                     .font(.caption).foregroundStyle(.secondary)
-            } else if model.id == demo.model && demo.loading {
-                VStack(alignment: .trailing, spacing: 4) {
-                    Text(demo.status).font(.caption).foregroundStyle(.secondary)
-                    ProgressView(value: demo.progress).frame(width: 120)
-                }
-            } else if model.id == demo.model {
-                Label(demo.ready ? "In use" : "Selected", systemImage: "checkmark.circle.fill")
-                    .foregroundStyle(demo.ready ? .green : .secondary)
             } else {
-                if downloaded {
-                    Button(role: .destructive) {
-                        do { try demo.catalog.removeDownload(model) } catch { removalError = error.localizedDescription }
-                    } label: {
-                        Image(systemName: "trash")
+                if model.id == demo.model && demo.loading {
+                    VStack(alignment: .trailing, spacing: 4) {
+                        Text(demo.status).font(.caption).foregroundStyle(.secondary)
+                        ProgressView(value: demo.progress).frame(width: 120)
                     }
-                    .buttonStyle(.borderless)
-                    .help("Remove downloaded files")
+                } else if downloading {
+                    VStack(alignment: .trailing, spacing: 4) {
+                        Text("Downloading in background…").font(.caption).foregroundStyle(.secondary)
+                        ProgressView(value: demo.downloads.progress[model.id]).frame(width: 120)
+                    }
+                } else if model.id == demo.model {
+                    Label("Selected", systemImage: "checkmark.circle.fill")
+                        .foregroundStyle(demo.ready ? .green : .secondary)
+                        .help("Used by Decision and Shortcuts")
                 }
-                Button(downloaded ? "Use" : "Download") {
-                    Task { await demo.choose(model) }
+                if demo.storage.removing.contains(model.id) {
+                    ProgressView().controlSize(.small)
+                } else if stored && !demo.keeps(model.id) {
+                    Button(role: .destructive) { pending = model } label: { Image(systemName: "trash") }
+                        .buttonStyle(.borderless)
+                        .help(downloading ? "Stop the download and delete its files" : "Delete model files and cached copies")
+                        .disabled(!demo.storage.removing.isEmpty)
                 }
-                .disabled(demo.busy)
+                if model.id != demo.model {
+                    Button(downloaded ? "Select" : "Download & Select") {
+                        Task { await demo.choose(model) }
+                    }
+                    .disabled(demo.busy || demo.storage.removing.contains(model.id))
+                }
             }
         }
+    }
+}
+
+// The newest published release, checked once per launch; nil until known, or offline.
+@MainActor @Observable final class Updates {
+    static let shared = Updates()
+    static let repository = URL(string: "https://github.com/WeGoToMars/tinkerbox")!
+    static let releases = repository.appending(path: "releases/latest")
+    private(set) var latest: String?
+
+    var available: String? { latest.flatMap { Catalog.isNewer($0, than: Catalog.appVersion) ? $0 : nil } }
+
+    func check() async {
+        guard latest == nil else { return }
+        // Drafts and prereleases are not "latest".
+        var request = URLRequest(url: URL(string: "https://api.github.com/repos/WeGoToMars/tinkerbox/releases/latest")!)
+        request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+        struct Release: Decodable { let tag_name: String }
+        guard let (data, response) = try? await URLSession.shared.data(for: request),
+              (response as? HTTPURLResponse)?.statusCode == 200,
+              let release = try? JSONDecoder().decode(Release.self, from: data) else { return }
+        latest = release.tag_name.hasPrefix("v") ? String(release.tag_name.dropFirst()) : release.tag_name
     }
 }
 
 struct SystemFooter: View {
     @State private var thermalState = ProcessInfo.processInfo.thermalState
     @State private var lowPowerMode = ProcessInfo.processInfo.isLowPowerModeEnabled
+    @Environment(\.openURL) private var openURL
+    @Environment(\.colorScheme) private var colorScheme
+
+    // GitHub's mark (Primer Octicons, MIT), drawn in the text color.
+    private static let githubMark: NSImage = {
+        let svg = """
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 \
+            1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 \
+            0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 \
+            .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 \
+            3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 \
+            1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 \
+            8-8Z"/></svg>
+            """
+        let image = NSImage(data: Data(svg.utf8)) ?? NSImage()
+        image.isTemplate = true
+        return image
+    }()
 
     private var thermalDescription: String {
         switch thermalState {
@@ -1019,13 +1171,28 @@ struct SystemFooter: View {
         let memory = ByteCountFormatter.string(fromByteCount: Int64(system.physicalMemory), countStyle: .memory)
         VStack(spacing: 0) {
             Divider()
-            Text("\(memory) memory · macOS \(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-                 + " · Thermal: \(thermalDescription) · Low Power Mode: \(lowPowerMode ? "On" : "Off")")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 28)
-                .padding(.vertical, 12)
+            HStack(spacing: 8) {
+                Text("\(memory) memory · macOS \(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+                     + " · Thermal: \(thermalDescription) · Low Power Mode: \(lowPowerMode ? "On" : "Off")")
+                Spacer()
+                if let newer = Updates.shared.available {
+                    Button("Update to \(newer)") { openURL(Updates.releases) }
+                        .buttonStyle(.plain)
+                        .bold()
+                        .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
+                        .help("Download the new version from GitHub")
+                }
+                Text("Tinkerbox \(Catalog.appVersion)")
+                Button { openURL(Updates.repository) } label: {
+                    Image(nsImage: Self.githubMark).resizable().frame(width: 12, height: 12)
+                }
+                .buttonStyle(.plain)
+                .help("Tinkerbox on GitHub")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 28)
+            .padding(.vertical, 12)
         }
         .background(.background)
         .onReceive(NotificationCenter.default.publisher(for: ProcessInfo.thermalStateDidChangeNotification)) { _ in
@@ -1041,7 +1208,8 @@ struct SystemFooter: View {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
 
     func applicationWillTerminate(_ notification: Notification) {
-        if let process = Runtime.setupProcess, process.isRunning { process.terminate() }
+        Runtime.stop(Runtime.workerProcess)
+        Downloads.processes.values.forEach { Runtime.stop($0) }
     }
 }
 

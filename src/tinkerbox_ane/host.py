@@ -69,7 +69,7 @@ def device_architecture() -> str:
 
 
 def check_layout(spec: dict) -> None:
-    """The cache tiers, dimensions, and convolution/attention layers this host allocates state for."""
+    """The cache tiers, dimensions, and convolution/attention layers the chunked runner allocates state for."""
     width, context, tiers = spec["width"], spec["context"], spec["tiers"]
     if (width <= 0 or context <= width or context % width or not tiers
             or tiers != sorted(set(tiers)) or tiers[-1] != context
@@ -86,16 +86,28 @@ def check_layout(spec: dict) -> None:
             raise ValueError(f"invalid {name}")
     if set(spec["conv_layers"]) & set(spec["attention_layers"]):
         raise ValueError("overlapping convolution and attention layers")
+    counted = [(spec.get("flops"), [f"c{tier}" for tier in tiers])]
+    if "vision_asset" in spec:
+        counted.append((spec.get("vision_flops"), ["main"]))
+    check_flops(counted)
+
+
+def check_flops(counted) -> None:
+    """Each asset's manifest counts the FLOPs of exactly its functions: `counted` pairs them."""
+    if any(not isinstance(flops, dict) or set(flops) != set(functions)
+           or any(type(n) is not int or n <= 0 for n in flops.values()) for flops, functions in counted):
+        raise ValueError("bundle lacks FLOP counts for its functions; re-export the model")
 
 
 class Host:
-    def __init__(self, asset: str | Path, kind: str):
-        from tinkerbox_ane.bundle import read_bundle
+    def __init__(self, asset: str | Path, kind: str, check=check_layout):
+        """`check` validates the manifest fields the bundle's runner allocates state for."""
+        from tinkerbox_ane.bundle import compiled, read_bundle
 
         asset = Path(asset).resolve()
         spec = read_bundle(asset, kind)
-        check_layout(spec)
-        if Path(spec["asset"]).suffix != ".aimodelc":
+        check(spec)
+        if not compiled(spec):
             raise ValueError("load requires a compiled AOT bundle; compile the exported model first")
         current = device_architecture()
         if spec.get("architecture") and spec["architecture"] != current:
@@ -149,11 +161,12 @@ class Host:
         except BrokenPipeError as error:
             raise RuntimeError(f"the Core AI host exited (status {self._process.poll()})") from error
 
-    def vision(self, inputs: dict):
-        """Run the bundle's vision asset on named FP16 inputs, each row-major in its declared shape,
-        and return the `features` output."""
+    def vision(self, inputs: dict, function: str = "main"):
+        """Run a function of the bundle's vision asset on named FP16 inputs, each row-major in its
+        declared shape, and return the `features` output."""
         import numpy as np
-        payload = [b"V" + struct.pack("<I", len(inputs))]
+        encoded = function.encode()
+        payload = [b"V" + struct.pack("<I", len(encoded)) + encoded + struct.pack("<I", len(inputs))]
         for name, value in inputs.items():
             array = np.ascontiguousarray(value, dtype=np.float16)
             encoded = name.encode()
@@ -164,6 +177,11 @@ class Host:
         rank = self._u32()
         shape = struct.unpack(f"<{rank}I", self._read(4 * rank))
         return np.frombuffer(self._read(2 * int(np.prod(shape))), dtype=np.float16).reshape(shape).copy()
+
+    def metrics(self) -> dict:
+        """Neural Engine `seconds` and `calls` per function since the previous call."""
+        self._send(b"M")
+        return json.loads(self._read(self._u32()))
 
     def set_rope(self, cos, sin) -> None:
         import numpy as np

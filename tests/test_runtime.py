@@ -3,10 +3,9 @@ import subprocess
 import sys
 
 import pytest
-from huggingface_hub import try_to_load_from_cache
 
 import tinkerbox_ane
-from tinkerbox_ane.d1 import DEFAULT_ASSET, MODEL, REPO, REVISION
+from tinkerbox_ane.d1 import DEFAULT_ASSET, MODEL
 from tinkerbox_ane.host import (
     BINARY,
     SUPPORTED_ARCHITECTURES,
@@ -33,8 +32,7 @@ GREETING = {'type': 'noul', 'instructions': 'Is this a greeting?'}
 def model(monkeypatch):
     if sys.platform != 'darwin' or not (DEFAULT_ASSET / 'model.json').is_file():
         pytest.skip('requires the local Core AI bundle')
-    if not isinstance(try_to_load_from_cache(REPO, 'model.safetensors', revision=REVISION), str):
-        pytest.skip('requires the pinned checkpoint in the local cache')
+    # The bundle carries everything the runtime reads from the upstream checkpoint.
     monkeypatch.setenv('HF_HUB_OFFLINE', '1')
     with tinkerbox_ane.load(MODEL, DEFAULT_ASSET) as model:
         yield model
@@ -53,10 +51,17 @@ def test_public_decisions_batches_and_request_reset(model):
     assert result['answers']['greeting']['noul'] == pytest.approx(0.97966643, abs=0.01)
     assert result['answers']['topic']['choice'] == 'hello'
     assert 0 <= result['answers']['tone']['score'] <= 2
-    assert result['usage'] == {'input_tokens': 87, 'output_tokens': 0}
-    assert model.system_one_batch([(state, questions), (state, {})]) == [
-        result, {'answers': {}, 'usage': {'input_tokens': 0, 'output_tokens': 0}},
-    ]
+    usage = result['usage']
+    assert (usage['input_tokens'], usage['output_tokens']) == (87, 0)
+    # Each request reports its own Neural Engine time and the FLOPs of the functions it ran.
+    assert usage['neural_engine_ms'] > 0 and usage['flops'] > 0
+    first, empty = model.system_one_batch([(state, questions), (state, {})])
+    assert first['answers'] == result['answers']
+    assert (first['usage']['input_tokens'], first['usage']['flops']) == (87, usage['flops'])
+    assert empty == {'answers': {}, 'usage': {'input_tokens': 0, 'output_tokens': 0, 'neural_engine_ms': 0, 'flops': 0}}
+    # Single-question requests packed into one pass split its compute.
+    packed = model.system_one_batch([(state, {'greeting': GREETING}), ('Hello there', {'greeting': GREETING})])
+    assert all(r['usage']['neural_engine_ms'] > 0 and r['usage']['flops'] > 0 for r in packed)
     expected = model.probabilities(state, [GREETING])
     actual = model.probabilities_batch([(state, [GREETING]), (state, [GREETING])])
     for row in actual:
@@ -188,3 +193,32 @@ def test_image_tile_limit_and_token_counts(model):
     tree = model.system_one('Hello there', questions)
     assert model.count_tokens('Hello there', questions) == {
         'input_tokens': tree['usage']['input_tokens'], 'image_tiles': 0, 'images': []}
+
+
+def test_bundle_configuration_cannot_load_external_code(model, tmp_path):
+    import json
+    from PIL import Image
+    from tinkerbox_ane.bundle import clone
+
+    bundle = tmp_path / "bundle"
+    clone(DEFAULT_ASSET, bundle)
+    marker = tmp_path / "executed.txt"
+    external = tmp_path / "external"
+    external.mkdir()
+    (external / "configuration_probe.py").write_text(
+        "from pathlib import Path\n"
+        "from transformers.models.lfm2_vl.configuration_lfm2_vl import Lfm2VlConfig\n"
+        f"Path({str(marker)!r}).write_text('executed')\n"
+        "class ProbeConfig(Lfm2VlConfig):\n    pass\n")
+    config = bundle / "checkpoint/config.json"
+    content = json.loads(config.read_text())
+    content.setdefault("auto_map", {})["AutoConfig"] = f"{external}--configuration_probe.ProbeConfig"
+    config.write_text(json.dumps(content))
+    # Mapping order is not part of a bundle's execution contract.
+    manifest = bundle / "model.json"
+    manifest.write_text(json.dumps(json.loads(manifest.read_text()), sort_keys=True))
+    with tinkerbox_ane.load(MODEL, bundle) as runtime:
+        result = runtime.system_one(None, {"blue": {"type": "noul", "instructions": "Is this image blue?"}},
+                                    [Image.new("RGB", (64, 64), "blue")])
+    assert result["answers"]["blue"]["noul"] > .95
+    assert not marker.exists()
