@@ -15,9 +15,12 @@ BINARY = Path(__file__).with_name("tinkerbox-ane-host")
 
 SUPPORTED_ARCHITECTURES: dict[str, str] = {
     "h18g": "Apple M6",
-    "h17s": "Apple M5 Pro / Max / Ultra",
+    "h17d": "Apple M5 Ultra",
+    "h17c": "Apple M5 Max",
+    "h17s": "Apple M5 Pro",
     "h17g": "Apple M5",
-    "h16s": "Apple M4 Pro / Max",
+    "h16c": "Apple M4 Max",
+    "h16s": "Apple M4 Pro",
     "h16g": "Apple M4",
 }
 

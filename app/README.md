@@ -11,7 +11,7 @@ Requires macOS 27 on Apple Silicon.
 
 The app bundles a standalone `uv` binary. On first run, it configures an isolated Python 3.12 environment, installs the precompiled `tinkerbox-ane` wheel, and fetches the selected model's weights from Hugging Face. Subsequent launches reuse the cached environment.
 
-The app downloads the bundle matching the host Mac's Neural Engine architecture (`h16g` for M4, `h17s` for M5). Setup progress and logs are written to `~/Library/Logs/tinkerbox-ane/demo.log`.
+The app downloads the bundle matching the host Mac's Core AI architecture (`h16g`/`h16s`/`h16c` for M4/Pro/Max, `h17g`/`h17s`/`h17c`/`h17d` for M5/Pro/Max/Ultra). The Ultra mapping follows compiler research; Core AI detection and inference on an Ultra remain unverified. Setup progress and logs are written to `~/Library/Logs/tinkerbox-ane/demo.log`.
 
 ## Building from Source
 
