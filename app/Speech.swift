@@ -1,6 +1,5 @@
 import SwiftUI
 import AppKit
-import AVFoundation
 import UniformTypeIdentifiers
 
 struct SpeechView: View {
@@ -22,7 +21,6 @@ struct SpeechView: View {
     @State private var elapsed: Double?
     @State private var aneMs: Double?
     @State private var resultSeed: Int64?
-    @State private var player: AVAudioPlayer?
     @State private var error: String?
     @State private var showingInspector = false
 
@@ -88,14 +86,12 @@ struct SpeechView: View {
                     .disabled(demo.busy || !demo.ready || demo.current?.kind != .speech || isBlank(text))
                     if demo.busy { ProgressView().controlSize(.small) }
                     if let result {
-                        Button("Play", systemImage: "play.fill") {
-                            do { player = try AVAudioPlayer(data: result.wav); player?.play() }
-                            catch { self.error = error.localizedDescription }
-                        }
                         Button("Save WAV…", systemImage: "square.and.arrow.down") { save(result.wav) }
                     }
                 }
                 if let result {
+                    AudioPlayback(data: result.wav)
+                        .padding(.vertical, 8)
                     Text("\(result.duration.formatted(.number.precision(.fractionLength(2)))) seconds · \(result.sampleRate) Hz")
                     if let elapsed, let aneMs {
                         Text("Generated in \((elapsed / 1000).formatted(.number.precision(.fractionLength(2)))) s · ANE calls \((aneMs / 1000).formatted(.number.precision(.fractionLength(2)))) s")
@@ -115,14 +111,12 @@ struct SpeechView: View {
         .toolbar { ModelToolbar(demo: demo, task: .speech, showingInspector: $showingInspector, showModels: showModels) }
         .inspector(isPresented: $showingInspector) { ModelInspector(demo: demo) }
         .onChange(of: mode) {
-            player?.stop()
             result = nil
             elapsed = nil
             aneMs = nil
             resultSeed = nil
             error = nil
         }
-        .onDisappear { player?.stop() }
     }
 
     @ViewBuilder private func control(_ parameter: SpeechParameter) -> some View {
