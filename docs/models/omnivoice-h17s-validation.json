@@ -1,0 +1,125 @@
+{
+  "device": "Apple M5 Pro",
+  "architecture": "h17s",
+  "os": "27.0.1",
+  "asset": "artifacts/omnivoice/full-context-v2-ane",
+  "asset_hashes": {
+    "diffusion": "f7bb17306e9d1f37c1d28c7aa1fca27f702f10f696af081476902547d689bec8",
+    "short": "b54a6411f494963ddc717ac209c258e38d9bacc8a6ed7fbcb2511079753b4b62"
+  },
+  "context_positions": 40960,
+  "cases": {
+    "1100": {
+      "cosine": 0.999986859837258,
+      "relative_l2": 0.005130703069390404,
+      "finite": true,
+      "elapsed": 0.9683880000375211
+    },
+    "96": {
+      "cosine": 0.9999872986616665,
+      "relative_l2": 0.005051057219424001,
+      "finite": true,
+      "elapsed": 0.0667786670383066
+    },
+    "attention-40960-visible-40960": {
+      "cosine": 0.9999987845907956,
+      "relative_l2": 0.0015604870487504533,
+      "finite": true
+    },
+    "attention-40960-visible-4096": {
+      "cosine": 0.9999990498011972,
+      "relative_l2": 0.0014099065784005701,
+      "finite": true
+    }
+  },
+  "speech": {
+    "text": "The morning train arrived just as the first shops began to open. Mara stepped onto the platform with a small canvas bag and a notebook full of questions. She had come to the valley to record the stories of people who repaired old things. Her first appointment was with a clockmaker whose workshop stood beside the river. She followed the sound of running water through a narrow street, passing a bakery, a flower stall, and a bicycle leaning against a blue door.",
+    "transcript": "The morning train arrived just as the first shops began to open. Mara stepped on to the platform with a small canvas bag and a notebook full of questions. She had come to the valley to record the stories of people who repaired old things. Her first appointment was with a clockmaker, whose workshop stood beside the river. She followed the sound of running water through a narrow street, passing a bakery, a flower stall, and a bicycle leaning against a blue door.",
+    "character_error": 0.0,
+    "seconds": 28.0,
+    "elapsed": 14.0199573750142,
+    "finite": true,
+    "passed": true
+  },
+  "passed": true,
+  "scope": {
+    "full_transformer_lengths": [
+      96,
+      1100
+    ],
+    "attention_key_positions": 40960,
+    "speech_seconds": 28,
+    "reference": "Independent omnivoice==0.2.1 CPU FP16; full-size attention compared with PyTorch CPU FP16 SDPA."
+  },
+  "placement": {
+    "fully_on_ane": true,
+    "changed_export": true,
+    "architectures_compiled": [
+      "h17s"
+    ],
+    "functions": {
+      "diffusion": 67,
+      "short": 5
+    }
+  },
+  "checks": {
+    "numerical_and_speech": {
+      "command": [
+        ".venv/bin/python",
+        "-u",
+        "scripts/omnivoice/validate_context.py",
+        "--asset",
+        "artifacts/omnivoice/full-context-v2-ane",
+        "--speech"
+      ],
+      "abort": null,
+      "returncode": 0,
+      "seconds": 42.406885667005554,
+      "system_written_bytes": 7906983936,
+      "passed": true
+    },
+    "public_api": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_speech.py",
+        "-q"
+      ],
+      "abort": null,
+      "returncode": 0,
+      "seconds": 18.802650750032626,
+      "system_written_bytes": 3004981248,
+      "passed": true
+    },
+    "swift_worker": {
+      "command": [
+        ".venv/bin/python",
+        "app/test_speech.py"
+      ],
+      "abort": null,
+      "returncode": 0,
+      "seconds": 29.67248591594398,
+      "system_written_bytes": 197804032,
+      "passed": true
+    },
+    "swiftui_and_app_intent_build": {
+      "passed": true,
+      "log": "artifacts/full-context-final-app-build.log"
+    }
+  },
+  "source_files": {
+    "src/tinkerbox_ane/architectures/qwen3.py": "e03e46a8bdaebaa0b396ef4b9e8d3e6fa9ae713585398a8e5c79af92835eaf71",
+    "src/tinkerbox_ane/architectures/attention.py": "4a3e0d7fcab1f1a2d368e89a4452c16dbd0ebceb8303e85d7eba89d411f1f763",
+    "src/tinkerbox_ane/omnivoice/export.py": "58b2311a67ae43e2550b62534202a9a811f012e197bb0e6578182d87a39edf55",
+    "src/tinkerbox_ane/omnivoice/runtime.py": "daf2d3ef2c33e94ef0fe19913cb9688198835be2935c1915733c4016ebc030d1",
+    "src/tinkerbox_ane/host.py": "2d7ad768c8d983fba86ddf94174cc3c3a5adad0a8ac81a5f129e65af615a8015",
+    "src/tinkerbox_ane/host.swift": "d875185dfb47cbf62c0859a93ecc72f9518d794fa99af41694aad60b002a41b9",
+    "src/tinkerbox_ane/bidirectional.swift": "4e93fc603ea6b6c915f9d65a6c6eb9501b80f64e368c25e490fa99aff0f49efe"
+  },
+  "limitations": [
+    "Only Apple M5 Pro h17s was compiled and tested for this changed export.",
+    "40960-key validation covers the attention kernel, not an end-to-end maximum-context transformer or speech benchmark.",
+    "Upstream retains a square CPU batch mask and long-form chunking; memory and runtime grow with active context."
+  ]
+}
