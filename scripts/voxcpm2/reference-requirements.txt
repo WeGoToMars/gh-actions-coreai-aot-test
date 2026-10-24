@@ -1,0 +1,8 @@
+torch==2.9.0
+torchaudio==2.9.0
+transformers==5.19.0
+librosa==0.11.0
+pydantic==2.12.5
+safetensors==0.8.0
+soundfile==0.13.1
+einops==0.8.2

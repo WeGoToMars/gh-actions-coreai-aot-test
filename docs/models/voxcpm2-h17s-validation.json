@@ -1,0 +1,451 @@
+{
+  "device": "Apple M5 Pro",
+  "architecture": "h17s",
+  "os": "27.0.1",
+  "asset": "artifacts/voxcpm2/context1024-ane",
+  "source": {
+    "repo": "openbmb/VoxCPM2",
+    "revision": "32279effe8c19989596f05d353d1447f51d9e915",
+    "code_revision": "cce58a5b59303c9bd63d12f23afe6a49a4a80c59"
+  },
+  "asset_hashes": {
+    "base-0": "d659c7c052487cb52560c7e513523b62b0cd36842cf208822c5e02e63e024906",
+    "base-1": "095f682ee10550f15ebdae898b1884a7cd2996e01f1b0f2120cfe447e8b570b9",
+    "base-2": "74738b56b12bcc1ad24635d4b05c0115169eaa9d062a75915f2e592a1477c068",
+    "base-3": "9e1b439af97dd76079aaac16f0d30041fa70dfea77fdc79e45af73a252f2298f",
+    "base-4": "18265f5f05d21280bb4663a29921b1b7b4458f1477c00c9cd0f84011562d6087",
+    "base-5": "757bd1a96367ecd4f4caea109de0fc061b51ccf8b8146c6b339b833328a09cc8",
+    "base-6": "e1c21ac1fae3b11f251ece600749a6f2eb5cc908e5563634098d12ed52873ce3",
+    "base-7": "f7c4fe4341fabe87cdc05bc89e59462cc49a04f96924b920ff0c5403430b1e15",
+    "base-8": "57931ba28283b71678a1fe0262af254338ff41fc1f7761b10142ea80d72471e1",
+    "base-9": "eff445ccdb0b4076797d12d13b8896a904df9e85023360cd8e45ac47a212381d",
+    "base-10": "87eacb0a499eb85c1c1306ff9cbc1ddd419ab5ad43de3f120d83453c1dc477aa",
+    "base-11": "7e20da086caecad367c5279140b2d8950271f0e29ec088f95df46a09365bc50a",
+    "base-12": "05c28dab8a2148ec2a401455c883aa6eddab4a4d4a39a572759133c294833048",
+    "base-13": "261508373936e24846d044a102109bf68d2dab3035b6ec8c9fd846bd7e745b02",
+    "base-14": "b2d9459fde76818c12cd3d6b5a7cb2dbae684b3b64d89c162f63a15a2c1f1c6c",
+    "base-15": "44058ccb0f2cc56954c1ffaa13bd1e9229528de1582125c35c36f0083aa44584",
+    "base-16": "f7c2b845d299ddfff97275fce0fc6a4bcf3ce7965809a5bc7c3ccb44b74ba646",
+    "base-17": "94877772c5928c0256713422995006f9df3c5288149ef069ea6bbf2e29b55f97",
+    "base-18": "0e109f9417234e83c4fcbefed06a5c05de65b8d34a950ef941f503ce9eca3eaf",
+    "base-19": "eee163455bd261771566b08bd7e58999b36aeee2df0bd0b4c0831898f90b6dbb",
+    "base-20": "e508fe00a1e14a27850dea9093da7b4a3592b69b8f489e6b9e467c144b3a3b8e",
+    "base-21": "705b56611d98fdce6ace76bc1e19c786d0749c4a9fcb92fba001a200b854787b",
+    "base-22": "3497a8ed783c7cd4b1bc465b30e27f281c96984ec9b9e5c8ba8afe3c8333ab26",
+    "base-23": "814504842e5172a9e6b34a3eb88d69da44d6bb6c0027fe409151522508d96354",
+    "base-24": "30182911460673a1048e0c4d3db70048d6fa77a717c6a09ae3af120b4b7a2519",
+    "base-25": "4f6f229e6419ac4add0dd952cfa6cd1e3596626662be5998a2c1263a283bf9e9",
+    "base-26": "b4db7e2a9acc6b606271dae58467fd433276e377e79bde45498afb8edc9461cf",
+    "base-27": "a8ce2691129cbe5f354fae78435094c7f471d0dac869d4f95f4f6e051b02ed76",
+    "residual": "f33b0eac165d15d42fabda19bc16c30c43a77885536119e2097bffbebc66ff5a",
+    "encoder": "84f9093b42450072842741e1000f6b7eff7077aa559383b0ec13f2fb2f84a0bb",
+    "dit": "0465b8d6aff5c389a60ac0e719e5a0861699ed0d07bc489d741ab2bce6b931c1"
+  },
+  "scope": "end-to-end",
+  "requested_cases": [
+    "hello",
+    "design",
+    "chinese",
+    "clone",
+    "continuation",
+    "combined"
+  ],
+  "reference_dtype": "float16",
+  "codec_dtype": "float32",
+  "cases": {
+    "hello": {
+      "text": "Hello! Welcome to Tinkerbox.",
+      "seed": 42,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.9999967752655043,
+          "relative_l2": 0.0025406332965559656,
+          "max_abs": 0.0703125,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 22,
+          "min_cosine": 0.9999900099779491,
+          "max_relative_l2": 0.00475205038377866,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.9999995022408651,
+          "relative_l2": 0.0010128345425680088,
+          "max_abs": 0.015625,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 22,
+          "min_cosine": 0.9999983114719894,
+          "max_relative_l2": 0.0018545056074880703,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999965332675691,
+          "relative_l2": 0.0026426038700432804,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "diffusion_velocity": {
+          "min_cosine": 0.9999931832127396,
+          "max_relative_l2": 0.0041823075967162135,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999972406725097,
+          "relative_l2": 0.0027541682073252403,
+          "max_abs": 0.015625,
+          "finite": true
+        }
+      },
+      "seconds": 3.52,
+      "elapsed": 4.667658958001994,
+      "ane_seconds": 3.378658390720375,
+      "finite": true,
+      "transcript": "Hello, welcome to Tinkerbox.",
+      "upstream_transcript": "Hello, welcome to Tinkerbox.",
+      "upstream_seconds": 3.68,
+      "asr_character_error": 0.0,
+      "duration_ratio": 0.9565217391304347,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    },
+    "design": {
+      "text": "(A warm, calm female voice)A familiar voice can tell a new story.",
+      "seed": 7,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.9999953289683665,
+          "relative_l2": 0.0030614880789504298,
+          "max_abs": 0.171875,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 16,
+          "min_cosine": 0.9999910451234686,
+          "max_relative_l2": 0.00498436003958266,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.9999982776481218,
+          "relative_l2": 0.0018567919529056433,
+          "max_abs": 0.0390625,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 16,
+          "min_cosine": 0.9999980605603302,
+          "max_relative_l2": 0.002276154527927066,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999965332675693,
+          "relative_l2": 0.0026426038700432804,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999962735515882,
+          "relative_l2": 0.0027324769829287863,
+          "max_abs": 0.013671875,
+          "finite": true
+        }
+      },
+      "seconds": 2.72,
+      "elapsed": 3.490100291906856,
+      "ane_seconds": 2.8281688918359578,
+      "finite": true,
+      "transcript": "A familiar voice can tell a new story.",
+      "upstream_transcript": "A familiar voice can tell a new story.",
+      "upstream_seconds": 2.72,
+      "asr_character_error": 0.0,
+      "duration_ratio": 1.0,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    },
+    "chinese": {
+      "text": "\u4f60\u597d\uff0c\u6b22\u8fce\u4f7f\u7528\u8bed\u97f3\u5408\u6210\u3002",
+      "seed": 42,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.9999984643341175,
+          "relative_l2": 0.0017528027024982767,
+          "max_abs": 0.09375,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 12,
+          "min_cosine": 0.9999964483595423,
+          "max_relative_l2": 0.002825077320327004,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.9999994670146146,
+          "relative_l2": 0.001074738845277009,
+          "max_abs": 0.03125,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 12,
+          "min_cosine": 0.9999983477368231,
+          "max_relative_l2": 0.0018192610160715273,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999965332675691,
+          "relative_l2": 0.0026426038700432804,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999930631206021,
+          "relative_l2": 0.004282851135484568,
+          "max_abs": 0.025390625,
+          "finite": true
+        }
+      },
+      "seconds": 2.08,
+      "elapsed": 2.4254597920225933,
+      "ane_seconds": 1.927842004573904,
+      "finite": true,
+      "transcript": "\u4f60\u597d \uff0c\u6b22\u8fce\u4f7f\u7528\u8bed\u97f3\u5408\u6210",
+      "upstream_transcript": "\u4f60\u597d \uff0c\u6b22\u8fce\u4f7f\u7528\u8bed\u97f3\u5408\u6210",
+      "upstream_seconds": 2.08,
+      "asr_character_error": 0.0,
+      "duration_ratio": 1.0,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    },
+    "clone": {
+      "text": "This is a short voice cloning demonstration.",
+      "seed": 23,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.999997434337743,
+          "relative_l2": 0.0022700386118761668,
+          "max_abs": 0.1328125,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 18,
+          "min_cosine": 0.9999868292828208,
+          "max_relative_l2": 0.005132768041159127,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.9999983988639818,
+          "relative_l2": 0.0017896929331435445,
+          "max_abs": 0.046875,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 18,
+          "min_cosine": 0.9999973220491596,
+          "max_relative_l2": 0.002333472561482266,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999974943559384,
+          "relative_l2": 0.002262206728973689,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999957598312302,
+          "relative_l2": 0.0029291348603701353,
+          "max_abs": 0.0068359375,
+          "finite": true
+        }
+      },
+      "seconds": 3.04,
+      "elapsed": 4.036867832997814,
+      "ane_seconds": 2.6147823311621323,
+      "finite": true,
+      "transcript": "This is a short voice cloning demonstration.",
+      "upstream_transcript": "This is a short voice cloning demonstration.",
+      "upstream_seconds": 3.04,
+      "asr_character_error": 0.0,
+      "duration_ratio": 1.0,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    },
+    "continuation": {
+      "text": "This sentence continues with the same familiar voice.",
+      "seed": 23,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.9999953164837408,
+          "relative_l2": 0.0030606202860654413,
+          "max_abs": 0.265625,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 20,
+          "min_cosine": 0.9999959621985683,
+          "max_relative_l2": 0.003063142901323203,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.999998883687417,
+          "relative_l2": 0.00149438218204907,
+          "max_abs": 0.046875,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 20,
+          "min_cosine": 0.9999978805658605,
+          "max_relative_l2": 0.002171967868260612,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999972705079895,
+          "relative_l2": 0.0023559113483211775,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999890227724676,
+          "relative_l2": 0.004685563730533279,
+          "max_abs": 0.0166015625,
+          "finite": true
+        }
+      },
+      "seconds": 3.36,
+      "elapsed": 3.9061631249496713,
+      "ane_seconds": 2.8397227579262108,
+      "finite": true,
+      "transcript": "The sentence continues with the same familiar voice.",
+      "upstream_transcript": "The sentence continues with the same familiar voice.",
+      "upstream_seconds": 3.36,
+      "asr_character_error": 0.0,
+      "duration_ratio": 1.0,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    },
+    "combined": {
+      "text": "Every sentence should reach its final word.",
+      "seed": 23,
+      "numerical": {
+        "base_prefill": {
+          "cosine": 0.9999944712619384,
+          "relative_l2": 0.003325640110309658,
+          "max_abs": 0.234375,
+          "finite": true
+        },
+        "base_decode": {
+          "steps": 17,
+          "min_cosine": 0.9999931728822161,
+          "max_relative_l2": 0.0038590144883751394,
+          "finite": true
+        },
+        "residual_prefill": {
+          "cosine": 0.9999984766759092,
+          "relative_l2": 0.0017457532677037342,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "residual_decode": {
+          "steps": 17,
+          "min_cosine": 0.9999970990649752,
+          "max_relative_l2": 0.0024150226339068846,
+          "finite": true
+        },
+        "encoder": {
+          "cosine": 0.9999975612386796,
+          "relative_l2": 0.0022334938309880427,
+          "max_abs": 0.0625,
+          "finite": true
+        },
+        "first_diffusion_patch": {
+          "cosine": 0.9999962168898062,
+          "relative_l2": 0.0027756293336661593,
+          "max_abs": 0.0125732421875,
+          "finite": true
+        }
+      },
+      "seconds": 2.88,
+      "elapsed": 3.8004494580673054,
+      "ane_seconds": 2.542275312007405,
+      "finite": true,
+      "transcript": "Every sentence should reach its final word.",
+      "upstream_transcript": "Every sentence should reach its final word.",
+      "upstream_seconds": 2.88,
+      "asr_character_error": 0.0,
+      "duration_ratio": 1.0,
+      "gates": {
+        "numerical": true,
+        "finite": true,
+        "speech": true,
+        "duration": true,
+        "stopped": true
+      },
+      "passed": true
+    }
+  },
+  "passed": true,
+  "gate": {
+    "prefill_min_cosine": 0.95,
+    "prefill_max_relative_l2": 0.35,
+    "decode_min_cosine": 0.9,
+    "decode_max_relative_l2": 0.5,
+    "max_asr_character_error": 0.2,
+    "min_duration_ratio": 0.5,
+    "max_duration_ratio": 2.0
+  },
+  "context_positions": 1024,
+  "export_validation": "Fresh production export and compilation for h17s; on-device M5 Pro inference, all compiled entries verified fully placed on ANE.",
+  "source_files": {
+    "src/tinkerbox_ane/architectures/minicpm.py": "0d5ae78c74e22fab46120b31d620261d313586d1ed0e46523a18ca04ffcdda02",
+    "src/tinkerbox_ane/voxcpm2/export.py": "67ec6ae9c6b1be3f7754cc011d354acac826e6d29fe057bfd601edc640a67067",
+    "src/tinkerbox_ane/voxcpm2/runtime.py": "e04f8d2218c8ffa256a3ca83e90d0aa7af6675ad306054be40bb6859a11ed1b7"
+  },
+  "long_reference": {
+    "asset": "artifacts/voxcpm2/context1024-ane",
+    "context_positions": 1024,
+    "reference_seconds": 29.44,
+    "text": "Every morning, the neighborhood slowly comes to life. People open their windows, birds gather in the trees, and a familiar voice welcomes everyone to a new day.",
+    "passed": true,
+    "seconds": 9.92,
+    "elapsed": 15.783257749979384,
+    "finite": true,
+    "transcript": "Every morning, the neighborhood slowly comes to life. People open their windows, birds gather in the trees, and a familiar voice welcomes everyone to a new day.",
+    "character_error": 0.0
+  },
+  "checks": {
+    "public_api_512": true,
+    "swift_worker_512": true,
+    "swift_worker_1024": true,
+    "omnivoice_swift_worker_existing_bundle": true
+  }
+}
