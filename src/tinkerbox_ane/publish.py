@@ -77,19 +77,16 @@ def upload_to_hub(
     return commit.oid
 
 
-def upload_release(
-    repo: str,
+def prepare_release(
     staging: Path,
     kind: str,
-    tag: str | None = None,
     *,
     license_file: str,
     expected_source: dict | None = None,
     architectures: Iterable[str] | None = None,
     metadata_dir: Path | None = None,
-    token: str | None = None,
-) -> str:
-    """Verify and publish a complete macos27 release of `kind` bundles for the selected architectures.
+) -> list[str]:
+    """Verify and stage a complete macos27 release, returning its upload allowlist.
 
     Release metadata (LICENSE, NOTICE, README.md) comes from `metadata_dir`, or else from staging and
     then the repository root; `license_file` is the LICENSE source relative to that directory."""
@@ -99,7 +96,7 @@ def upload_release(
     if architectures is None:
         architectures = sorted(p.name for p in (staging / "macos27").iterdir()
                                if p.is_dir() and not p.name.startswith("."))
-    patterns = ["LICENSE", "NOTICE", "README.md", "config.json"]
+    patterns = ["LICENSE", "LICENSES/**", "NOTICE", "README.md", "config.json"]
     identities = set()
     bundles = {}
     for architecture in architectures:
@@ -139,4 +136,22 @@ def upload_release(
             raise ValueError(f"missing release metadata: {source}")
         if source.resolve() != target.resolve():
             shutil.copy2(source, target)
+    return patterns
+
+
+def upload_release(
+    repo: str,
+    staging: Path,
+    kind: str,
+    tag: str | None = None,
+    *,
+    license_file: str,
+    expected_source: dict | None = None,
+    architectures: Iterable[str] | None = None,
+    metadata_dir: Path | None = None,
+    token: str | None = None,
+) -> str:
+    """Verify and publish a complete macos27 release of `kind` bundles."""
+    patterns = prepare_release(staging, kind, license_file=license_file, expected_source=expected_source,
+                               architectures=architectures, metadata_dir=metadata_dir)
     return upload_to_hub(repo, staging, tag, allow_patterns=patterns, delete_patterns=["macos27/**"], token=token)
