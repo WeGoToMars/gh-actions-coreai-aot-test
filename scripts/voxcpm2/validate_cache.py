@@ -1,4 +1,4 @@
-"""Compare growing native KV against pinned upstream FP16 through position 8192."""
+"""Compare the first main-model stage's growing native KV against pinned upstream FP16 through position 8192."""
 
 import argparse
 import json
@@ -27,23 +27,27 @@ sys.path.insert(0, str((args.upstream/'src').resolve()))
 from voxcpm.modules.minicpm4 import MiniCPMModel, MiniCPM4Config
 
 torch.set_num_threads(4)
-cfg = json.loads((args.checkpoint/'config.json').read_text())['lm_config']
-cfg.update(num_hidden_layers=1, vocab_size=0)
-reference = MiniCPMModel(MiniCPM4Config(**cfg)).half().eval().requires_grad_(False)
-with safe_open(args.checkpoint/'model.safetensors', framework='pt') as weights:
-    reference.layers[0].load_state_dict({k.removeprefix('base_lm.layers.0.'): weights.get_tensor(k)
-                                        for k in weights.keys() if k.startswith('base_lm.layers.0.')})
 spec = json.loads((args.asset/'model.json').read_text())
 stage = next(row for row in spec['assets'] if row['role'] == 'base-0')
+layers = stage['end']-stage['start']
+cfg = json.loads((args.checkpoint/'config.json').read_text())['lm_config']
+cfg.update(num_hidden_layers=layers, vocab_size=0)
+reference = MiniCPMModel(MiniCPM4Config(**cfg)).half().eval().requires_grad_(False)
+with safe_open(args.checkpoint/'model.safetensors', framework='pt') as weights:
+    for i, layer in enumerate(reference.layers):
+        layer.load_state_dict({k.removeprefix(f'base_lm.layers.{i}.'): weights.get_tensor(k)
+                               for k in weights.keys() if k.startswith(f'base_lm.layers.{i}.')})
 positions = max(spec['capacities'])
 x = torch.load(args.reference, weights_only=True)['trace']['base_lm'][0]['inputs_embeds']
 x = x.repeat(1, positions//x.shape[1]+1, 1)[:, :positions]
 config = dict(hidden=stage['config']['hidden'],
-              channels=2*stage['config']['kv_heads']*stage['config']['head_dim'],
+              channels=2*layers*stage['config']['kv_heads']*stage['config']['head_dim'],
               functions=stage['cache_functions'])
 with torch.inference_mode():
     cos, sin = reference.rope_emb(torch.arange(positions))
-    expected, _ = reference.layers[0](x, (cos, sin), True)
+    expected = x
+    for layer in reference.layers:
+        expected, _ = layer(expected, (cos, sin), True)
     host = TensorHost(args.asset/stage['asset'], output='features', cached=config)
     try:
         host.reset()

@@ -22,17 +22,21 @@ def main(argv=None):
     parser.add_argument('--arch', nargs='+', choices=list(SUPPORTED_ARCHITECTURES),
                         default=item['architectures'])
     parser.add_argument('--force', action='store_true')
+    parser.add_argument('--continue-on-error', action='store_true')
     parser.add_argument('--metadata', type=Path, help='Directory with release README.md, LICENSE and NOTICE')
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument('--no-upload', action='store_true', help='Compile and stage without uploading')
     modes.add_argument('--upload-only', action='store_true', help='Publish staged bundles')
     args = parser.parse_args(argv)
     source = {'repo': REPO, 'revision': REVISION}
+    architectures = args.arch
     if not args.upload_only:
         if read_bundle(args.source, KIND)['source'] != source:
             raise ValueError('export source does not match OmniVoice')
-        publish.build_architectures(compile, args.source, args.staging / 'macos27', args.arch, force=args.force)
-    metadata = dict(license_file='LICENSE', expected_source=source, architectures=args.arch,
+        architectures = list(publish.build_architectures(
+            compile, args.source, args.staging / 'macos27', args.arch,
+            force=args.force, continue_on_error=args.continue_on_error))
+    metadata = dict(license_file='LICENSE', expected_source=source, architectures=architectures,
                     metadata_dir=args.metadata or args.staging)
     if args.no_upload:
         publish.prepare_release(args.staging, KIND, **metadata)
@@ -40,7 +44,7 @@ def main(argv=None):
     else:
         commit = publish.upload_release(args.repo, args.staging, KIND, args.tag, **metadata)
         print(f'Published {args.repo} at {commit}')
-    return 0
+    return int(set(architectures) != set(args.arch))
 
 
 if __name__ == '__main__':

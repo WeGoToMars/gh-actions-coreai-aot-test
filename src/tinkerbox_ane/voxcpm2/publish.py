@@ -1,0 +1,54 @@
+"""Compile, stage and publish VoxCPM2 bundles to Hugging Face Hub."""
+
+import argparse
+from pathlib import Path
+
+from tinkerbox_ane import publish
+from tinkerbox_ane.bundle import compile_bundle, read_bundle
+from tinkerbox_ane.host import SUPPORTED_ARCHITECTURES
+from tinkerbox_ane.models import entry
+from . import KIND, REPO, REVISION, SOURCE, UPSTREAM_REVISION
+
+
+def compile(source, out, architecture, force=False):
+    return compile_bundle(source, out, KIND, architecture, force=force)
+
+
+def main(argv=None):
+    item = entry('voxcpm2')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', type=Path, default=SOURCE)
+    parser.add_argument('--staging', type=Path,
+                        default=Path('artifacts/huggingface') / item['repo'].split('/')[-1])
+    parser.add_argument('--repo', default=item['repo'])
+    parser.add_argument('--tag', default=item['revision'])
+    parser.add_argument('--arch', nargs='+', choices=list(SUPPORTED_ARCHITECTURES),
+                        default=item['architectures'])
+    parser.add_argument('--force', action='store_true')
+    parser.add_argument('--continue-on-error', action='store_true')
+    parser.add_argument('--metadata', type=Path, help='Directory with release README.md, LICENSE and NOTICE')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--no-upload', action='store_true', help='Compile and stage without uploading')
+    modes.add_argument('--upload-only', action='store_true', help='Publish staged bundles')
+    args = parser.parse_args(argv)
+    source = {'repo': REPO, 'revision': REVISION, 'code_revision': UPSTREAM_REVISION}
+    architectures = args.arch
+    if not args.upload_only:
+        if read_bundle(args.source, KIND)['source'] != source:
+            raise ValueError('export source does not match VoxCPM2')
+        architectures = list(publish.build_architectures(
+            compile, args.source, args.staging / 'macos27', args.arch,
+            force=args.force, continue_on_error=args.continue_on_error))
+    metadata = dict(license_file='LICENSES/VoxCPM-Apache-2.0.txt', expected_source=source,
+                    architectures=architectures, metadata_dir=args.metadata or args.staging)
+    if args.no_upload:
+        publish.prepare_release(args.staging, KIND, **metadata)
+        print(f'Release staged in {args.staging}')
+    else:
+        commit = publish.upload_release(args.repo, args.staging, KIND, args.tag, **metadata)
+        print(f'Published {args.repo} at {commit}')
+    return int(set(architectures) != set(args.arch))
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
