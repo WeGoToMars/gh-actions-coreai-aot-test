@@ -33,11 +33,23 @@ jobs:
           uv run --locked python -m tinkerbox_ane.d1.export --vision-only --out artifacts/repro-first
           uv run --locked python -m tinkerbox_ane.d1.export --vision-only --out artifacts/repro-second
           python - <<'PY'
-          import json
+          import json, hashlib
           from pathlib import Path
           first=json.loads(Path('artifacts/repro-first/model.json').read_text())['vision_source_hash']
           second=json.loads(Path('artifacts/repro-second/model.json').read_text())['vision_source_hash']
-          report={'first': first, 'second': second, 'match': first==second}
+          one=Path('artifacts/repro-first/vision.aimodel')
+          two=Path('artifacts/repro-second/vision.aimodel')
+          def digest(path):
+              h=hashlib.sha256()
+              with path.open('rb') as f:
+                  while block:=f.read(8*1024*1024): h.update(block)
+              return h.hexdigest()
+          report={'first': first, 'second': second, 'match': first==second,
+                  'binary_sha256_first':digest(one/'main.mlirb'), 'binary_sha256_second':digest(two/'main.mlirb'),
+                  'binary_size_first':(one/'main.mlirb').stat().st_size,
+                  'binary_size_second':(two/'main.mlirb').stat().st_size,
+                  'metadata_first':json.loads((one/'metadata.json').read_text()),
+                  'metadata_second':json.loads((two/'metadata.json').read_text())}
           Path('../repro-result.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report,indent=2))
           PY
