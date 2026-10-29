@@ -48,6 +48,8 @@ jobs:
         run: rm -rf "$HF_HOME"
       - name: Compile M4 bundle and verify ANE placement
         run: python3 scripts/measured.py --timeout 0 compile -- uv run --locked python ../scripts/rollout.py '${{ matrix.model }}' compile
+      - name: Compare compiled resource SHA-256 against Hugging Face
+        run: python3 scripts/measured.py --timeout 0 resources -- uv run --locked python ../scripts/weight_hash.py '${{ matrix.model }}'
       - name: Compare source identities against Hugging Face
         run: python3 scripts/measured.py --timeout 0 compare -- uv run --locked python ../scripts/rollout.py '${{ matrix.model }}' compare
       - name: Collect compiler diagnostics
