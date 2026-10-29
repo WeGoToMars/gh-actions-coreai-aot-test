@@ -33,7 +33,7 @@ future images.
 `xcrun coreai-build compile --help` worked. The VM reports `unknown` as its Core AI
 architecture; all AOT experiments therefore pass an explicit target architecture.
 
-## 2. Full d1 export and compile — running
+## 2. Initial full export — interrupted by experiment operator
 
 [Run 40934866235](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40934866235)
 checks out public Tinkerbox commit `228e7e632ca05fdda6ef71554cd672e83586a88f`,
@@ -43,3 +43,17 @@ watchdog are unchanged. Time, RSS, swap, disk space, compiler logs and OS events
 are retained for diagnosis.
 
 No inference correctness or performance result is implied by AOT compilation.
+
+The operator canceled this attempt after the live UI appeared stalled. Recovered
+logs show the run was making progress: download finished in 63 seconds, all nine
+capacities were staged by 374 seconds, and conversion to Core AI had begun.
+There was no demonstrated export or compiler failure. Resource samples continued
+every ~15 seconds; swap use reached about 2.2 GiB. The cancellation was premature.
+No AOT compilation ran. See [recovered export evidence](results/02-interrupted-export).
+
+## 3. Full export/compile with clearer diagnostics — running
+
+The follow-up keeps the standard downloader and model/compiler settings, but
+separates checkpoint download from offline export, prints swap and the largest
+processes in every heartbeat, and uploads diagnostics between stages. It also
+retains compiled placement manifests when available.

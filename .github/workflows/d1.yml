@@ -5,7 +5,6 @@ permissions:
   contents: read
 env:
   PYTHONUNBUFFERED: '1'
-  HF_HUB_DISABLE_XET: '1'
 jobs:
   d1:
     runs-on: xcode-27
@@ -35,7 +34,7 @@ jobs:
         run: python3 scripts/preflight.py d1-environment
       - name: Install locked dependencies and build native host
         run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
-      - name: Download pinned d1 checkpoint with one HTTP worker
+      - name: Download pinned d1 checkpoint
         run: python3 scripts/measured.py download -- uv run --locked python ../scripts/download.py
       - name: Preserve setup and download diagnostics before export
         if: always()
