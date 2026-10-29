@@ -10,7 +10,9 @@ out.mkdir(parents=True, exist_ok=True)
 for path in Path('source/artifacts').rglob('*'):
     if path.is_file() and path.suffix in ('.json', '.log', '.plist'):
         # Preserve build manifests/reports, not model weights or checkpoint code.
-        if 'checkpoint' in path.parts or '.aimodelc' in ''.join(path.parts) or '.aimodel' in ''.join(path.parts):
+        if 'checkpoint' in path.parts:
+            continue
+        if '.aimodel' in ''.join(path.parts) and path.name not in ('manifest.plist', 'metadata.json'):
             continue
         destination = out / path
         destination.parent.mkdir(parents=True, exist_ok=True)

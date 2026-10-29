@@ -1,0 +1,11 @@
+{
+  "command": [
+    "xcrun",
+    "coreai-build",
+    "compile",
+    "--help"
+  ],
+  "returncode": 0,
+  "stdout": "OVERVIEW: Compiles a source model to produce a specialization.\n\nUSAGE: coreai-build compile <input> [--output <output>] [--platform <platform>] [--min-deployment-version <min-deployment-version>] [--preferred-compute <preferred-compute>] [--architecture <architecture> ...] [--expect-frequent-reshapes]\n\nARGUMENTS:\n  <input>                 The input source model (.aimodel).\n\nOPTIONS:\n  --output <output>       The output directory. If not provided, defaults to\n                          the current directory.\n        The output models will preserve the base input model name and append\n        the architecture and the .aimodelc extension. If the output is a single\n        model you can specify the full model path as output.\n  --platform <platform>   The target platform. (values: iOS, macOS, watchOS,\n                          visionOS, tvOS; default: macOS)\n  --min-deployment-version <min-deployment-version>\n                          The minimum deployment target version. (default: 27.0)\n  --preferred-compute <preferred-compute>\n                          An optional preferred compute unit type. (values:\n                          gpu, neural-engine, none; default: none)\n  --architecture <architecture>\n                          A list of specific architectures to compile for. If\n                          omitted compiles for all supported architectures.\n  --expect-frequent-reshapes\n                          Hint that inference will be run with frequently\n                          changing input shapes.\n  -h, --help              Show help information.\n\n",
+  "stderr": ""
+}

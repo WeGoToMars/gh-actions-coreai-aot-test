@@ -1,0 +1,43 @@
+{
+  "phase": "after-metal",
+  "runner": {
+    "ImageOS": "macos27",
+    "ImageVersion": "20261026.0314.1",
+    "RUNNER_OS": "macOS",
+    "RUNNER_ARCH": "ARM64",
+    "RUNNER_NAME": "GitHub Actions 1000000079"
+  },
+  "disk": {
+    "total": 160536985600,
+    "used": 122742571008,
+    "free": 37794414592
+  },
+  "ssd_write_counters": [
+    "6762090496",
+    "86016",
+    "6762004480",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "watchdog_disk_headroom": true,
+  "device_probe": {
+    "command": [
+      "diagnostics/after-metal/probe"
+    ],
+    "returncode": 0,
+    "stdout": "deviceArchitectureName=unknown\n",
+    "stderr": ""
+  }
+}

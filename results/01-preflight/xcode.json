@@ -1,0 +1,9 @@
+{
+  "command": [
+    "xcodebuild",
+    "-version"
+  ],
+  "returncode": 0,
+  "stdout": "Xcode 27.1\nBuild version 27A9275\n",
+  "stderr": ""
+}

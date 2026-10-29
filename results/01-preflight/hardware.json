@@ -1,0 +1,12 @@
+{
+  "command": [
+    "sysctl",
+    "hw.model",
+    "hw.memsize",
+    "hw.ncpu",
+    "machdep.cpu.brand_string"
+  ],
+  "returncode": 0,
+  "stdout": "hw.model: VirtualMac2,1\nhw.memsize: 7516192768\nhw.ncpu: 3\nmachdep.cpu.brand_string: Apple M1 (Virtual)\n",
+  "stderr": ""
+}
