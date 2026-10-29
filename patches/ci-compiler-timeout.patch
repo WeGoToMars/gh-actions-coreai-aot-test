@@ -13,7 +13,7 @@ diff --git a/src/tinkerbox_ane/coreai.py b/src/tinkerbox_ane/coreai.py
 diff --git a/src/tinkerbox_ane/guard.py b/src/tinkerbox_ane/guard.py
 --- a/src/tinkerbox_ane/guard.py
 +++ b/src/tinkerbox_ane/guard.py
-@@ -83,7 +83,7 @@ def run(command, output, timeout=1500):
+@@ -83,6 +83,6 @@ def run(command, output, timeout=1500):
                      report["abort"] = "SSD write budget exceeded"
                  elif free < 5 * 1024**3:
                      report["abort"] = "free disk below 5 GiB"
