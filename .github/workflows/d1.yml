@@ -1,0 +1,54 @@
+name: 02 - Full d1 export and ANE AOT
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONUNBUFFERED: '1'
+jobs:
+  d1:
+    runs-on: xcode-27
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: WeGoToMars/tinkerbox
+          ref: 228e7e632ca05fdda6ef71554cd672e83586a88f
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.28'
+          enable-cache: false
+      - name: Ensure Metal Toolchain
+        timeout-minutes: 15
+        run: |
+          mkdir -p diagnostics
+          set -o pipefail
+          xcodebuild -downloadComponent MetalToolchain 2>&1 | tee diagnostics/metal-install.log
+      - name: Record exact environment
+        run: python3 scripts/preflight.py d1-environment
+      - name: Install locked dependencies and build native host
+        run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
+      - name: Export full d1 backbone and vision tower
+        run: python3 scripts/measured.py export -- uv run --locked python -m tinkerbox_ane.d1.export --out artifacts/d1-source
+      - name: Compile full d1 bundle for standard M4 with existing watchdog
+        run: python3 scripts/measured.py compile -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
+      - name: Inspect verified compiled assets
+        run: |
+          xcrun coreai-build inspect source/artifacts/d1-h16g/fused.h16g.aimodelc --json > diagnostics/fused-inspect.json
+          xcrun coreai-build inspect source/artifacts/d1-h16g/vision.h16g.aimodelc --json > diagnostics/vision-inspect.json
+      - name: Collect reports, resource usage and compiler diagnostics
+        if: always()
+        run: python3 scripts/collect.py
+      - name: Preserve diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-diagnostics-${{ github.run_id }}
+          path: diagnostics/
+          retention-days: 30
