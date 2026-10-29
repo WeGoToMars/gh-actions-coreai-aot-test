@@ -1,0 +1,31 @@
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 2105.01it/s]
+staged c256 (61.6s)
+staged c512 (82.5s)
+staged c1024 (97.7s)
+staged c2048 (112.3s)
+staged c4096 (133.3s)
+staged c8192 (156.4s)
+staged c16384 (177.0s)
+staged c24576 (194.3s)
+staged c32768 (218.9s)
+coreai-torch 0.4.3: converting 9 program(s) to Core AI
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 175.64it/s]
+coreai-torch 0.4.3: converting 1 program(s) to Core AI
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 1714.90it/s]
+exported fused backbone (770.1s): artifacts/d1-source
+      786.85 real       249.82 user       126.34 sys
+          5244108800  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             6310623  page reclaims
+              391912  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   1  messages sent
+                   1  messages received
+                   1  signals received
+              769575  voluntary context switches
+              563931  involuntary context switches
+            12322240  peak memory footprint

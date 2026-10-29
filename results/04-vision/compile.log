@@ -1,0 +1,21 @@
+  [h16g] Compiling vision.h16g.aimodelc
+    Compiler log: /Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/d1-vision/.compile-g0chetil/compile.log
+    compile: still running after 30s; system writes 1.7 GB; free disk 27.0 GiB
+  [h16g] Verifying vision.h16g.aimodelc
+  [h16g] vision.h16g.aimodelc: verified in 32.1s
+       32.46 real        27.36 user         5.07 sys
+          1973485568  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              232129  page reclaims
+                6974  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   1  messages sent
+                   1  messages received
+                   2  signals received
+                 760  voluntary context switches
+               12984  involuntary context switches
+            11961728  peak memory footprint

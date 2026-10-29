@@ -1,0 +1,28 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "-m",
+    "tinkerbox_ane.d1.compile",
+    "artifacts/d1-source",
+    "--out",
+    "artifacts/d1-h16g",
+    "--architecture",
+    "h16g"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 147283468288,
+    "free": 13253517312
+  },
+  "returncode": 1,
+  "seconds": 2.2010787499998514,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 147283550208,
+    "free": 13253435392
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/compile_vision.py"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 130685923328,
+    "free": 29851062272
+  },
+  "returncode": 0,
+  "seconds": 33.496068542000046,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 131536154624,
+    "free": 29000830976
+  }
+}

@@ -43,6 +43,7 @@ jobs:
         with:
           name: vision-export-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 7
       - name: Compile d1 vision for M4 with existing watchdog and full ANE verification
         run: python3 scripts/measured.py compile -- uv run --locked python ../scripts/compile_vision.py
@@ -57,4 +58,5 @@ jobs:
         with:
           name: vision-diagnostics-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 30

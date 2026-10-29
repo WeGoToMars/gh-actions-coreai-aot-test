@@ -25,4 +25,5 @@ jobs:
         with:
           name: preflight-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 30

@@ -32,6 +32,11 @@ jobs:
           xcodebuild -downloadComponent MetalToolchain 2>&1 | tee diagnostics/metal-install.log
       - name: Record exact environment
         run: python3 scripts/preflight.py d1-environment
+      - name: Apply requested 5 GiB disk floor for this CI experiment
+        run: |
+          git -C source apply --check ../patches/ci-five-gib-floor.patch
+          git -C source apply ../patches/ci-five-gib-floor.patch
+          git -C source diff -- src/tinkerbox_ane/guard.py > diagnostics/watchdog-patch.diff
       - name: Install locked dependencies and build native host
         run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
       - name: Download pinned d1 checkpoint
@@ -42,6 +47,7 @@ jobs:
         with:
           name: d1-download-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 7
       - name: Export full d1 backbone and vision tower
         env:
@@ -53,6 +59,7 @@ jobs:
         with:
           name: d1-export-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 7
       - name: Compile full d1 bundle for standard M4 with existing watchdog
         run: python3 scripts/measured.py compile -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
@@ -69,4 +76,5 @@ jobs:
         with:
           name: d1-diagnostics-${{ github.run_id }}
           path: diagnostics/
+          include-hidden-files: true
           retention-days: 30

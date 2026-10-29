@@ -1,0 +1,14 @@
+diff --git a/src/tinkerbox_ane/guard.py b/src/tinkerbox_ane/guard.py
+--- a/src/tinkerbox_ane/guard.py
++++ b/src/tinkerbox_ane/guard.py
+@@ -81,8 +81,8 @@ def run(command, output, timeout=1500):
+                     report["abort"] = "required ANE compilation failed; refusing GPU fallback"
+                 elif written > 100_000_000_000:
+                     report["abort"] = "SSD write budget exceeded"
+-                elif free < 15 * 1024**3:
+-                    report["abort"] = "free disk below 15 GiB"
++                elif free < 5 * 1024**3:
++                    report["abort"] = "free disk below 5 GiB"
+                 elif elapsed > timeout:
+                     report["abort"] = "deadline exceeded"
+                 if report["abort"]:

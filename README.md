@@ -51,7 +51,7 @@ There was no demonstrated export or compiler failure. Resource samples continued
 every ~15 seconds; swap use reached about 2.2 GiB. The cancellation was premature.
 No AOT compilation ran. See [recovered export evidence](results/02-interrupted-export).
 
-## 3. Full export/compile with clearer diagnostics — running
+## 3. Full export passed; stock 15 GiB floor stopped compilation
 
 [Run 40936211783](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40936211783).
 
@@ -65,4 +65,36 @@ The separate checkpoint download passed in 41.5 seconds (40.93 seconds reported
 by `time`), with the standard unauthenticated downloader. It downloaded the pinned
 6 GB checkpoint, left 28.5 GiB free, and used no swap at the last sampled point.
 The subsequent export uses `HF_HUB_OFFLINE=1`. Partial diagnostics are available
-as the `d1-download-40936211783` Actions artifact while export continues.
+as the `d1-download-40936211783` Actions artifact before export completed.
+
+The full export passed in **786.9 seconds (13m 07s)**, including all nine backbone
+capacities and vision. Source bundle size: **6,273,626,731 bytes**. Peak sampled
+swap use was **10,831.75 MiB**. Only **12.3 GiB** remained at compilation start,
+and the unchanged watchdog stopped immediately at its **15 GiB** disk floor.
+This was a disk-reserve failure; full backbone AOT compilation was not tested.
+[Retained reports and samples](results/03-full-default-floor).
+
+## 4. Real d1 vision export and AOT — passed
+
+[Run 40937819569](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40937819569)
+used the same pinned source, model, free runner and target `h16g` (standard M4).
+The real d1 vision tower exported in **54.7 seconds** and compiled and verified
+in **33.5 seconds**. The existing watchdog passed with no abort, and no swap was
+used in the samples. The compiler's manifest contains `mps.fullyPlacedOnANE` and
+`mps.noGPUActivity`; inspect reports `supportedArchitectures: ["h16g"]`,
+`supportedChips: ["M4"]`, minimum macOS 27.0, and the `main` function.
+[Retained logs, watchdog report, inspect output and raw placement manifest](results/04-vision).
+
+This proves offline cross-compilation works on the VM for this real model asset,
+even though Core AI reports the host architecture as `unknown`. It does not
+establish full-backbone compilation or on-device inference correctness/performance.
+
+## 5. Full d1 with requested 5 GiB reserve — running
+
+The next trial changes only the disk floor from 15 to **5 GiB**, using the
+[explicit two-line CI patch](patches/ci-five-gib-floor.patch). No unused Xcodes or
+checkpoint files are removed in this trial. Time limits, the SSD write budget,
+source identity checks, function/architecture/deployment validation and full ANE
+placement verification remain in place. The local Tinkerbox checkout is unchanged.
+Diagnostic uploads now include hidden build directories so raw watchdog reports
+from incomplete bundles are retained as well.
