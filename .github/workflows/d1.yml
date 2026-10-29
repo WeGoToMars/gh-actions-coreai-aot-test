@@ -5,6 +5,7 @@ permissions:
   contents: read
 env:
   PYTHONUNBUFFERED: '1'
+  HF_HUB_DISABLE_XET: '1'
 jobs:
   d1:
     runs-on: xcode-27
@@ -34,8 +35,26 @@ jobs:
         run: python3 scripts/preflight.py d1-environment
       - name: Install locked dependencies and build native host
         run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
+      - name: Download pinned d1 checkpoint with one HTTP worker
+        run: python3 scripts/measured.py download -- uv run --locked python ../scripts/download.py
+      - name: Preserve setup and download diagnostics before export
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-download-${{ github.run_id }}
+          path: diagnostics/
+          retention-days: 7
       - name: Export full d1 backbone and vision tower
+        env:
+          HF_HUB_OFFLINE: '1'
         run: python3 scripts/measured.py export -- uv run --locked python -m tinkerbox_ane.d1.export --out artifacts/d1-source
+      - name: Preserve export diagnostics before compilation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-export-${{ github.run_id }}
+          path: diagnostics/
+          retention-days: 7
       - name: Compile full d1 bundle for standard M4 with existing watchdog
         run: python3 scripts/measured.py compile -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
       - name: Inspect verified compiled assets

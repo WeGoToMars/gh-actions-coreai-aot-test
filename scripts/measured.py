@@ -18,6 +18,14 @@ args = parser.parse_args()
 command = args.command[1:] if args.command[:1] == ['--'] else args.command
 out = Path('diagnostics').resolve()
 out.mkdir(exist_ok=True)
+
+
+def tail(path, size=32768):
+    with path.open('rb') as stream:
+        stream.seek(max(0, path.stat().st_size - size))
+        return stream.read(size).decode(errors='replace')
+
+
 started = time.monotonic()
 report = {'command': command, 'cwd': args.cwd, 'disk_before': shutil.disk_usage('.')._asdict()}
 with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.jsonl').open('w') as samples:
@@ -29,14 +37,22 @@ with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.j
             elapsed = time.monotonic() - started
             if elapsed >= next_sample:
                 sample = {'seconds': elapsed, 'disk_free': shutil.disk_usage('.').free}
+                print(f'{args.name}: {elapsed:.0f}s; free {sample["disk_free"] / 1024**3:.1f} GiB', flush=True)
                 for key, cmd in [('swap', ['sysctl', 'vm.swapusage']), ('memory', ['vm_stat']),
                                  ('processes', ['ps', '-axo', 'pid,ppid,rss,pcpu,comm'])]:
-                    result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
-                    sample[key] = result.stdout
+                    try:
+                        result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+                        sample[key] = result.stdout
+                    except subprocess.TimeoutExpired:
+                        sample[key] = 'diagnostic command timed out'
+                print(sample['swap'].strip(), flush=True)
+                rows = sample['processes'].splitlines()[1:]
+                rows = sorted((r for r in rows if len(r.split()) >= 5),
+                              key=lambda r: int(r.split()[2]), reverse=True)[:8]
+                print('PID PPID RSS_KiB CPU COMMAND\n' + '\n'.join(rows), flush=True)
                 samples.write(json.dumps(sample) + '\n')
                 samples.flush()
-                print(f'{args.name}: {elapsed:.0f}s; free {sample["disk_free"] / 1024**3:.1f} GiB', flush=True)
-                print('\n'.join((out / f'{args.name}.log').read_text(errors='replace').splitlines()[-8:]), flush=True)
+                print('\n'.join(tail(out / f'{args.name}.log').splitlines()[-8:]), flush=True)
                 next_sample = elapsed + 15
             if elapsed > args.timeout:
                 report['timeout'] = args.timeout
@@ -54,5 +70,5 @@ with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.j
         report.update(returncode=process.returncode, seconds=time.monotonic() - started,
                       disk_after=shutil.disk_usage('.')._asdict())
         (out / f'{args.name}.json').write_text(json.dumps(report, indent=2) + '\n')
-print((out / f'{args.name}.log').read_text(errors='replace'), flush=True)
+print(tail(out / f'{args.name}.log'), flush=True)
 raise SystemExit(0 if report['returncode'] == 0 and 'timeout' not in report else 1)
