@@ -53,7 +53,16 @@ No AOT compilation ran. See [recovered export evidence](results/02-interrupted-e
 
 ## 3. Full export/compile with clearer diagnostics — running
 
+[Run 40936211783](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40936211783).
+
+
 The follow-up keeps the standard downloader and model/compiler settings, but
 separates checkpoint download from offline export, prints swap and the largest
 processes in every heartbeat, and uploads diagnostics between stages. It also
 retains compiled placement manifests when available.
+
+The separate checkpoint download passed in 41.5 seconds (40.93 seconds reported
+by `time`), with the standard unauthenticated downloader. It downloaded the pinned
+6 GB checkpoint, left 28.5 GiB free, and used no swap at the last sampled point.
+The subsequent export uses `HF_HUB_OFFLINE=1`. Partial diagnostics are available
+as the `d1-download-40936211783` Actions artifact while export continues.
