@@ -1,0 +1,58 @@
+{
+  "model": "d3-mini",
+  "architecture": "h16g",
+  "published_manifest": "https://huggingface.co/wegotomars/d3-mini-CoreAI-ANE/resolve/v2.2.0/macos27/h16g/model.json",
+  "hashes": {
+    "asset:0": {
+      "built": "ad2b88c0e3b2669262988ac308f219f280cd84e1171fad2bcfea7782e0a14032",
+      "huggingface": "23dd9355a66a08e939922ca8816584ad0d88f3faeaeb69713bd83ba8a4272061",
+      "match": false
+    },
+    "asset:1": {
+      "built": "1e2e76306c02973dec7f836f0d000570b69a190d40bae4bb5fcca397b8266bca",
+      "huggingface": "6d69fee0febffb660e407069f307987f4a171f8375f7be2e66873db24a384423",
+      "match": false
+    },
+    "asset:2": {
+      "built": "4b2db8cccfea03d411fe6522b89b06053e6c229857719ba9dcd50dc81a6b7215",
+      "huggingface": "3a30aced274a06e7b4066fc8086c4b6c05cf377076f75d8e408e0ffa0a6802e1",
+      "match": false
+    },
+    "asset:3": {
+      "built": "a5529ba6b2ed3f9276eb07fb5387af501855cdf8693ad0f31bc15cc4a3430306",
+      "huggingface": "a28ef55d816dad54ce8b55eb8f98731c8f5e25ec07c70c61c70e008ca1e3314a",
+      "match": false
+    },
+    "asset:4": {
+      "built": "d5ea61d436233fa2955db703b50be7b4569308b31af3c0d6aeac87b11415963a",
+      "huggingface": "336182099d33ccd583bd563f91d3f58cecc66509e1c4fcae5b84e3cfe370bba4",
+      "match": false
+    },
+    "asset:5": {
+      "built": "0bad0f1ebf1a2f5474ba2454dd5ce5ed6dd60f3a61a3ac26fcb0d6e5c27e132b",
+      "huggingface": "5b9b05d45d55ef470d1081d581af9740f4e497bb20a39e66956d288645a036d6",
+      "match": false
+    },
+    "asset:6": {
+      "built": "ff3ac4b32e53d0481776ca0354305f5c6700d5718cd0ec0ec994d2cfd89c851f",
+      "huggingface": "e2f8a92f4cde18bd248390abd609cc958227403bbbfcfd1e9ac487398784241c",
+      "match": false
+    },
+    "asset:7": {
+      "built": "c05b9bc9715f3091bb2c0ce3c62b6037659b9c1702c961f5293dd2ad15b15a30",
+      "huggingface": "d7d7c4fda304cfdea0715e3c0aeb5b7b5a3025a8394da4c329d1d850072f61b4",
+      "match": false
+    },
+    "checkpoint_hash": {
+      "built": "f65801d4e26ca49b17d83d6fa4423fc3f8d85e6af5698c54974cfeb1664b6de9",
+      "huggingface": "f65801d4e26ca49b17d83d6fa4423fc3f8d85e6af5698c54974cfeb1664b6de9",
+      "match": true
+    },
+    "vision_source_hash": {
+      "built": "4bd5098f9d946802615ee7a8c2161ec3e6a12b95541eebc3ce2b9ed05184577f",
+      "huggingface": "8772ee376063ffd296e87d20214437aedf8cf335ecf7c956ce10805953f05d10",
+      "match": false
+    }
+  },
+  "all_match": false
+}

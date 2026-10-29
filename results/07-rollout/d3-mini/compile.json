@@ -1,0 +1,24 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/rollout.py",
+    "d3-mini",
+    "compile"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 138526375936,
+    "free": 22010609664
+  },
+  "returncode": 0,
+  "seconds": 1317.229992792,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 142180270080,
+    "free": 18356715520
+  }
+}
