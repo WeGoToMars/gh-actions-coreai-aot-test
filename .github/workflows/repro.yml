@@ -1,0 +1,49 @@
+name: 05 - Repeat identical d1 vision exports
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: WeGoToMars/gh-actions-coreai-aot-test
+          ref: 8d14b46c83fe20636c799fe91be7080a4ff9f44c
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.28'
+          enable-cache: false
+      - name: Set up locked dependencies
+        run: |
+          xcodebuild -downloadComponent MetalToolchain
+          cd source
+          uv sync --locked --python 3.12
+      - name: Export same vision model twice
+        run: |
+          cd source
+          uv run --locked python -m tinkerbox_ane.d1.export --vision-only --out artifacts/repro-first
+          uv run --locked python -m tinkerbox_ane.d1.export --vision-only --out artifacts/repro-second
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          first=json.loads(Path('artifacts/repro-first/model.json').read_text())['vision_source_hash']
+          second=json.loads(Path('artifacts/repro-second/model.json').read_text())['vision_source_hash']
+          report={'first': first, 'second': second, 'match': first==second}
+          Path('../repro-result.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: repeated-export-${{ github.run_id }}
+          path: repro-result.json
+          retention-days: 30
