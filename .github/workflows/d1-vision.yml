@@ -1,0 +1,60 @@
+name: 03 - Isolate d1 vision ANE AOT
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONUNBUFFERED: '1'
+jobs:
+  vision:
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: WeGoToMars/tinkerbox
+          ref: 228e7e632ca05fdda6ef71554cd672e83586a88f
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.28'
+          enable-cache: false
+      - name: Ensure compiler and record environment
+        run: |
+          mkdir -p diagnostics
+          xcodebuild -downloadComponent MetalToolchain > diagnostics/metal-install.log 2>&1
+          python3 scripts/preflight.py vision-environment
+      - name: Install locked dependencies and build native host
+        run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
+      - name: Download pinned d1 checkpoint
+        run: python3 scripts/measured.py download -- uv run --locked python ../scripts/download.py
+      - name: Export d1 vision tower only
+        env:
+          HF_HUB_OFFLINE: '1'
+        run: python3 scripts/measured.py export -- uv run --locked python -m tinkerbox_ane.d1.export --vision-only --out artifacts/d1-source
+      - name: Preserve export diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vision-export-${{ github.run_id }}
+          path: diagnostics/
+          retention-days: 7
+      - name: Compile d1 vision for M4 with existing watchdog and full ANE verification
+        run: python3 scripts/measured.py compile -- uv run --locked python ../scripts/compile_vision.py
+      - name: Inspect compiled vision asset
+        run: xcrun coreai-build inspect source/artifacts/d1-vision/vision.h16g.aimodelc --json > diagnostics/vision-inspect.json
+      - name: Collect reports and placement manifests
+        if: always()
+        run: python3 scripts/collect.py
+      - name: Preserve all diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vision-diagnostics-${{ github.run_id }}
+          path: diagnostics/
+          retention-days: 30
