@@ -64,7 +64,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
       - name: Compile full d1 bundle for standard M4 with existing watchdog
-        run: python3 scripts/measured.py compile --timeout 2400 -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
+        run: python3 scripts/measured.py --timeout 2400 compile -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
       - name: Inspect verified compiled assets
         run: |
           xcrun coreai-build inspect source/artifacts/d1-h16g/fused.h16g.aimodelc --json > diagnostics/fused-inspect.json
