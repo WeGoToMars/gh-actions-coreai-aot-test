@@ -1,0 +1,69 @@
+name: 06 - Five model M5 Pro builds
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: xcode-27
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [d1-3b, d3-nano, d3-mini, omnivoice, voxcpm2]
+    env:
+      PYTHONUNBUFFERED: '1'
+      HF_HOME: ${{ github.workspace }}/hf-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: WeGoToMars/gh-actions-coreai-aot-test
+          ref: 8d14b46c83fe20636c799fe91be7080a4ff9f44c
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.28'
+          enable-cache: false
+      - name: Prepare compiler and watchdog
+        run: |
+          mkdir -p diagnostics
+          xcodebuild -downloadComponent MetalToolchain > diagnostics/metal.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/src/tinkerbox_ane/guard.py')
+          s=p.read_text().replace('elif free < 15 * 1024**3:', 'elif free < 5 * 1024**3:').replace('free disk below 15 GiB', 'free disk below 5 GiB').replace('elif elapsed > timeout:', 'elif timeout is not None and elapsed > timeout:').replace('    output = Path(output)\n', '    timeout = None  # This CI experiment has no compiler deadline.\n    output = Path(output)\n', 1)
+          p.write_text(s)
+          PY
+          git -C source diff -- src/tinkerbox_ane/guard.py > diagnostics/watchdog-patch.diff
+      - name: Install locked dependencies
+        run: python3 scripts/measured.py --timeout 0 setup -- uv sync --locked --python 3.12 --extra speech
+      - name: Export model
+        run: python3 scripts/measured.py --timeout 0 export -- uv run --locked python ../scripts/m5_rollout.py '${{ matrix.model }}' export
+      - name: Release downloaded checkpoint space
+        run: rm -rf "$HF_HOME"
+      - name: Compile M5 Pro bundle and verify ANE placement
+        run: python3 scripts/measured.py --timeout 0 compile -- uv run --locked python ../scripts/m5_rollout.py '${{ matrix.model }}' compile
+      - name: Preserve compiled bundle for on-device validation
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-h17s-${{ matrix.model }}-${{ github.run_id }}
+          path: source/artifacts/rollout/compiled/
+          include-hidden-files: true
+          compression-level: 0
+          retention-days: 1
+      - name: Collect compiler diagnostics
+        if: always()
+        run: python3 scripts/collect.py
+      - name: Preserve diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollout-${{ matrix.model }}-${{ github.run_id }}
+          path: diagnostics/
+          include-hidden-files: true
+          retention-days: 30
