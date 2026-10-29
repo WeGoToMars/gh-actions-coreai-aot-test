@@ -1,0 +1,19 @@
+{
+  "model": "d1-3b",
+  "architecture": "h16g",
+  "repo": "wegotomars/d1-3B-CoreAI-ANE",
+  "revision": "v2.1.0",
+  "files": {
+    "fused.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "65c953755fe52bd041b50868fb5302495d8ca33dcc7bd81527f5bde6850aee6b",
+      "huggingface_sha256": "5f1673cd13c7258081a6f28370d5ae7fc1b633b375732ed93140a7e82b6a8bbe",
+      "match": false
+    },
+    "vision.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "13dbe9d49490ffa8606b6f2da8fc697373d6b40b2d75c0a11456a58d992cb66b",
+      "huggingface_sha256": "d0ca988ab7df195df7fb141d2c9b779f3aae6be298a4d38ac66d9d8e2b8a506e",
+      "match": false
+    }
+  },
+  "all_match": false
+}

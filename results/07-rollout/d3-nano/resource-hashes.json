@@ -1,0 +1,44 @@
+{
+  "model": "d3-nano",
+  "architecture": "h16g",
+  "repo": "wegotomars/d3-nano-CoreAI-ANE",
+  "revision": "v2.2.0",
+  "files": {
+    "stage0.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "ecce243ecaf87aa52c97145096b47d3f893186083403ee72f242208f22fcc3d8",
+      "huggingface_sha256": "b7720743a7ffff0e3ab610d6c60a027af897ecd37a426d9f462efd99c49dc338",
+      "match": false
+    },
+    "stage1.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "d7a34746fd54c61b64486d3746899c8e7e867bd455aee6211dec7de23b20ee79",
+      "huggingface_sha256": "3e1e27b7fabbdc778c829794d342ab1f0b26c87c436749098c0247c7e4d42007",
+      "match": false
+    },
+    "stage2.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "a5a1b34ce79cab481b9319c6e8554c0b2e4e47492c52988de16d797ab27c501e",
+      "huggingface_sha256": "fb88c71af0e7e739f1e51e368d118d6ced0ff7f895a79a8a4d6840af88505fd3",
+      "match": false
+    },
+    "stage3.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "894338c57178b461422fd6dc8d405fe76c06918ee48d628578c0ee15efd2e165",
+      "huggingface_sha256": "ad0516c6db9caa2dc676176592feaae200cf8744b00caeeae3baf69de98d7aea",
+      "match": false
+    },
+    "stage4.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "0c27e2b0440e12bc9d733669fe70f580dcd71d0e0980de34878f8136259537fc",
+      "huggingface_sha256": "7fc64cb51eb38457d3b64dd75825b7dfddf76cbab437606627d6e8cf7bc45564",
+      "match": false
+    },
+    "stage5.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "4a701d804534f1be0a2d9574a6484b305e5da077fb10cc683c706cb7bd023528",
+      "huggingface_sha256": "991fe6707aec764542c2815d8abb58ad79824e644d96de954136ccfb30ed0b37",
+      "match": false
+    },
+    "vision.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "d0101b4c809895eae75b42f2d376e18099f5043c942e09a0e7668f80fa577297",
+      "huggingface_sha256": "f8e6ea722f4bd7e2efd8d8aff7de0f1acd6fe976abda4883dce2c4550a375c09",
+      "match": false
+    }
+  },
+  "all_match": false
+}

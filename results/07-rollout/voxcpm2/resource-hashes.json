@@ -1,0 +1,29 @@
+{
+  "model": "voxcpm2",
+  "architecture": "h16g",
+  "repo": "wegotomars/VoxCPM2-CoreAI-ANE",
+  "revision": "v2.2.0",
+  "files": {
+    "base-0.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "2023caf3ab943e0d264463196b69e02606cfbe4b907418e867c5890fd376e14a",
+      "huggingface_sha256": "5eff7f415cfa3e1510a09d0b393becc755aef80235991fcc54bdce416466b091",
+      "match": false
+    },
+    "dit.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "d366d5ff67100a678865d7e04524cd36be7cffd440e8d23b35ec44f0832b2e04",
+      "huggingface_sha256": "a8ec2061399a6dce8258b965064e39b2ff2fd7ce6be315cde9e21621fb2a8801",
+      "match": false
+    },
+    "encoder.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "084ce7bb28357528310915e63a56630e1f096d5fe0f161821188d6acc5f74faa",
+      "huggingface_sha256": "6488d7bf7840c8a318611ac9c3f536c92ae85bdee60cc24b2bb40a4981b7c45c",
+      "match": false
+    },
+    "residual.h16g.aimodelc/main-h16g-delegates/MPSGraph/mpsExecutable.mpsgraphpackage/resources.bin": {
+      "built_sha256": "5e88d746a38bcf7604ec95c6013c3a28ff8273a862a4724b2c09ac6bf97eefaf",
+      "huggingface_sha256": "76dbbaa6a333d153f2dc82fc16dbc564496d39408672b1e409cf2d3c3cad6f59",
+      "match": false
+    }
+  },
+  "all_match": false
+}
