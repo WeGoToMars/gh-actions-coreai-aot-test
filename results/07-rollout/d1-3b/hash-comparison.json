@@ -1,0 +1,23 @@
+{
+  "model": "d1-3b",
+  "architecture": "h16g",
+  "published_manifest": "https://huggingface.co/wegotomars/d1-3B-CoreAI-ANE/resolve/v2.1.0/macos27/h16g/model.json",
+  "hashes": {
+    "checkpoint_hash": {
+      "built": "3e0e0e01edeff227313f6e4e4eaef053d5639d4f5b14f3b51dfc96fc0bfbf9e5",
+      "huggingface": null,
+      "match": false
+    },
+    "source_hash": {
+      "built": "01184985112dbdfe3886d7eeef17b271d41fe3bef36da2a705feabf229e1f7eb",
+      "huggingface": "b6c9e979cbe1c90dbb36fda168cf47b56e1d0d3d66d58198b4ef680d9ea5e84b",
+      "match": false
+    },
+    "vision_source_hash": {
+      "built": "5a533213f5ee38c40301e1d8700741c1882dc1f335c6ac9b9415f650c1ea24ea",
+      "huggingface": "589f1065860a801fac14a4477e619bff0baf6d130a33d669d7aabfdf7d8fe462",
+      "match": false
+    }
+  },
+  "all_match": false
+}

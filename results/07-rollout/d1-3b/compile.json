@@ -1,0 +1,24 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/rollout.py",
+    "d1-3b",
+    "compile"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 140597100544,
+    "free": 19939885056
+  },
+  "returncode": 0,
+  "seconds": 806.8921217499999,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 137203232768,
+    "free": 23333752832
+  }
+}
