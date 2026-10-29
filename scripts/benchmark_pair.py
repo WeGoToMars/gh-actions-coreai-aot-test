@@ -35,7 +35,11 @@ for label,path in [('local',args.local),('hosted',args.hosted)]:
                 t=time.perf_counter(); audio=np.asarray(model.generate('Hello there.',seed=seed)[0],dtype=np.float32); elapsed=time.perf_counter()-t
                 out=args.out.parent / (args.model+'-'+label+'-'+str(seed)+'.npy'); out.parent.mkdir(parents=True,exist_ok=True); np.save(out,audio)
                 cases.append({'seed':seed,'seconds':elapsed,'samples':int(audio.size),'audio':str(out)})
-    results[label]={'asset':str(path),'load_seconds':load_seconds,'cases':cases}
+    spec=json.loads((path/'model.json').read_text())
+    results[label]={'asset':str(path),'source':spec.get('source'),'checkpoint_hash':spec.get('checkpoint_hash'),
+                    'source_hash':spec.get('source_hash'),'vision_source_hash':spec.get('vision_source_hash'),
+                    'stage_hashes':[a.get('source_hash') for a in spec.get('assets',[])],
+                    'load_seconds':load_seconds,'cases':cases}
 comparisons=[]
 for local,hosted in zip(results['local']['cases'],results['hosted']['cases']):
     row={'local_median_or_seconds':local.get('median_seconds',local.get('seconds')),
