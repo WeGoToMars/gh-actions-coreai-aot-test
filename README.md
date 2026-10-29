@@ -37,8 +37,8 @@ architecture; all AOT experiments therefore pass an explicit target architecture
 
 [Run 40934866235](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40934866235)
 checks out public Tinkerbox commit `228e7e632ca05fdda6ef71554cd672e83586a88f`,
-installs its locked Python 3.12 environment, exports all nine backbone capacities
-plus the vision tower, and compiles for standard M4 (`h16g`). The compiler and
+was configured to install its locked Python 3.12 environment, export all nine
+backbone capacities plus the vision tower, and compile for standard M4 (`h16g`). The compiler and
 watchdog are unchanged. Time, RSS, swap, disk space, compiler logs and OS events
 are retained for diagnosis.
 
@@ -90,6 +90,8 @@ even though Core AI reports the host architecture as `unknown`. It does not
 establish full-backbone compilation or on-device inference correctness/performance.
 
 ## 5. Full d1 with requested 5 GiB reserve — running
+
+[Run 40941582940](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40941582940).
 
 The next trial changes only the disk floor from 15 to **5 GiB**, using the
 [explicit two-line CI patch](patches/ci-five-gib-floor.patch). No unused Xcodes or
