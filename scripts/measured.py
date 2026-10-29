@@ -62,7 +62,7 @@ with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.j
                 else:
                     print('(no new model output since previous sample)', flush=True)
                 next_sample = elapsed + 15
-            if elapsed > args.timeout:
+            if args.timeout and elapsed > args.timeout:
                 report['timeout'] = args.timeout
                 os.killpg(process.pid, signal.SIGINT)
                 try:

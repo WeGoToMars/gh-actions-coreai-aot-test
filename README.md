@@ -101,4 +101,4 @@ placement verification remain in place. The local Tinkerbox checkout is unchange
 Diagnostic uploads now include hidden build directories so raw watchdog reports
 from incomplete bundles are retained as well.
 
-The full export succeeded in 979 seconds. The 5 GiB reserve allowed compilation to start; the watchdog stopped it after its unchanged 600-second deadline, with approximately 17 GiB free. The full backbone remains unverified. See [the reports](results/05-five-gib-floor). The next trial raises the compiler deadline to 1,800 seconds while retaining the watchdog, 5 GiB floor, write budget and ANE verification.
+The full export succeeded in 979 seconds. The 5 GiB reserve allowed compilation to start; the watchdog stopped it after its unchanged 600-second deadline, with approximately 17 GiB free. The full backbone remains unverified. See [the reports](results/05-five-gib-floor). The next trial removes the compiler deadline while retaining the watchdog, 5 GiB floor, write budget and ANE verification.
