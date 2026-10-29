@@ -1,0 +1,19 @@
+{
+  "first": "2526a0b2590380fb247b9633808c3d5a7be0c9470ee812c104b39d37f46f93d4",
+  "second": "d919a217424b91fa6c1a2749cb645d0198c51c9d94bed9d4ea7d957d285c8921",
+  "match": false,
+  "binary_sha256_first": "2526a0b2590380fb247b9633808c3d5a7be0c9470ee812c104b39d37f46f93d4",
+  "binary_sha256_second": "d919a217424b91fa6c1a2749cb645d0198c51c9d94bed9d4ea7d957d285c8921",
+  "binary_size_first": 824972926,
+  "binary_size_second": 824972921,
+  "metadata_first": {
+    "producer": "coreai-core 1.0.0b3",
+    "assetVersion": "2.0",
+    "creationDate": "20261029T213252Z"
+  },
+  "metadata_second": {
+    "creationDate": "20261029T213359Z",
+    "assetVersion": "2.0",
+    "producer": "coreai-core 1.0.0b3"
+  }
+}
