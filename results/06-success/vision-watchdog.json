@@ -1,0 +1,23 @@
+{
+  "command": [
+    "xcrun",
+    "coreai-build",
+    "compile",
+    "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/d1-source/vision.aimodel",
+    "--architecture",
+    "h16g",
+    "--platform",
+    "macOS",
+    "--min-deployment-version",
+    "27.0",
+    "--preferred-compute",
+    "neural-engine",
+    "--output",
+    "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/.d1-h16g.build/.compile-j4uu8g6p/vision.h16g.aimodelc"
+  ],
+  "abort": null,
+  "returncode": 0,
+  "seconds": 17.87459816600017,
+  "system_written_bytes": 3343925248,
+  "passed": true
+}

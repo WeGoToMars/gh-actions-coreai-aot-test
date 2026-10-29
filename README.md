@@ -102,3 +102,9 @@ Diagnostic uploads now include hidden build directories so raw watchdog reports
 from incomplete bundles are retained as well.
 
 The full export succeeded in 979 seconds. The 5 GiB reserve allowed compilation to start; the watchdog stopped it after its unchanged 600-second deadline, with approximately 17 GiB free. The full backbone remains unverified. See [the reports](results/05-five-gib-floor). The next trial removes the compiler deadline while retaining the watchdog, 5 GiB floor, write budget and ANE verification.
+
+## 6. Full d1 compilation — passed
+
+[Run 40946200751](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40946200751) exported the complete d1 bundle and cross-compiled it for M4 (`h16g`) on the free M1 virtual runner. Export took 778 seconds and full compilation took 544 seconds. Both watchdog reports passed: backbone compilation took 523 seconds and vision compilation took 18 seconds. The compiled backbone manifest marks all nine entries fully placed on ANE, and the vision manifest marks its one entry fully placed on ANE. Inspection confirmed `h16g` and all expected functions. The resulting bundle was 6,321,787,755 bytes.
+
+This trial used a 5 GiB disk floor and no compiler deadline. The sampled minimum free space was 11.62 GiB during export and 12.31 GiB during compilation. The previous compiler run exceeded 600 seconds, so compiler time varies between runs. These are cross-compilation results; inference correctness and performance on a physical M4 were not tested. This experiment retained diagnostic artifacts, not the compiled bundle. [Reports and placement manifests](results/06-success).

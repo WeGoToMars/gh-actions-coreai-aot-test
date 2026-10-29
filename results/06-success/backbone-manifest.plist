@@ -1,0 +1,4583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Package Version</key>
+	<dict>
+		<key>7.0.63</key>
+		<dict>
+			<key>ANERegionsHash</key>
+			<dict>
+				<key>h16g</key>
+				<string>008B0D97BA8A0FC7505FCD18E32AA79DFA2F9D2FA68AE82477559AA14CE41CBA_A0B26E1BB929304A54FC450B3FD7471DD2128188FFC5610060D3714473946047</string>
+			</dict>
+			<key>Adapters by rank</key>
+			<dict/>
+			<key>Binary File Resources</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>File Name</key>
+					<string>binary_0.llir.bundle</string>
+					<key>Type</key>
+					<integer>2</integer>
+				</dict>
+			</dict>
+			<key>Callables</key>
+			<dict/>
+			<key>CallablesHash</key>
+			<integer>0</integer>
+			<key>Data File Names</key>
+			<array/>
+			<key>GPU adapter present</key>
+			<string>NO</string>
+			<key>Optimized Modules</key>
+			<dict>
+				<key>[
+  "{\n  \"entryFunctionName\" : \"c1024_TE0UzSESjI_aDwNtDzFkFA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    7520256,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    896,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c16384_QpOlsiOQ2JjlTyr1gPlkLw\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    133349376,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    16256,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c2048_qH8eA7lCLlK67U_S9o20ZA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    15908864,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    1920,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c24576_wHJ7XjzgOH6tY5-XLx2O_g\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    200458240,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    24448,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c256_m_tY1u-4DL-hH0tYxeweIw\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    1228800,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c32768_dChJjSo5B4Mtcb2iLopnGg\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    267567104,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    32640,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c4096_dMAwjtTxLprqYSdQfo_idg\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    32686080,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    3968,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c512_lx3DQlF1-FTZAGq_vOzNCA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    3325952,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    384,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c8192_QUjRFTMBTQuKBX7X5ickHA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    66240512,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    8064,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}"
+]</key>
+				<dict>
+					<key>Entry Function Attributes</key>
+					<dict>
+						<key>c1024_TE0UzSESjI_aDwNtDzFkFA_0</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c1024_TE0UzSESjI_aDwNtDzFkFA_0_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c16384_QpOlsiOQ2JjlTyr1gPlkLw_1</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c16384_QpOlsiOQ2JjlTyr1gPlkLw_1_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c2048_qH8eA7lCLlK67U_S9o20ZA_2</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c2048_qH8eA7lCLlK67U_S9o20ZA_2_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c24576_wHJ7XjzgOH6tY5-XLx2O_g_3</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c24576_wHJ7XjzgOH6tY5-XLx2O_g_3_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c256_m_tY1u-4DL-hH0tYxeweIw_4</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c256_m_tY1u-4DL-hH0tYxeweIw_4_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c32768_dChJjSo5B4Mtcb2iLopnGg_5</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c32768_dChJjSo5B4Mtcb2iLopnGg_5_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c4096_dMAwjtTxLprqYSdQfo_idg_6</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c4096_dMAwjtTxLprqYSdQfo_idg_6_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c512_lx3DQlF1-FTZAGq_vOzNCA_7</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c512_lx3DQlF1-FTZAGq_vOzNCA_7_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+						<key>c8192_QUjRFTMBTQuKBX7X5ickHA_8</key>
+						<array>
+							<dict>
+								<key>mps.ane.calleeName</key>
+								<string>c8192_QUjRFTMBTQuKBX7X5ickHA_8_ANE_region_0_0</string>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallArgToEntrypointArgIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+									<integer>2</integer>
+									<integer>3</integer>
+									<integer>4</integer>
+									<integer>5</integer>
+									<integer>6</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>mps.ane.regionCallResultToEntrypointReturnIndex</key>
+								<array>
+									<integer>0</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<string>mps.aneAlignedIO</string>
+							<string>mps.disablePreAllocate</string>
+							<string>mps.fullyPlacedOnANE</string>
+							<string>mps.noGPUActivity</string>
+						</array>
+					</dict>
+					<key>File Name</key>
+					<string>specialized_model_1.mpsgraph</string>
+					<key>Key to Symbol Name</key>
+					<dict>
+						<key>{
+  "entryFunctionName" : "c1024_TE0UzSESjI_aDwNtDzFkFA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    7520256,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    896,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c1024_TE0UzSESjI_aDwNtDzFkFA_0</string>
+						<key>{
+  "entryFunctionName" : "c16384_QpOlsiOQ2JjlTyr1gPlkLw",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    133349376,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    16256,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c16384_QpOlsiOQ2JjlTyr1gPlkLw_1</string>
+						<key>{
+  "entryFunctionName" : "c2048_qH8eA7lCLlK67U_S9o20ZA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    15908864,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    1920,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c2048_qH8eA7lCLlK67U_S9o20ZA_2</string>
+						<key>{
+  "entryFunctionName" : "c24576_wHJ7XjzgOH6tY5-XLx2O_g",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    200458240,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    24448,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c24576_wHJ7XjzgOH6tY5-XLx2O_g_3</string>
+						<key>{
+  "entryFunctionName" : "c256_m_tY1u-4DL-hH0tYxeweIw",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    1228800,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c256_m_tY1u-4DL-hH0tYxeweIw_4</string>
+						<key>{
+  "entryFunctionName" : "c32768_dChJjSo5B4Mtcb2iLopnGg",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    267567104,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    32640,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c32768_dChJjSo5B4Mtcb2iLopnGg_5</string>
+						<key>{
+  "entryFunctionName" : "c4096_dMAwjtTxLprqYSdQfo_idg",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    32686080,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    3968,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c4096_dMAwjtTxLprqYSdQfo_idg_6</string>
+						<key>{
+  "entryFunctionName" : "c512_lx3DQlF1-FTZAGq_vOzNCA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    3325952,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    384,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c512_lx3DQlF1-FTZAGq_vOzNCA_7</string>
+						<key>{
+  "entryFunctionName" : "c8192_QUjRFTMBTQuKBX7X5ickHA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    66240512,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    8064,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</key>
+						<string>c8192_QUjRFTMBTQuKBX7X5ickHA_8</string>
+					</dict>
+					<key>Used Binary File Resource Ids</key>
+					<array>
+						<string>0</string>
+					</array>
+					<key>Used In Cache</key>
+					<array>
+						<string>{
+  "entryFunctionName" : "c4096_dMAwjtTxLprqYSdQfo_idg",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    32686080,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    3968,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c256_m_tY1u-4DL-hH0tYxeweIw",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    1228800,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c8192_QUjRFTMBTQuKBX7X5ickHA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    66240512,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    8064,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c24576_wHJ7XjzgOH6tY5-XLx2O_g",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    200458240,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    24448,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c512_lx3DQlF1-FTZAGq_vOzNCA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    3325952,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    384,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c1024_TE0UzSESjI_aDwNtDzFkFA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    7520256,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    896,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c2048_qH8eA7lCLlK67U_S9o20ZA",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    15908864,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    1920,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c16384_QpOlsiOQ2JjlTyr1gPlkLw",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    133349376,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    16256,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+						<string>{
+  "entryFunctionName" : "c32768_dChJjSo5B4Mtcb2iLopnGg",
+  "deviceDescriptor" : [
+    0,
+    10,
+    "h16g"
+  ],
+  "compilationDescriptor" : {
+    "enableANECValidationWorkflow" : true,
+    "reducedPrecisionFastMath" : 0,
+    "entryFunctionName" : "",
+    "enableCompileResourcesForPackage" : true,
+    "useANELLIR" : true,
+    "shapeShifterCacheThreads" : 1,
+    "disableShapeFolding" : false,
+    "optimizationProfile" : 0,
+    "enableANEFWToFWSignal" : false,
+    "optimizationLevel" : 1,
+    "includeDebugInfo" : false,
+    "addUniqueIdToMLIRLocations" : true,
+    "maximumNumberOfParallelEncodingRegions" : 1,
+    "aneCompilerSpatialSplitting" : 3,
+    "compilerOptions" : 1691023,
+    "preferredDevice" : 2,
+    "enableMLIRDiagnostics" : false,
+    "enableShapeEquivalence" : false,
+    "enableShapeShifter" : true,
+    "enableShapeShifterCache" : false,
+    "shapeShifterTILevel" : 0,
+    "verifyTypeInference" : false,
+    "printANEPlacementAnalysis" : false,
+    "inputShapeRanges" : null,
+    "enableANELateLatch" : false,
+    "minimumNumberOfOpsInParallelRegion" : 100,
+    "enableANECHWRankPromotion" : true,
+    "enableParallelEncode" : true,
+    "allowedComputeDevices" : 7,
+    "aneBondedCompileMode" : 0,
+    "enableMemrefBufferization" : true
+  },
+  "inputShapesCount" : 42,
+  "inputShapes" : [
+    268435472,
+    4,
+    1,
+    1,
+    1,
+    267567104,
+    268435472,
+    4,
+    1,
+    2048,
+    1,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    132,
+    388,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    64,
+    128,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    32640,
+    268435472,
+    4,
+    1,
+    1,
+    128,
+    128
+  ],
+  "callablesHash" : 0
+}</string>
+					</array>
+				</dict>
+			</dict>
+			<key>Optimized No Device Modules</key>
+			<dict/>
+			<key>Optimized No Device Resources Used</key>
+			<dict/>
+			<key>Optimized Resources Used</key>
+			<dict>
+				<key>[
+  "{\n  \"entryFunctionName\" : \"c1024_TE0UzSESjI_aDwNtDzFkFA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    7520256,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    896,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c16384_QpOlsiOQ2JjlTyr1gPlkLw\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    133349376,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    16256,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c2048_qH8eA7lCLlK67U_S9o20ZA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    15908864,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    1920,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c24576_wHJ7XjzgOH6tY5-XLx2O_g\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    200458240,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    24448,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c256_m_tY1u-4DL-hH0tYxeweIw\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    1228800,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c32768_dChJjSo5B4Mtcb2iLopnGg\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    267567104,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    32640,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c4096_dMAwjtTxLprqYSdQfo_idg\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    32686080,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    3968,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c512_lx3DQlF1-FTZAGq_vOzNCA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    3325952,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    384,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}",
+  "{\n  \"entryFunctionName\" : \"c8192_QUjRFTMBTQuKBX7X5ickHA\",\n  \"deviceDescriptor\" : [\n    0,\n    10,\n    \"h16g\"\n  ],\n  \"compilationDescriptor\" : {\n    \"enableANECValidationWorkflow\" : true,\n    \"reducedPrecisionFastMath\" : 0,\n    \"entryFunctionName\" : \"\",\n    \"enableCompileResourcesForPackage\" : true,\n    \"useANELLIR\" : true,\n    \"shapeShifterCacheThreads\" : 1,\n    \"disableShapeFolding\" : false,\n    \"optimizationProfile\" : 0,\n    \"enableANEFWToFWSignal\" : false,\n    \"optimizationLevel\" : 1,\n    \"includeDebugInfo\" : false,\n    \"addUniqueIdToMLIRLocations\" : true,\n    \"maximumNumberOfParallelEncodingRegions\" : 1,\n    \"aneCompilerSpatialSplitting\" : 3,\n    \"compilerOptions\" : 1691023,\n    \"preferredDevice\" : 2,\n    \"enableMLIRDiagnostics\" : false,\n    \"enableShapeEquivalence\" : false,\n    \"enableShapeShifter\" : true,\n    \"enableShapeShifterCache\" : false,\n    \"shapeShifterTILevel\" : 0,\n    \"verifyTypeInference\" : false,\n    \"printANEPlacementAnalysis\" : false,\n    \"inputShapeRanges\" : null,\n    \"enableANELateLatch\" : false,\n    \"minimumNumberOfOpsInParallelRegion\" : 100,\n    \"enableANECHWRankPromotion\" : true,\n    \"enableParallelEncode\" : true,\n    \"allowedComputeDevices\" : 7,\n    \"aneBondedCompileMode\" : 0,\n    \"enableMemrefBufferization\" : true\n  },\n  \"inputShapesCount\" : 42,\n  \"inputShapes\" : [\n    268435472,\n    4,\n    1,\n    1,\n    1,\n    66240512,\n    268435472,\n    4,\n    1,\n    2048,\n    1,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    132,\n    388,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    64,\n    128,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    8064,\n    268435472,\n    4,\n    1,\n    1,\n    128,\n    128\n  ],\n  \"callablesHash\" : 0\n}"
+]</key>
+				<array/>
+			</dict>
+			<key>Original</key>
+			<string>original_model_0.mpsgraph</string>
+			<key>Original Module Serialized</key>
+			<true/>
+			<key>Original Resources Used</key>
+			<array>
+				<string>resource_3462140391139642468</string>
+				<string>resource_1582977916495278948</string>
+				<string>resource_2034020675715040613</string>
+				<string>resource_9968016702593650910</string>
+				<string>resource_7785664849462714445</string>
+				<string>resource_14230292723252741664</string>
+				<string>resource_9924484978515200540</string>
+				<string>resource_11953052474555650452</string>
+				<string>resource_8115699470266803722</string>
+				<string>resource_17454807282106016567</string>
+				<string>resource_3721204907473021506</string>
+				<string>resource_10499835785235436674</string>
+				<string>resource_5291229732153203735</string>
+				<string>resource_1168999052297853288</string>
+				<string>resource_5215457011924253266</string>
+				<string>resource_16754551181839503299</string>
+				<string>resource_7060533737778477714</string>
+				<string>resource_1453842577345336819</string>
+				<string>resource_8984309963976926585</string>
+				<string>resource_8721486007328842574</string>
+				<string>resource_3254534412380792695</string>
+				<string>resource_3695091444471770157</string>
+				<string>resource_18302719454846937077</string>
+				<string>resource_14093782068501706398</string>
+				<string>resource_15308634941297400968</string>
+				<string>resource_9634229872004671182</string>
+				<string>resource_3171975831216652959</string>
+				<string>resource_2160323617935322610</string>
+				<string>resource_14286097303283194632</string>
+				<string>resource_8750686450402308165</string>
+				<string>resource_16464444955855692486</string>
+				<string>resource_8941208203170117792</string>
+				<string>resource_3309752720718503986</string>
+				<string>resource_18171603205634715846</string>
+				<string>resource_7609498717881518810</string>
+				<string>resource_18179120346499607555</string>
+				<string>resource_4816363614949047922</string>
+				<string>resource_9778654190626230149</string>
+				<string>resource_7394661607052500732</string>
+				<string>resource_995503715717737233</string>
+				<string>resource_17812739415920940033</string>
+				<string>resource_14316263658260059861</string>
+				<string>resource_7371945450566416721</string>
+				<string>resource_10303383484878608379</string>
+				<string>resource_13057932235549201474</string>
+				<string>resource_783944935286833688</string>
+				<string>resource_5282310077973193854</string>
+				<string>resource_2364880266368864570</string>
+				<string>resource_11436325443361352018</string>
+				<string>resource_15294210261115038680</string>
+				<string>resource_8726140311089216196</string>
+				<string>resource_10525292872813943676</string>
+				<string>resource_7221490283169202550</string>
+				<string>resource_5651021473849941638</string>
+				<string>resource_14332333528654655926</string>
+				<string>resource_13485587048775187768</string>
+				<string>resource_4812947966395619144</string>
+				<string>resource_16169558252969754826</string>
+				<string>resource_9070448411501700618</string>
+				<string>resource_11715904740400610551</string>
+				<string>resource_10728592064966348987</string>
+				<string>resource_12790449927871726910</string>
+				<string>resource_527036068276053367</string>
+				<string>resource_190527219607896323</string>
+				<string>resource_8755616131484692850</string>
+				<string>resource_5559617887845131468</string>
+				<string>resource_4900146589243768276</string>
+				<string>resource_9752876575538169262</string>
+				<string>resource_18263076021362035219</string>
+				<string>resource_17202435424786301657</string>
+				<string>resource_13849225276682775315</string>
+				<string>resource_6972090875290816125</string>
+				<string>resource_10265869682839383703</string>
+				<string>resource_4899601843067023646</string>
+				<string>resource_6078380354992961391</string>
+				<string>resource_9517203265456286773</string>
+				<string>resource_306714464817275855</string>
+				<string>resource_14782423324449178496</string>
+				<string>resource_5669448063016447055</string>
+				<string>resource_16216039131076651345</string>
+				<string>resource_17373176441039107221</string>
+				<string>resource_9448520830706115407</string>
+				<string>resource_9470941877154200021</string>
+				<string>resource_7263349941597256728</string>
+				<string>resource_17396185161061859004</string>
+				<string>resource_15644949172824268072</string>
+				<string>resource_7429285321735537528</string>
+				<string>resource_7797893112744685525</string>
+				<string>resource_16520104702530150007</string>
+				<string>resource_15835621805640912843</string>
+				<string>resource_808326611214273278</string>
+				<string>resource_11748105545804289823</string>
+				<string>resource_11037684725868073757</string>
+				<string>resource_6478155803058854571</string>
+				<string>resource_12715892051849645145</string>
+				<string>resource_2831701048733823873</string>
+				<string>resource_2500806974682124695</string>
+				<string>resource_17103277814305028343</string>
+				<string>resource_14430253563356620689</string>
+				<string>resource_1075645794087967243</string>
+				<string>resource_3683368521012224248</string>
+				<string>resource_1043211566899361708</string>
+				<string>resource_989873773745090374</string>
+				<string>resource_3467413768005277828</string>
+				<string>resource_15698363270219218036</string>
+				<string>resource_5773127588778508221</string>
+				<string>resource_15585494612199615729</string>
+				<string>resource_1477139834264658184</string>
+				<string>resource_694272979470209866</string>
+				<string>resource_18145669590067933604</string>
+				<string>resource_17404204279942408430</string>
+				<string>resource_12269472342397381567</string>
+				<string>resource_13547790495409278380</string>
+				<string>resource_10282120937376875961</string>
+				<string>resource_9776032582841947363</string>
+				<string>resource_3968110485581622024</string>
+				<string>resource_12759637685405884093</string>
+				<string>resource_5318892082205583966</string>
+				<string>resource_6168049007270117557</string>
+				<string>resource_2530159171365301613</string>
+				<string>resource_7304926794056965770</string>
+				<string>resource_9637711734524859112</string>
+				<string>resource_7172456462655088099</string>
+				<string>resource_9132861052228140670</string>
+				<string>resource_6219294345521274368</string>
+				<string>resource_12060248125161040972</string>
+				<string>resource_16991140240955954638</string>
+				<string>resource_8055334995124223199</string>
+				<string>resource_8185834396227291656</string>
+				<string>resource_8001316904189672033</string>
+				<string>resource_13668507800081349503</string>
+				<string>resource_10435837092017935632</string>
+				<string>resource_7824360528880403330</string>
+				<string>resource_773727477996765058</string>
+				<string>resource_14990894814475262275</string>
+				<string>resource_14730287740060913385</string>
+				<string>resource_12686262154217269648</string>
+				<string>resource_6057954889626767007</string>
+				<string>resource_155141127323285603</string>
+				<string>resource_10345859990367831947</string>
+				<string>resource_6129352276777468738</string>
+				<string>resource_7249736982715079376</string>
+				<string>resource_6143773036365367616</string>
+				<string>resource_3240048330886801136</string>
+				<string>resource_7481908242895122161</string>
+				<string>resource_3531051083565352380</string>
+				<string>resource_1971230659224247533</string>
+				<string>resource_12726093118085717476</string>
+				<string>resource_14876872274942349722</string>
+				<string>resource_3323528455582639969</string>
+				<string>resource_13214410966118866191</string>
+				<string>resource_3525567521727857253</string>
+				<string>resource_16706086114324301350</string>
+				<string>resource_17158050084359059654</string>
+				<string>resource_15495393422120217216</string>
+				<string>resource_12100375474442270887</string>
+				<string>resource_11917073653541869908</string>
+				<string>resource_8563187656369179770</string>
+				<string>resource_12694285818568003390</string>
+				<string>resource_5873313382005014929</string>
+				<string>resource_15497853983813575556</string>
+				<string>resource_11229434434488362321</string>
+				<string>resource_7515995912047427273</string>
+				<string>resource_460419122198770086</string>
+				<string>resource_11669107962123619937</string>
+				<string>resource_6078799180704189307</string>
+				<string>resource_14624914001985209499</string>
+				<string>resource_15175650259618088489</string>
+				<string>resource_13006154781681620660</string>
+				<string>resource_4503969840825451143</string>
+				<string>resource_13208765481694692978</string>
+				<string>resource_4289337314166018373</string>
+				<string>resource_6330690687933356733</string>
+				<string>resource_5165415214284388724</string>
+				<string>resource_10541371914451932869</string>
+				<string>resource_17868379325707873134</string>
+				<string>resource_10568175786769938653</string>
+				<string>resource_7629488852807176868</string>
+				<string>resource_3152909454886072432</string>
+				<string>resource_2933136934358806622</string>
+				<string>resource_17100990296657794952</string>
+				<string>resource_7841417392570946626</string>
+				<string>resource_3283869518420421515</string>
+				<string>resource_1156878046575644979</string>
+				<string>resource_7613500303419036193</string>
+				<string>resource_1943898859259471165</string>
+				<string>resource_11025516310122701602</string>
+				<string>resource_13430145079570593796</string>
+				<string>resource_14033669227684487487</string>
+				<string>resource_10913204605798314897</string>
+				<string>resource_14784808647420242208</string>
+				<string>resource_9581921024502660230</string>
+				<string>resource_4111124189025214805</string>
+				<string>resource_8374388047458456817</string>
+				<string>resource_8886024951963688694</string>
+				<string>resource_2214487854583773662</string>
+				<string>resource_12047001783562301118</string>
+				<string>resource_13400148444693621867</string>
+				<string>resource_16737395738282685106</string>
+				<string>resource_10807835469433677212</string>
+				<string>resource_14186084486604064934</string>
+				<string>resource_3802120040154181003</string>
+				<string>resource_17986171519110218898</string>
+				<string>resource_3716537846635096421</string>
+				<string>resource_3118720898962709317</string>
+				<string>resource_12689179094486110940</string>
+				<string>resource_8247382645813109763</string>
+				<string>resource_4922153317857246586</string>
+				<string>resource_3889561231132732711</string>
+				<string>resource_871978133641410110</string>
+				<string>resource_11456500748801583048</string>
+				<string>resource_15773974420617929390</string>
+				<string>resource_3894310352929713676</string>
+				<string>resource_2163311579879251608</string>
+				<string>resource_596336728397610339</string>
+				<string>resource_9936410004085300941</string>
+				<string>resource_11898477480697943603</string>
+				<string>resource_2365200843938366572</string>
+				<string>resource_10455593347165884256</string>
+				<string>resource_17268106564801490718</string>
+				<string>resource_611331818710428192</string>
+				<string>resource_16898545244990874312</string>
+				<string>resource_12550288214253117947</string>
+				<string>resource_9794192090000673337</string>
+				<string>resource_17761266642430996005</string>
+				<string>resource_621773944676770568</string>
+				<string>resource_17186198377482389424</string>
+				<string>resource_4254514258606699569</string>
+				<string>resource_227328991731687698</string>
+				<string>resource_1056111814131344618</string>
+				<string>resource_12137935541974071078</string>
+				<string>resource_6504623355770673130</string>
+				<string>resource_17067917190103458952</string>
+				<string>resource_5869525825166022432</string>
+				<string>resource_1179882155652560256</string>
+				<string>resource_2812708963814897708</string>
+				<string>resource_14428339569050924437</string>
+				<string>resource_14597362036100965917</string>
+				<string>resource_2024058181900138581</string>
+				<string>resource_8076862226385344803</string>
+				<string>resource_14598961425422821413</string>
+				<string>resource_13311152297254866956</string>
+				<string>resource_3716874795421948720</string>
+				<string>resource_11583574636172868837</string>
+				<string>resource_4198285041123842944</string>
+				<string>resource_2273183707594847454</string>
+				<string>resource_3923024943780986263</string>
+				<string>resource_1764858359648390617</string>
+				<string>resource_699981254690108511</string>
+				<string>resource_11061972070458944759</string>
+				<string>resource_14703291759919118834</string>
+				<string>resource_91733737067322194</string>
+				<string>resource_4062034454864996775</string>
+				<string>resource_9583195514056279878</string>
+				<string>resource_170862873111344165</string>
+				<string>resource_16756496705242786618</string>
+				<string>resource_7324029330235503211</string>
+				<string>resource_15568165909802445981</string>
+				<string>resource_582825841988223457</string>
+				<string>resource_16794684548680513142</string>
+				<string>resource_14734197248792261401</string>
+				<string>resource_13451604233329077613</string>
+				<string>resource_3578832478263598939</string>
+				<string>resource_8583539707264034220</string>
+				<string>resource_10903659309899927294</string>
+				<string>resource_828249599190013881</string>
+				<string>resource_10207992081625162971</string>
+				<string>resource_13085448720470105244</string>
+				<string>resource_4674718554650363372</string>
+				<string>resource_3700469913281012023</string>
+				<string>resource_18100285640220708177</string>
+				<string>resource_16910769478385612789</string>
+				<string>resource_1712790837787916468</string>
+				<string>resource_18376555827374016759</string>
+				<string>resource_7621407533973361990</string>
+				<string>resource_17049975637568325431</string>
+				<string>resource_14702049749035014561</string>
+				<string>resource_13615275243430489428</string>
+				<string>resource_1273144458571392648</string>
+				<string>resource_17865926585762232504</string>
+				<string>resource_10047711667225510407</string>
+				<string>resource_3024941697943953855</string>
+				<string>resource_1724104536075638500</string>
+				<string>resource_7352089974279861354</string>
+				<string>resource_12531900700693485552</string>
+				<string>resource_4406834500069176444</string>
+				<string>resource_1777292962977635002</string>
+				<string>resource_17621369857440444036</string>
+				<string>resource_335254143617503021</string>
+				<string>resource_2816282462675038872</string>
+				<string>resource_16595347326682196332</string>
+				<string>resource_12967173922146324981</string>
+				<string>resource_5216430890422894466</string>
+				<string>resource_7248215857260882058</string>
+				<string>resource_6287490783975357143</string>
+				<string>resource_12616367062111420724</string>
+				<string>resource_680779654271311104</string>
+				<string>resource_8428307236868474971</string>
+				<string>resource_14842833096904183596</string>
+				<string>resource_3439365913505936174</string>
+				<string>resource_8576358211365873936</string>
+				<string>resource_14903509296516745019</string>
+				<string>resource_1134297977088526445</string>
+				<string>resource_16559070205382136447</string>
+				<string>resource_3731705478630863189</string>
+				<string>resource_10482269678528197636</string>
+				<string>resource_7532177747656034651</string>
+				<string>resource_3975120462118978798</string>
+				<string>resource_10137445762322465070</string>
+				<string>resource_9606994767985667666</string>
+				<string>resource_5056136814533086083</string>
+				<string>resource_695866322746184640</string>
+				<string>resource_15289421902191778654</string>
+				<string>resource_8178340290197938315</string>
+				<string>resource_11017062018714664585</string>
+				<string>resource_8237870614343544072</string>
+				<string>resource_13374697672363527370</string>
+				<string>resource_15846290279881336841</string>
+				<string>resource_11384423398055210671</string>
+				<string>resource_12414069791235984893</string>
+				<string>resource_10872085136494402463</string>
+				<string>resource_13270141248284659045</string>
+				<string>resource_3927106038423346875</string>
+				<string>resource_9476587763797535425</string>
+				<string>resource_8706207708005205355</string>
+				<string>resource_8524461687326149445</string>
+				<string>resource_11263727253393359664</string>
+				<string>resource_7580132220058274519</string>
+				<string>resource_5020630257673061539</string>
+				<string>resource_16377047625500077461</string>
+				<string>resource_4081146141389872088</string>
+				<string>resource_16795913378942822899</string>
+				<string>resource_5247289833768604359</string>
+				<string>resource_3971345174948630827</string>
+				<string>resource_863732689980077918</string>
+				<string>resource_16720588438556363063</string>
+				<string>resource_5223237589893523113</string>
+				<string>resource_16831991213943559983</string>
+				<string>resource_2799881235232816339</string>
+				<string>resource_8141554764100024962</string>
+				<string>resource_4169728891157171007</string>
+				<string>resource_1383938614659593648</string>
+				<string>resource_9890489208415537079</string>
+				<string>resource_15639789149961241386</string>
+				<string>resource_7852449713148011890</string>
+				<string>resource_4019101946659533657</string>
+				<string>resource_17895793876897937516</string>
+				<string>resource_17491435917053689539</string>
+				<string>resource_3850100284992305468</string>
+				<string>resource_12169256758339782491</string>
+				<string>resource_3496334707015279144</string>
+				<string>resource_8243565449045455620</string>
+				<string>resource_5235330323324618638</string>
+				<string>resource_7416508518321438146</string>
+				<string>resource_3623833070272403504</string>
+				<string>resource_9496615581313229958</string>
+				<string>resource_15351748114202440346</string>
+				<string>resource_852072582449828627</string>
+				<string>resource_13782846016517273650</string>
+				<string>resource_2599563526296846602</string>
+				<string>resource_11104822855939330630</string>
+				<string>resource_12590307991847896065</string>
+				<string>resource_6518946397229582044</string>
+				<string>resource_8815549795772791504</string>
+				<string>resource_9290813534572367624</string>
+				<string>resource_15495489287930287638</string>
+				<string>resource_6990102225557608323</string>
+				<string>resource_7856428526670414040</string>
+				<string>resource_18186079821937437202</string>
+				<string>resource_16634097939861440163</string>
+				<string>resource_2244182016133616748</string>
+				<string>resource_17572768902334139712</string>
+				<string>resource_489570720278363469</string>
+				<string>resource_6309594865006976877</string>
+				<string>resource_15389465870908476619</string>
+				<string>resource_5442164955925225012</string>
+				<string>resource_2215170877771705243</string>
+				<string>resource_201007576433577558</string>
+				<string>resource_13898214466534440708</string>
+				<string>resource_2015930535442285237</string>
+				<string>resource_12573722168949725484</string>
+				<string>resource_3092750753035383129</string>
+				<string>resource_14885111924298051400</string>
+				<string>resource_3321251924182602375</string>
+				<string>resource_11751328029078827731</string>
+				<string>resource_7985505394231799809</string>
+				<string>resource_16422311557259427192</string>
+				<string>resource_17573076804942087259</string>
+				<string>resource_13349590292127996762</string>
+				<string>resource_2051047662410880846</string>
+				<string>resource_6052877136441509372</string>
+				<string>resource_11267082345256766418</string>
+				<string>resource_10711769830243920936</string>
+				<string>resource_12189889752983739588</string>
+				<string>resource_15482953623879034342</string>
+				<string>resource_3312411147238305642</string>
+				<string>resource_6287933537533729187</string>
+				<string>resource_3724124097314185230</string>
+				<string>resource_15959072205842800589</string>
+				<string>resource_6428568415893689262</string>
+				<string>resource_15173643937133810051</string>
+				<string>resource_13140351659294208293</string>
+				<string>resource_18262316112641432985</string>
+				<string>resource_1517747129725694690</string>
+				<string>resource_11281655401136328556</string>
+				<string>resource_13001001157577937267</string>
+				<string>resource_17028642338778083085</string>
+				<string>resource_7955892744751003153</string>
+				<string>resource_10033384784204257133</string>
+				<string>resource_1181018023371588428</string>
+				<string>resource_8651798611621279700</string>
+				<string>resource_8204249760999894682</string>
+				<string>resource_5262952099436883175</string>
+				<string>resource_406913608926565531</string>
+				<string>resource_12188709420806220898</string>
+				<string>resource_15713125619404246495</string>
+				<string>resource_10253733104696325175</string>
+				<string>resource_9860239855560314711</string>
+				<string>resource_5040606915882735946</string>
+				<string>resource_1944743360160584404</string>
+				<string>resource_9026026002615261678</string>
+				<string>resource_1562238818136380462</string>
+				<string>resource_1968063182062735116</string>
+				<string>resource_8384272785622366233</string>
+				<string>resource_4538170648286197044</string>
+				<string>resource_5109593433928636043</string>
+				<string>resource_121812473996776018</string>
+				<string>resource_8100321082930930645</string>
+				<string>resource_10646443146693918337</string>
+				<string>resource_2086989962577214782</string>
+				<string>resource_17212791512159553176</string>
+				<string>resource_15297172109100667234</string>
+				<string>resource_17185849772846870060</string>
+				<string>resource_18427847041232369507</string>
+				<string>resource_2483609068554603691</string>
+				<string>resource_7205685499106188671</string>
+				<string>resource_4001581506320633563</string>
+				<string>resource_3881162225971747799</string>
+				<string>resource_17709559366348367839</string>
+				<string>resource_13201978628011729653</string>
+				<string>resource_5698260454961553629</string>
+				<string>resource_17098101860279682412</string>
+				<string>resource_3572572840908183036</string>
+				<string>resource_1900649733360279484</string>
+				<string>resource_12836407845652225485</string>
+				<string>resource_16285952129900759551</string>
+				<string>resource_8142090191566887896</string>
+				<string>resource_15941900270743660934</string>
+				<string>resource_8024760669008333157</string>
+				<string>resource_547409109837482875</string>
+				<string>resource_8905431934203465655</string>
+				<string>resource_10568315842663716438</string>
+				<string>resource_2610644736637762136</string>
+				<string>resource_6935078057041983376</string>
+				<string>resource_4718410799158556900</string>
+				<string>resource_14414820278437015430</string>
+				<string>resource_9106230675766689291</string>
+				<string>resource_13539683506363076857</string>
+				<string>resource_5381080268937298089</string>
+				<string>resource_10729722345455377606</string>
+				<string>resource_15148322606792079880</string>
+				<string>resource_585761134314152309</string>
+				<string>resource_2217546145891640508</string>
+				<string>resource_7205658481203506292</string>
+				<string>resource_15823273920940717682</string>
+				<string>resource_3507807327839231399</string>
+				<string>resource_2306504807465719004</string>
+				<string>resource_5638748543871053799</string>
+				<string>resource_7368484464039993380</string>
+				<string>resource_12067102697364638002</string>
+				<string>resource_3668431229150752954</string>
+				<string>resource_12211900727133305142</string>
+				<string>resource_10304962847378160207</string>
+				<string>resource_13998434704562088671</string>
+				<string>resource_15266043753730412879</string>
+				<string>resource_5962427481865728367</string>
+				<string>resource_856331266942151636</string>
+				<string>resource_10413673916554891585</string>
+				<string>resource_7963667104952022213</string>
+				<string>resource_11372345176262866795</string>
+				<string>resource_14050663760891023542</string>
+				<string>resource_6285857688769018067</string>
+				<string>resource_16254537939040112896</string>
+				<string>resource_9028335023332611001</string>
+				<string>resource_17757107674660467736</string>
+				<string>resource_11845792267738765814</string>
+				<string>resource_15846652664860938474</string>
+				<string>resource_15160779199461348772</string>
+				<string>resource_557771466818617461</string>
+				<string>resource_4355365775669089354</string>
+				<string>resource_6235873885561014777</string>
+				<string>resource_15493456166687707110</string>
+				<string>resource_3478491300971302061</string>
+				<string>resource_18047671951315912714</string>
+				<string>resource_217873545993700608</string>
+				<string>resource_5184834355865744</string>
+				<string>resource_8808458112734949529</string>
+				<string>resource_12022500924504051391</string>
+				<string>resource_17627248137007831522</string>
+				<string>resource_13790334045557357648</string>
+				<string>resource_9892529664279466015</string>
+				<string>resource_3967772181673342301</string>
+				<string>resource_388825479709028678</string>
+				<string>resource_7284881615509162367</string>
+				<string>resource_17810419465346604130</string>
+				<string>resource_7539263221619536907</string>
+				<string>resource_16568507786363614404</string>
+				<string>resource_17268018583918299150</string>
+				<string>resource_9975089209162851738</string>
+				<string>resource_5655460760381362688</string>
+				<string>resource_15951259058754176983</string>
+				<string>resource_17010364486698165832</string>
+				<string>resource_9913138163431989376</string>
+				<string>resource_16612175129602839665</string>
+				<string>resource_12575835864232006460</string>
+				<string>resource_9466629650895447236</string>
+				<string>resource_13385368190163318585</string>
+				<string>resource_1940936465240657182</string>
+				<string>resource_16661976727218232693</string>
+				<string>resource_12927627028899562044</string>
+				<string>resource_18364717875397862107</string>
+				<string>resource_2557362911803345601</string>
+				<string>resource_13601482173832159291</string>
+				<string>resource_367023364240049373</string>
+				<string>resource_9975487923763210973</string>
+				<string>resource_8528604758445233225</string>
+				<string>resource_10348002921069438214</string>
+				<string>resource_6744961828308826915</string>
+				<string>resource_9987638109085237485</string>
+				<string>resource_17315850810346228727</string>
+				<string>resource_11472325084371107987</string>
+				<string>resource_325933575900981324</string>
+				<string>resource_15683937707977098756</string>
+				<string>resource_14333856063273102473</string>
+				<string>resource_1606972781835602674</string>
+				<string>resource_6850998378493148265</string>
+				<string>resource_646138367067211724</string>
+				<string>resource_6280998590601410240</string>
+				<string>resource_8790940752797162018</string>
+				<string>resource_66332935128866011</string>
+				<string>resource_3585773816137530389</string>
+				<string>resource_18361781779683797629</string>
+				<string>resource_11521739642989528974</string>
+				<string>resource_10804474350666579807</string>
+				<string>resource_4444284895179829685</string>
+				<string>resource_14467459505139851642</string>
+				<string>resource_15566959926186581400</string>
+				<string>resource_18418941708344282069</string>
+				<string>resource_13295165299452027942</string>
+				<string>resource_7828725502935588829</string>
+				<string>resource_16715476338125736071</string>
+				<string>resource_18421189620542854958</string>
+				<string>resource_10136399631741662963</string>
+				<string>resource_4566487412938828512</string>
+				<string>resource_14354311408070746624</string>
+				<string>resource_12528778720990580778</string>
+				<string>resource_7816454571684032795</string>
+				<string>resource_11090362413760156254</string>
+				<string>resource_10892062106116631724</string>
+				<string>resource_12637973623871223559</string>
+				<string>resource_9298969323666338069</string>
+				<string>resource_4116014160017690331</string>
+				<string>resource_618003742288605090</string>
+				<string>resource_16823149820116991554</string>
+				<string>resource_16975177599411059843</string>
+				<string>resource_1144871559475842811</string>
+				<string>resource_15434072978519533373</string>
+				<string>resource_3754501243930244392</string>
+				<string>resource_7063839425421038524</string>
+				<string>resource_6776673995061798101</string>
+				<string>resource_7823758377175106063</string>
+				<string>resource_12124268910082971971</string>
+				<string>resource_2667968996549569118</string>
+				<string>resource_17710809301935952574</string>
+				<string>resource_16375157927053254299</string>
+				<string>resource_4109215812081284279</string>
+				<string>resource_8925991982131441632</string>
+				<string>resource_842128786224630241</string>
+				<string>resource_5749953457022562807</string>
+				<string>resource_4274563061826443345</string>
+				<string>resource_1870724273315671371</string>
+				<string>resource_3056067087937180034</string>
+				<string>resource_16860410042468993565</string>
+				<string>resource_8719278433010211193</string>
+				<string>resource_12046594225033221878</string>
+				<string>resource_10383557753306048504</string>
+				<string>resource_16733346993166966169</string>
+				<string>resource_11889317805455419268</string>
+				<string>resource_1320316160084746010</string>
+				<string>resource_12579144657430629407</string>
+				<string>resource_12492639761353633889</string>
+				<string>resource_12096802582867404207</string>
+				<string>resource_2916992410504759548</string>
+				<string>resource_2387440446329956264</string>
+				<string>resource_9697292731503952182</string>
+				<string>resource_16721187826495233174</string>
+				<string>resource_3286063390271849576</string>
+				<string>resource_11745467601006504130</string>
+				<string>resource_7773375083781606112</string>
+				<string>resource_3158612960359314765</string>
+				<string>resource_2623859168555913049</string>
+				<string>resource_10519631457005925155</string>
+				<string>resource_6187358047169442562</string>
+				<string>resource_10642766139308339080</string>
+				<string>resource_1633146634221201848</string>
+				<string>resource_2464856782971411579</string>
+				<string>resource_4685354737470706576</string>
+				<string>resource_18415614008259817903</string>
+				<string>resource_9264112874790067350</string>
+				<string>resource_17187461161717206627</string>
+				<string>resource_10140806803546668382</string>
+				<string>resource_3367860572597835348</string>
+				<string>resource_13758555373901160724</string>
+				<string>resource_3131627871433141926</string>
+				<string>resource_2054964040966345063</string>
+				<string>resource_9468661044137952496</string>
+				<string>resource_2407106373832630848</string>
+				<string>resource_10370096534930700696</string>
+				<string>resource_10889187340010884378</string>
+				<string>resource_7251081121767614034</string>
+				<string>resource_6048845236379304893</string>
+				<string>resource_7252000858979840229</string>
+				<string>resource_18009175803258633997</string>
+				<string>resource_14678833618046339325</string>
+				<string>resource_15131053264707671199</string>
+				<string>resource_15670962660260449735</string>
+				<string>resource_5825231053614614671</string>
+				<string>resource_8309147941026465222</string>
+				<string>resource_16730035556760082612</string>
+				<string>resource_732073417509712739</string>
+				<string>resource_12905024004794569646</string>
+				<string>resource_6718592354647921845</string>
+				<string>resource_3336225833814259398</string>
+				<string>resource_15788507821046610573</string>
+				<string>resource_159196698685657929</string>
+				<string>resource_12990344862242273182</string>
+				<string>resource_12310271734126973972</string>
+				<string>resource_14623592913478638160</string>
+				<string>resource_1598218460561024019</string>
+				<string>resource_1336893815067214730</string>
+				<string>resource_10768262218146518013</string>
+				<string>resource_11192130636177953227</string>
+				<string>resource_7069355219337341905</string>
+				<string>resource_13334723342365028989</string>
+				<string>resource_6772425092209468901</string>
+				<string>resource_17578756941794399833</string>
+				<string>resource_7931570880606609928</string>
+				<string>resource_13156747020816323307</string>
+				<string>resource_13719851658493496671</string>
+				<string>resource_3824214458336955027</string>
+				<string>resource_8070491938334887217</string>
+				<string>resource_13465623410518802343</string>
+				<string>resource_7068749726253701187</string>
+				<string>resource_15192534645122029300</string>
+				<string>resource_865531929661925258</string>
+				<string>resource_7258021047699162647</string>
+				<string>resource_5124382254056766614</string>
+				<string>resource_13649843046060548275</string>
+				<string>resource_17765778300887301629</string>
+				<string>resource_15506029469731855136</string>
+				<string>resource_8630708567390162615</string>
+				<string>resource_3210734657246038778</string>
+				<string>resource_6176904361085721507</string>
+				<string>resource_16150463896750355515</string>
+				<string>resource_16481441409854374789</string>
+				<string>resource_17995483034113923505</string>
+				<string>resource_11640717375973057963</string>
+				<string>resource_3860072347616104048</string>
+				<string>resource_12497121029521988757</string>
+				<string>resource_10873801222348772590</string>
+				<string>resource_16710564961333412478</string>
+				<string>resource_15034272016297043855</string>
+				<string>resource_439251353311592015</string>
+				<string>resource_6796797141245227059</string>
+				<string>resource_4653696070982773646</string>
+				<string>resource_5576095501013748265</string>
+				<string>resource_16749092260873931219</string>
+				<string>resource_7036712691744127894</string>
+				<string>resource_13041730412165638364</string>
+				<string>resource_9418316603352516655</string>
+				<string>resource_8835570441363508829</string>
+				<string>resource_1478247100646959396</string>
+				<string>resource_7710560575943124451</string>
+				<string>resource_4155895835496786202</string>
+				<string>resource_1213617957377788089</string>
+				<string>resource_11402067234864206883</string>
+				<string>resource_1722284703589460496</string>
+				<string>resource_4499270487979288720</string>
+				<string>resource_11860031321193497548</string>
+				<string>resource_15092874569299648527</string>
+				<string>resource_14335258906738747011</string>
+				<string>resource_4562281110112255174</string>
+				<string>resource_12508488692140467084</string>
+				<string>resource_2014664404618368139</string>
+				<string>resource_3398667985615091061</string>
+				<string>resource_4590075200126578161</string>
+				<string>resource_4158400380293016615</string>
+				<string>resource_675699931202008474</string>
+				<string>resource_12496019232513706990</string>
+				<string>resource_8857843958983534671</string>
+				<string>resource_8418043581276159270</string>
+				<string>resource_11352585506556315488</string>
+				<string>resource_16889026498802380262</string>
+				<string>resource_12222988742876225482</string>
+				<string>resource_4285860027731286842</string>
+				<string>resource_14225985888714325540</string>
+				<string>resource_893494089928688812</string>
+				<string>resource_11797511364421969073</string>
+				<string>resource_736958019856954538</string>
+				<string>resource_2193844353127630676</string>
+				<string>resource_2413766221598311536</string>
+				<string>resource_11971290918651754336</string>
+				<string>resource_12593604846542411388</string>
+				<string>resource_5245558279175455521</string>
+				<string>resource_2811560611191564458</string>
+				<string>resource_9155705776428503539</string>
+				<string>resource_16250249962560864829</string>
+				<string>resource_277487146538691087</string>
+				<string>resource_1302251852315544186</string>
+				<string>resource_12557590126405839276</string>
+				<string>resource_6276388875641455672</string>
+				<string>resource_7980849843533563644</string>
+				<string>resource_15697390196393490302</string>
+				<string>resource_16818041757702729783</string>
+				<string>resource_400183961245528938</string>
+				<string>resource_6019984256921503362</string>
+				<string>resource_14044221182544471903</string>
+				<string>resource_15613638072862086948</string>
+				<string>resource_5110372796928374256</string>
+				<string>resource_6730958613413585496</string>
+				<string>resource_8596971354366588818</string>
+				<string>resource_14498270072708808803</string>
+				<string>resource_4416705942901619142</string>
+				<string>resource_8132602914392564348</string>
+				<string>resource_16174766882019164930</string>
+				<string>resource_11402529227714505141</string>
+				<string>resource_13890122203470288055</string>
+				<string>resource_7086947906114718767</string>
+				<string>resource_16365741193713791851</string>
+				<string>resource_5298623847611154107</string>
+				<string>resource_15135017410271233131</string>
+				<string>resource_312184892402186916</string>
+				<string>resource_4743931759227465802</string>
+				<string>resource_13002144102733229685</string>
+				<string>resource_7686211786732572453</string>
+				<string>resource_12038388123386029200</string>
+				<string>resource_1449634841460423498</string>
+				<string>resource_8849121966675751960</string>
+				<string>resource_11413637245688942238</string>
+				<string>resource_3105864327533907037</string>
+				<string>resource_468629889314642634</string>
+				<string>resource_6667622435773654481</string>
+				<string>resource_1867171148381558967</string>
+				<string>resource_17398650279042522913</string>
+				<string>resource_13754810340385823494</string>
+				<string>resource_9873745299618973444</string>
+				<string>resource_12389469899082990077</string>
+				<string>resource_17194675225696742480</string>
+				<string>resource_10807596620020864691</string>
+				<string>resource_17954782856958607786</string>
+				<string>resource_343774147331654722</string>
+				<string>resource_13421694549636196377</string>
+				<string>resource_13929229608474210758</string>
+				<string>resource_8256916920456971001</string>
+				<string>resource_16415075852445594738</string>
+				<string>resource_5768999319140647903</string>
+				<string>resource_6223156571442811532</string>
+				<string>resource_4486284744785850806</string>
+				<string>resource_15099784181963632908</string>
+				<string>resource_8276320845523925878</string>
+				<string>resource_10144874174718210876</string>
+				<string>resource_5049427345860440585</string>
+				<string>resource_3893615823858742594</string>
+				<string>resource_14219062205475317129</string>
+				<string>resource_12689462591282480020</string>
+				<string>resource_14172344014674932221</string>
+				<string>resource_5981034546981320762</string>
+				<string>resource_10454323886623746679</string>
+				<string>resource_9557845164411698689</string>
+				<string>resource_5357388167478562329</string>
+				<string>resource_18191322681766124019</string>
+				<string>resource_16015404789058879677</string>
+				<string>resource_7375402291601459918</string>
+				<string>resource_1735006035840434675</string>
+				<string>resource_14192702818003635128</string>
+				<string>resource_13611712915861209109</string>
+				<string>resource_7914533906410980401</string>
+				<string>resource_1520387895504129374</string>
+				<string>resource_6463355213194826531</string>
+				<string>resource_10440886553018684194</string>
+				<string>resource_15400239327639549297</string>
+				<string>resource_5058287705554931722</string>
+				<string>resource_2434080940146407616</string>
+				<string>resource_7169885507297968990</string>
+				<string>resource_584373218586266666</string>
+				<string>resource_8466728078139813725</string>
+				<string>resource_15127499891615267745</string>
+				<string>resource_6271492935916233714</string>
+				<string>resource_104762522591437079</string>
+				<string>resource_12911385221360325533</string>
+				<string>resource_3634911318067052395</string>
+				<string>resource_15140559831047095134</string>
+				<string>resource_2319549830321308472</string>
+				<string>resource_13469721200779702529</string>
+				<string>resource_8146442049561808013</string>
+				<string>resource_265943316308273777</string>
+				<string>resource_7086080353004153618</string>
+				<string>resource_11776857468617270431</string>
+				<string>resource_14663227112598619618</string>
+				<string>resource_9729644089595191511</string>
+				<string>resource_11967639149954570895</string>
+				<string>resource_11615852790108227090</string>
+				<string>resource_15965007614731754427</string>
+				<string>resource_9605290456175471275</string>
+				<string>resource_12137224890887043116</string>
+				<string>resource_6992542388485066071</string>
+				<string>resource_18345821320245586004</string>
+				<string>resource_5117285996677440102</string>
+				<string>resource_14746389577429206725</string>
+				<string>resource_4953554257665075811</string>
+				<string>resource_14180278106230007070</string>
+				<string>resource_4256628065606722617</string>
+				<string>resource_1091618800768684409</string>
+				<string>resource_14865336710352666534</string>
+				<string>resource_13254691379140212944</string>
+				<string>resource_509262272150681067</string>
+				<string>resource_15025232622758881661</string>
+				<string>resource_9053208737657555441</string>
+				<string>resource_5226004294047959959</string>
+				<string>resource_6181468836075601938</string>
+				<string>resource_2146271191752470523</string>
+				<string>resource_13881509059532166003</string>
+				<string>resource_16279110670873391191</string>
+				<string>resource_4072623744342286610</string>
+				<string>resource_8394375408022655622</string>
+				<string>resource_6933559433953613084</string>
+				<string>resource_3274983208929826823</string>
+				<string>resource_1497181032994410447</string>
+				<string>resource_13803182829179128407</string>
+				<string>resource_17961405089555626364</string>
+				<string>resource_715788476032486238</string>
+				<string>resource_17850483657097403344</string>
+				<string>resource_2257478634417504806</string>
+				<string>resource_15207809078110972732</string>
+				<string>resource_10889676464290296778</string>
+				<string>resource_1605867299524100522</string>
+				<string>resource_1397132684405806750</string>
+				<string>resource_3251315445475655549</string>
+				<string>resource_15124221677815861926</string>
+				<string>resource_6119138530511526799</string>
+				<string>resource_9570453353243634681</string>
+				<string>resource_7113392010766900521</string>
+				<string>resource_12402242910111871371</string>
+				<string>resource_14350507901648233995</string>
+				<string>resource_9755868676358733515</string>
+				<string>resource_4488027797557338016</string>
+				<string>resource_2282432457729528510</string>
+				<string>resource_11234702915597091595</string>
+				<string>resource_14887673075547010021</string>
+				<string>resource_13580533655692160971</string>
+				<string>resource_14479925598329679990</string>
+				<string>resource_12404281307988956126</string>
+				<string>resource_16930739842438225502</string>
+				<string>resource_16406240371703060687</string>
+				<string>resource_14782860503026677133</string>
+				<string>resource_8801387951099003700</string>
+				<string>resource_3291280514921589765</string>
+				<string>resource_13369419993187645117</string>
+				<string>resource_11115028441339009781</string>
+				<string>resource_17903815588956920562</string>
+				<string>resource_15120897206339736689</string>
+				<string>resource_13550066061475655787</string>
+				<string>resource_17273355444521418216</string>
+				<string>resource_2184283283587711018</string>
+				<string>resource_14406460941536831821</string>
+				<string>resource_18283681151087895805</string>
+				<string>resource_17164024733232996084</string>
+				<string>resource_8929423087038587994</string>
+				<string>resource_6942300460631974070</string>
+			</array>
+			<key>RDFFMap</key>
+			<dict/>
+			<key>Resource Offsets</key>
+			<dict>
+				<key>resource_10033384784204257133</key>
+				<integer>2336173115</integer>
+				<key>resource_10047711667225510407</key>
+				<integer>1587427431</integer>
+				<key>resource_10136399631741662963</key>
+				<integer>3101192323</integer>
+				<key>resource_10137445762322465070</key>
+				<integer>1716963633</integer>
+				<key>resource_10140806803546668382</key>
+				<integer>3421565499</integer>
+				<key>resource_10144874174718210876</key>
+				<integer>4268148463</integer>
+				<key>resource_10207992081625162971</key>
+				<integer>1519265787</integer>
+				<key>resource_10253733104696325175</key>
+				<integer>2374712439</integer>
+				<key>resource_10265869682839383703</key>
+				<integer>407380539</integer>
+				<key>resource_10282120937376875961</key>
+				<integer>628421487</integer>
+				<key>resource_10303383484878608379</key>
+				<integer>245375315</integer>
+				<key>resource_10304962847378160207</key>
+				<integer>2674392599</integer>
+				<key>resource_10345859990367831947</key>
+				<integer>749552683</integer>
+				<key>resource_10348002921069438214</key>
+				<integer>2977181635</integer>
+				<key>resource_10370096534930700696</key>
+				<integer>3451191919</integer>
+				<key>resource_10383557753306048504</key>
+				<integer>3283399043</integer>
+				<key>resource_10413673916554891585</key>
+				<integer>2704801343</integer>
+				<key>resource_1043211566899361708</key>
+				<integer>570467089</integer>
+				<key>resource_10435837092017935632</key>
+				<integer>716514289</integer>
+				<key>resource_10440886553018684194</key>
+				<integer>4370409335</integer>
+				<key>resource_10454323886623746679</key>
+				<integer>4301182755</integer>
+				<key>resource_10455593347165884256</key>
+				<integer>1288550039</integer>
+				<key>resource_104762522591437079</key>
+				<integer>4419954623</integer>
+				<key>resource_10482269678528197636</key>
+				<integer>1683912949</integer>
+				<key>resource_10499835785235436674</key>
+				<integer>55054423</integer>
+				<key>resource_10519631457005925155</key>
+				<integer>3377521141</integer>
+				<key>resource_10525292872813943676</key>
+				<integer>286007699</integer>
+				<key>resource_10541371914451932869</key>
+				<integer>1003853111</integer>
+				<key>resource_1056111814131344618</key>
+				<integer>1384257335</integer>
+				<key>resource_10568175786769938653</key>
+				<integer>1014863175</integer>
+				<key>resource_10568315842663716438</key>
+				<integer>2587598205</integer>
+				<key>resource_10642766139308339080</key>
+				<integer>3383030275</integer>
+				<key>resource_10646443146693918337</key>
+				<integer>2440772823</integer>
+				<key>resource_10711769830243920936</key>
+				<integer>2253593535</integer>
+				<key>resource_10728592064966348987</key>
+				<integer>357835251</integer>
+				<key>resource_10729722345455377606</key>
+				<integer>2644766177</integer>
+				<key>resource_1075645794087967243</key>
+				<integer>559457027</integer>
+				<key>resource_10768262218146518013</key>
+				<integer>3616604967</integer>
+				<key>resource_10804474350666579807</key>
+				<integer>3065270347</integer>
+				<key>resource_10807596620020864691</key>
+				<integer>4207589011</integer>
+				<key>resource_10807835469433677212</key>
+				<integer>1136498135</integer>
+				<key>resource_10872085136494402463</key>
+				<integer>1816844687</integer>
+				<key>resource_10873801222348772590</key>
+				<integer>3748754427</integer>
+				<key>resource_10889187340010884378</key>
+				<integer>3456696951</integer>
+				<key>resource_10889676464290296778</key>
+				<integer>4678195491</integer>
+				<key>resource_10892062106116631724</key>
+				<integer>3150999747</integer>
+				<key>resource_10903659309899927294</key>
+				<integer>1508255723</integer>
+				<key>resource_10913204605798314897</key>
+				<integer>1097962911</integer>
+				<key>resource_1091618800768684409</key>
+				<integer>4561016947</integer>
+				<key>resource_11017062018714664585</key>
+				<integer>1744492895</integer>
+				<key>resource_11025516310122701602</key>
+				<integer>1092457879</integer>
+				<key>resource_11037684725868073757</key>
+				<integer>520921803</integer>
+				<key>resource_11061972070458944759</key>
+				<integer>1422796659</integer>
+				<key>resource_11090362413760156254</key>
+				<integer>3126096035</integer>
+				<key>resource_11104822855939330630</key>
+				<integer>2054621891</integer>
+				<key>resource_11115028441339009781</key>
+				<integer>4793305559</integer>
+				<key>resource_11192130636177953227</key>
+				<integer>3622109997</integer>
+				<key>resource_11229434434488362321</key>
+				<integer>898991315</integer>
+				<key>resource_11234702915597091595</key>
+				<integer>4747151751</integer>
+				<key>resource_11263727253393359664</key>
+				<integer>1852758463</integer>
+				<key>resource_11267082345256766418</key>
+				<integer>2248088503</integer>
+				<key>resource_11281655401136328556</key>
+				<integer>2314152987</integer>
+				<key>resource_1134297977088526445</key>
+				<integer>1705949469</integer>
+				<key>resource_11352585506556315488</key>
+				<integer>3920741615</integer>
+				<key>resource_11372345176262866795</key>
+				<integer>2715811407</integer>
+				<key>resource_11384423398055210671</key>
+				<integer>1786173823</integer>
+				<key>resource_11402067234864206883</key>
+				<integer>3819025523</integer>
+				<key>resource_11402529227714505141</key>
+				<integer>4072314339</integer>
+				<key>resource_11413637245688942238</key>
+				<integer>4143879755</integer>
+				<key>resource_11436325443361352018</key>
+				<integer>269492603</integer>
+				<key>resource_1144871559475842811</key>
+				<integer>3173032167</integer>
+				<key>resource_11456500748801583048</key>
+				<integer>1247123031</integer>
+				<key>resource_11472325084371107987</key>
+				<integer>2988191699</integer>
+				<key>resource_11521739642989528974</key>
+				<integer>3054260283</integer>
+				<key>resource_1156878046575644979</key>
+				<integer>1075942783</integer>
+				<key>resource_11583574636172868837</key>
+				<integer>1351210751</integer>
+				<key>resource_11615852790108227090</key>
+				<integer>4508571683</integer>
+				<key>resource_11640717375973057963</key>
+				<integer>3732239331</integer>
+				<key>resource_11669107962123619937</key>
+				<integer>912098539</integer>
+				<key>resource_1168999052297853288</key>
+				<integer>66064487</integer>
+				<key>resource_11715904740400610551</key>
+				<integer>335815123</integer>
+				<key>resource_11745467601006504130</key>
+				<integer>3332956631</integer>
+				<key>resource_11748105545804289823</key>
+				<integer>512533187</integer>
+				<key>resource_11751328029078827731</key>
+				<integer>2215054211</integer>
+				<key>resource_11776857468617270431</key>
+				<integer>4489160711</integer>
+				<key>resource_11797511364421969073</key>
+				<integer>3942778135</integer>
+				<key>resource_1179882155652560256</key>
+				<integer>1362233107</integer>
+				<key>resource_1181018023371588428</key>
+				<integer>2341678147</integer>
+				<key>resource_11845792267738765814</key>
+				<integer>2754608767</integer>
+				<key>resource_11860031321193497548</key>
+				<integer>3855201419</integer>
+				<key>resource_11889317805455419268</key>
+				<integer>3288908173</integer>
+				<key>resource_11898477480697943603</key>
+				<integer>1277535875</integer>
+				<key>resource_11917073653541869908</key>
+				<integer>857306287</integer>
+				<key>resource_11953052474555650452</key>
+				<integer>38535227</integer>
+				<key>resource_11967639149954570895</key>
+				<integer>4503066651</integer>
+				<key>resource_11971290918651754336</key>
+				<integer>3964798261</integer>
+				<key>resource_12022500924504051391</key>
+				<integer>2815164119</integer>
+				<key>resource_12038388123386029200</key>
+				<integer>4127364659</integer>
+				<key>resource_12046594225033221878</key>
+				<integer>3277894011</integer>
+				<key>resource_12047001783562301118</key>
+				<integer>1172674031</integer>
+				<key>resource_12060248125161040972</key>
+				<integer>688976839</integer>
+				<key>resource_12067102697364638002</key>
+				<integer>2595204499</integer>
+				<key>resource_12096802582867404207</key>
+				<integer>3299926439</integer>
+				<key>resource_12100375474442270887</key>
+				<integer>851788961</integer>
+				<key>resource_12124268910082971971</key>
+				<integer>3206062359</integer>
+				<key>resource_1213617957377788089</key>
+				<integer>3813520491</integer>
+				<key>resource_12137224890887043116</key>
+				<integer>4527970363</integer>
+				<key>resource_12137935541974071078</key>
+				<integer>1373243169</integer>
+				<key>resource_12169256758339782491</key>
+				<integer>1974667859</integer>
+				<key>resource_121812473996776018</key>
+				<integer>2429762759</integer>
+				<key>resource_12188709420806220898</key>
+				<integer>2363702375</integer>
+				<key>resource_12189889752983739588</key>
+				<integer>2259098567</integer>
+				<key>resource_12211900727133305142</key>
+				<integer>2644770279</integer>
+				<key>resource_12222988742876225482</key>
+				<integer>3931751677</integer>
+				<key>resource_12269472342397381567</key>
+				<integer>611906391</integer>
+				<key>resource_12310271734126973972</key>
+				<integer>3572040455</integer>
+				<key>resource_12389469899082990077</key>
+				<integer>4202079877</integer>
+				<key>resource_12402242910111871371</key>
+				<integer>4725119329</integer>
+				<key>resource_12404281307988956126</key>
+				<integer>4765764007</integer>
+				<key>resource_12414069791235984893</key>
+				<integer>1811339655</integer>
+				<key>resource_12492639761353633889</key>
+				<integer>3294421407</integer>
+				<key>resource_12496019232513706990</key>
+				<integer>3904226519</integer>
+				<key>resource_12497121029521988757</key>
+				<integer>3743249395</integer>
+				<key>resource_12508488692140467084</key>
+				<integer>3880105131</integer>
+				<key>resource_12528778720990580778</key>
+				<integer>3131601067</integer>
+				<key>resource_12531900700693485552</key>
+				<integer>1606830211</integer>
+				<key>resource_12550288214253117947</key>
+				<integer>1305065135</integer>
+				<key>resource_12557590126405839276</key>
+				<integer>4003345779</integer>
+				<key>resource_12573722168949725484</key>
+				<integer>2178878315</integer>
+				<key>resource_12575835864232006460</key>
+				<integer>2920021863</integer>
+				<key>resource_12579144657430629407</key>
+				<integer>3288912273</integer>
+				<key>resource_12590307991847896065</key>
+				<integer>2071399123</integer>
+				<key>resource_12593604846542411388</key>
+				<integer>3964810555</integer>
+				<key>resource_12616367062111420724</key>
+				<integer>1661892823</integer>
+				<key>resource_12637973623871223559</key>
+				<integer>3145494715</integer>
+				<key>resource_12686262154217269648</key>
+				<integer>733037587</integer>
+				<key>resource_12689179094486110940</key>
+				<integer>1219597871</integer>
+				<key>resource_12689462591282480020</key>
+				<integer>4284667659</integer>
+				<key>resource_12694285818568003390</key>
+				<integer>868316349</integer>
+				<key>resource_12715892051849645145</key>
+				<integer>531931867</integer>
+				<key>resource_12726093118085717476</key>
+				<integer>799097971</integer>
+				<key>resource_1273144458571392648</key>
+				<integer>1576417367</integer>
+				<key>resource_12759637685405884093</key>
+				<integer>639431551</integer>
+				<key>resource_12790449927871726910</key>
+				<integer>346825187</integer>
+				<key>resource_12836407845652225485</key>
+				<integer>2540404047</integer>
+				<key>resource_12905024004794569646</key>
+				<integer>3519349463</integer>
+				<key>resource_12911385221360325533</key>
+				<integer>4425459655</integer>
+				<key>resource_12927627028899562044</key>
+				<integer>2958557085</integer>
+				<key>resource_12967173922146324981</key>
+				<integer>1645365433</integer>
+				<key>resource_12990344862242273182</key>
+				<integer>3566535423</integer>
+				<key>resource_13001001157577937267</key>
+				<integer>2319658019</integer>
+				<key>resource_13002144102733229685</key>
+				<integer>4116354595</integer>
+				<key>resource_13006154781681620660</key>
+				<integer>973440267</integer>
+				<key>resource_1302251852315544186</key>
+				<integer>3997840747</integer>
+				<key>resource_13041730412165638364</key>
+				<integer>3785983039</integer>
+				<key>resource_13057932235549201474</key>
+				<integer>250880347</integer>
+				<key>resource_13085448720470105244</key>
+				<integer>1524770819</integer>
+				<key>resource_13140351659294208293</key>
+				<integer>2292128759</integer>
+				<key>resource_13156747020816323307</key>
+				<integer>3644138327</integer>
+				<key>resource_13201978628011729653</key>
+				<integer>2509995303</integer>
+				<key>resource_1320316160084746010</key>
+				<integer>3288916375</integer>
+				<key>resource_13208765481694692978</key>
+				<integer>984450331</integer>
+				<key>resource_13214410966118866191</key>
+				<integer>829768835</integer>
+				<key>resource_13254691379140212944</key>
+				<integer>4572027011</integer>
+				<key>resource_13270141248284659045</key>
+				<integer>1822349719</integer>
+				<key>resource_13295165299452027942</key>
+				<integer>3084673127</integer>
+				<key>resource_13311152297254866956</key>
+				<integer>1395267397</integer>
+				<key>resource_13334723342365028989</key>
+				<integer>3627619129</integer>
+				<key>resource_13349590292127996762</key>
+				<integer>2237074339</integer>
+				<key>resource_1336893815067214730</key>
+				<integer>3611099935</integer>
+				<key>resource_13369419993187645117</key>
+				<integer>4787800527</integer>
+				<key>resource_13374697672363527370</key>
+				<integer>1755502959</integer>
+				<key>resource_13385368190163318585</key>
+				<integer>2931031927</integer>
+				<key>resource_13400148444693621867</key>
+				<integer>1178179063</integer>
+				<key>resource_13421694549636196377</key>
+				<integer>4224104107</integer>
+				<key>resource_13430145079570593796</key>
+				<integer>1119983039</integer>
+				<key>resource_13451604233329077613</key>
+				<integer>1491740627</integer>
+				<key>resource_13465623410518802343</key>
+				<integer>3666158455</integer>
+				<key>resource_13469721200779702529</key>
+				<integer>4467140583</integer>
+				<key>resource_13485587048775187768</key>
+				<integer>310911411</integer>
+				<key>resource_13539683506363076857</key>
+				<integer>2611719595</integer>
+				<key>resource_13547790495409278380</key>
+				<integer>617411423</integer>
+				<key>resource_13550066061475655787</key>
+				<integer>4809820655</integer>
+				<key>resource_13580533655692160971</key>
+				<integer>4758161815</integer>
+				<key>resource_13601482173832159291</key>
+				<integer>2964074411</integer>
+				<key>resource_13611712915861209109</key>
+				<integer>4348389207</integer>
+				<key>resource_13615275243430489428</key>
+				<integer>1574320207</integer>
+				<key>resource_13649843046060548275</key>
+				<integer>3693687713</integer>
+				<key>resource_13668507800081349503</key>
+				<integer>711009259</integer>
+				<key>resource_13719851658493496671</key>
+				<integer>3649643359</integer>
+				<key>resource_13754810340385823494</key>
+				<integer>4196570745</integer>
+				<key>resource_13758555373901160724</key>
+				<integer>3432575563</integer>
+				<key>resource_13782846016517273650</key>
+				<integer>2007698051</integer>
+				<key>resource_13790334045557357648</key>
+				<integer>2834562799</integer>
+				<key>resource_13803182829179128407</key>
+				<integer>4645165299</integer>
+				<key>resource_1383938614659593648</key>
+				<integer>1952377395</integer>
+				<key>resource_13849225276682775315</key>
+				<integer>396370475</integer>
+				<key>resource_13881509059532166003</key>
+				<integer>4606630075</integer>
+				<key>resource_13890122203470288055</key>
+				<integer>4077819371</integer>
+				<key>resource_13898214466534440708</key>
+				<integer>2159479635</integer>
+				<key>resource_13929229608474210758</key>
+				<integer>4229609137</integer>
+				<key>resource_1397132684405806750</key>
+				<integer>4689205555</integer>
+				<key>resource_13998434704562088671</key>
+				<integer>2679897631</integer>
+				<key>resource_14033669227684487487</key>
+				<integer>1103467943</integer>
+				<key>resource_14044221182544471903</key>
+				<integer>4036380071</integer>
+				<key>resource_14050663760891023542</key>
+				<integer>2721316439</integer>
+				<key>resource_14093782068501706398</key>
+				<integer>135274675</integer>
+				<key>resource_14172344014674932221</key>
+				<integer>4290172691</integer>
+				<key>resource_14180278106230007070</key>
+				<integer>4555507815</integer>
+				<key>resource_14186084486604064934</key>
+				<integer>1192072711</integer>
+				<key>resource_14192702818003635128</key>
+				<integer>4348385105</integer>
+				<key>resource_14219062205475317129</key>
+				<integer>4279162627</integer>
+				<key>resource_14225985888714325540</key>
+				<integer>3937260811</integer>
+				<key>resource_14230292723252741664</key>
+				<integer>82579583</integer>
+				<key>resource_14286097303283194632</key>
+				<integer>162799835</integer>
+				<key>resource_14316263658260059861</key>
+				<integer>228860219</integer>
+				<key>resource_14332333528654655926</key>
+				<integer>305406379</integer>
+				<key>resource_14333856063273102473</key>
+				<integer>3015716859</integer>
+				<key>resource_14335258906738747011</key>
+				<integer>3869095067</integer>
+				<key>resource_14350507901648233995</key>
+				<integer>4725131623</integer>
+				<key>resource_14354311408070746624</key>
+				<integer>3115085971</integer>
+				<key>resource_14406460941536831821</key>
+				<integer>4845996551</integer>
+				<key>resource_14414820278437015430</key>
+				<integer>2606214563</integer>
+				<key>resource_14428339569050924437</key>
+				<integer>1340196587</integer>
+				<key>resource_14430253563356620689</key>
+				<integer>553951995</integer>
+				<key>resource_14467459505139851642</key>
+				<integer>3079163993</integer>
+				<key>resource_14479925598329679990</key>
+				<integer>4763666847</integer>
+				<key>resource_1449634841460423498</key>
+				<integer>4132869691</integer>
+				<key>resource_14498270072708808803</key>
+				<integer>4061296073</integer>
+				<key>resource_1453842577345336819</key>
+				<integer>88084615</integer>
+				<key>resource_14597362036100965917</key>
+				<integer>1367738139</integer>
+				<key>resource_14598961425422821413</key>
+				<integer>1389762367</integer>
+				<key>resource_14623592913478638160</key>
+				<integer>3597206287</integer>
+				<key>resource_14624914001985209499</key>
+				<integer>962430203</integer>
+				<key>resource_14663227112598619618</key>
+				<integer>4497549327</integer>
+				<key>resource_14678833618046339325</key>
+				<integer>3480814239</integer>
+				<key>resource_14702049749035014561</key>
+				<integer>1568815175</integer>
+				<key>resource_14703291759919118834</key>
+				<integer>1428301691</integer>
+				<key>resource_14730287740060913385</key>
+				<integer>727532555</integer>
+				<key>resource_14734197248792261401</key>
+				<integer>1486235595</integer>
+				<key>resource_14746389577429206725</key>
+				<integer>4544497751</integer>
+				<key>resource_1477139834264658184</key>
+				<integer>592503611</integer>
+				<key>resource_14782423324449178496</key>
+				<integer>449073759</integer>
+				<key>resource_1478247100646959396</key>
+				<integer>3802498135</integer>
+				<key>resource_14782860503026677133</key>
+				<integer>4776778169</integer>
+				<key>resource_14784808647420242208</key>
+				<integer>1114478007</integer>
+				<key>resource_14842833096904183596</key>
+				<integer>1678407919</integer>
+				<key>resource_14865336710352666534</key>
+				<integer>4566521979</integer>
+				<key>resource_14876872274942349722</key>
+				<integer>793592939</integer>
+				<key>resource_14885111924298051400</key>
+				<integer>2184383347</integer>
+				<key>resource_14887673075547010021</key>
+				<integer>4752656783</integer>
+				<key>resource_14903509296516745019</key>
+				<integer>1700444439</integer>
+				<key>resource_1497181032994410447</key>
+				<integer>4639660267</integer>
+				<key>resource_14990894814475262275</key>
+				<integer>727528453</integer>
+				<key>resource_15025232622758881661</key>
+				<integer>4579629203</integer>
+				<key>resource_15034272016297043855</key>
+				<integer>3759764491</integer>
+				<key>resource_15092874569299648527</key>
+				<integer>3863590035</integer>
+				<key>resource_15099784181963632908</key>
+				<integer>4257138399</integer>
+				<key>resource_15120897206339736689</key>
+				<integer>4804315623</integer>
+				<key>resource_15124221677815861926</key>
+				<integer>4703099203</integer>
+				<key>resource_15127499891615267745</key>
+				<integer>4408944559</integer>
+				<key>resource_15131053264707671199</key>
+				<integer>3486319271</integer>
+				<key>resource_15135017410271233131</key>
+				<integer>4099839499</integer>
+				<key>resource_15140559831047095134</key>
+				<integer>4436469719</integer>
+				<key>resource_15148322606792079880</key>
+				<integer>2666790407</integer>
+				<key>resource_15160779199461348772</key>
+				<integer>2765618831</integer>
+				<key>resource_15173643937133810051</key>
+				<integer>2297633789</integer>
+				<key>resource_15175650259618088489</key>
+				<integer>967935235</integer>
+				<key>resource_1517747129725694690</key>
+				<integer>2308647955</integer>
+				<key>resource_15192534645122029300</key>
+				<integer>3671663487</integer>
+				<key>resource_1520387895504129374</key>
+				<integer>4359399271</integer>
+				<key>resource_15207809078110972732</key>
+				<integer>4672690459</integer>
+				<key>resource_15266043753730412879</key>
+				<integer>2685402663</integer>
+				<key>resource_15289421902191778654</key>
+				<integer>1733482831</integer>
+				<key>resource_15294210261115038680</key>
+				<integer>274997635</integer>
+				<key>resource_15297172109100667234</key>
+				<integer>2471447787</integer>
+				<key>resource_15308634941297400968</key>
+				<integer>151789771</integer>
+				<key>resource_15351748114202440346</key>
+				<integer>2018708115</integer>
+				<key>resource_15389465870908476619</key>
+				<integer>2137459507</integer>
+				<key>resource_15400239327639549297</key>
+				<integer>4375914367</integer>
+				<key>resource_15434072978519533373</key>
+				<integer>3178537199</integer>
+				<key>resource_15482953623879034342</key>
+				<integer>2264603599</integer>
+				<key>resource_15493456166687707110</key>
+				<integer>2787638959</integer>
+				<key>resource_15495393422120217216</key>
+				<integer>851801255</integer>
+				<key>resource_15495489287930287638</key>
+				<integer>2087914219</integer>
+				<key>resource_15497853983813575556</key>
+				<integer>873825483</integer>
+				<key>resource_15506029469731855136</key>
+				<integer>3699196847</integer>
+				<key>resource_155141127323285603</key>
+				<integer>744047651</integer>
+				<key>resource_15566959926186581400</key>
+				<integer>3079168095</integer>
+				<key>resource_15568165909802445981</key>
+				<integer>1469720499</integer>
+				<key>resource_15585494612199615729</key>
+				<integer>592491317</integer>
+				<key>resource_15613638072862086948</key>
+				<integer>4044768687</integer>
+				<key>resource_1562238818136380462</key>
+				<integer>2402237599</integer>
+				<key>resource_15639789149961241386</key>
+				<integer>1969154625</integer>
+				<key>resource_15644949172824268072</key>
+				<integer>487613083</integer>
+				<key>resource_15670962660260449735</key>
+				<integer>3491824303</integer>
+				<key>resource_15683937707977098756</key>
+				<integer>3010211827</integer>
+				<key>resource_15697390196393490302</key>
+				<integer>4019860875</integer>
+				<key>resource_15698363270219218036</key>
+				<integer>581481255</integer>
+				<key>resource_15713125619404246495</key>
+				<integer>2369207407</integer>
+				<key>resource_15773974420617929390</key>
+				<integer>1252628063</integer>
+				<key>resource_15788507821046610573</key>
+				<integer>3555525359</integer>
+				<key>resource_15823273920940717682</key>
+				<integer>2639261147</integer>
+				<key>resource_1582977916495278948</key>
+				<integer>5505035</integer>
+				<key>resource_15835621805640912843</key>
+				<integer>498639539</integer>
+				<key>resource_15846290279881336841</key>
+				<integer>1761007991</integer>
+				<key>resource_15846652664860938474</key>
+				<integer>2760113799</integer>
+				<key>resource_159196698685657929</key>
+				<integer>3561030391</integer>
+				<key>resource_15941900270743660934</key>
+				<integer>2551418209</integer>
+				<key>resource_15951259058754176983</key>
+				<integer>2889613119</integer>
+				<key>resource_15959072205842800589</key>
+				<integer>2286623727</integer>
+				<key>resource_15965007614731754427</key>
+				<integer>4514076715</integer>
+				<key>resource_1598218460561024019</key>
+				<integer>3605594903</integer>
+				<key>resource_16015404789058879677</key>
+				<integer>4331870011</integer>
+				<key>resource_1605867299524100522</key>
+				<integer>4683700523</integer>
+				<key>resource_1606972781835602674</key>
+				<integer>3021221891</integer>
+				<key>resource_16150463896750355515</key>
+				<integer>3721216975</integer>
+				<key>resource_16169558252969754826</key>
+				<integer>324805059</integer>
+				<key>resource_16174766882019164930</key>
+				<integer>4072310237</integer>
+				<key>resource_16216039131076651345</key>
+				<integer>454578791</integer>
+				<key>resource_16250249962560864829</key>
+				<integer>3986830683</integer>
+				<key>resource_16254537939040112896</key>
+				<integer>2732326503</integer>
+				<key>resource_16279110670873391191</key>
+				<integer>4612135107</integer>
+				<key>resource_16285952129900759551</key>
+				<integer>2545909077</integer>
+				<key>resource_1633146634221201848</key>
+				<integer>3388535307</integer>
+				<key>resource_16365741193713791851</key>
+				<integer>4088829435</integer>
+				<key>resource_16375157927053254299</key>
+				<integer>3225461039</integer>
+				<key>resource_16377047625500077461</key>
+				<integer>1872157143</integer>
+				<key>resource_16406240371703060687</key>
+				<integer>4776774069</integer>
+				<key>resource_16415075852445594738</key>
+				<integer>4235118271</integer>
+				<key>resource_16422311557259427192</key>
+				<integer>2226064275</integer>
+				<key>resource_16464444955855692486</key>
+				<integer>173809899</integer>
+				<key>resource_16481441409854374789</key>
+				<integer>3726722007</integer>
+				<key>resource_16520104702530150007</key>
+				<integer>498635437</integer>
+				<key>resource_16559070205382136447</key>
+				<integer>1694939407</integer>
+				<key>resource_16568507786363614404</key>
+				<integer>2873098023</integer>
+				<key>resource_16595347326682196332</key>
+				<integer>1639860403</integer>
+				<key>resource_16612175129602839665</key>
+				<integer>2911633247</integer>
+				<key>resource_16634097939861440163</key>
+				<integer>2109934347</integer>
+				<key>resource_16661976727218232693</key>
+				<integer>2942041991</integer>
+				<key>resource_16706086114324301350</key>
+				<integer>840778899</integer>
+				<key>resource_16710564961333412478</key>
+				<integer>3754259459</integer>
+				<key>resource_16715476338125736071</key>
+				<integer>3090182259</integer>
+				<key>resource_16720588438556363063</key>
+				<integer>1919347203</integer>
+				<key>resource_16721187826495233174</key>
+				<integer>3321946567</integer>
+				<key>resource_16730035556760082612</key>
+				<integer>3508339399</integer>
+				<key>resource_16733346993166966169</key>
+				<integer>3288904073</integer>
+				<key>resource_16737395738282685106</key>
+				<integer>1147508199</integer>
+				<key>resource_16749092260873931219</key>
+				<integer>3783881779</integer>
+				<key>resource_16754551181839503299</key>
+				<integer>77074551</integer>
+				<key>resource_16756496705242786618</key>
+				<integer>1458710435</integer>
+				<key>resource_16794684548680513142</key>
+				<integer>1480730563</integer>
+				<key>resource_16795913378942822899</key>
+				<integer>1883167207</integer>
+				<key>resource_16818041757702729783</key>
+				<integer>4025365907</integer>
+				<key>resource_16823149820116991554</key>
+				<integer>3167514843</integer>
+				<key>resource_16831991213943559983</key>
+				<integer>1930357267</integer>
+				<key>resource_16860410042468993565</key>
+				<integer>3269501295</integer>
+				<key>resource_16889026498802380262</key>
+				<integer>3926246647</integer>
+				<key>resource_16898545244990874312</key>
+				<integer>1299560103</integer>
+				<key>resource_16910769478385612789</key>
+				<integer>1546790947</integer>
+				<key>resource_16930739842438225502</key>
+				<integer>4771269039</integer>
+				<key>resource_16975177599411059843</key>
+				<integer>3173019873</integer>
+				<key>resource_16991140240955954638</key>
+				<integer>694481871</integer>
+				<key>resource_17010364486698165832</key>
+				<integer>2900623183</integer>
+				<key>resource_17028642338778083085</key>
+				<integer>2325163051</integer>
+				<key>resource_17049975637568325431</key>
+				<integer>1563310143</integer>
+				<key>resource_17067917190103458952</key>
+				<integer>1345705719</integer>
+				<key>resource_170862873111344165</key>
+				<integer>1453205403</integer>
+				<key>resource_17098101860279682412</key>
+				<integer>2521005367</integer>
+				<key>resource_17100990296657794952</key>
+				<integer>1039766887</integer>
+				<key>resource_17103277814305028343</key>
+				<integer>548446963</integer>
+				<key>resource_1712790837787916468</key>
+				<integer>1552295979</integer>
+				<key>resource_17158050084359059654</key>
+				<integer>846283931</integer>
+				<key>resource_17164024733232996084</key>
+				<integer>4853598743</integer>
+				<key>resource_17185849772846870060</key>
+				<integer>2476952817</integer>
+				<key>resource_17186198377482389424</key>
+				<integer>1327085263</integer>
+				<key>resource_17187461161717206627</key>
+				<integer>3416060467</integer>
+				<key>resource_17194675225696742480</key>
+				<integer>4202083979</integer>
+				<key>resource_17202435424786301657</key>
+				<integer>390865443</integer>
+				<key>resource_17212791512159553176</key>
+				<integer>2471443685</integer>
+				<key>resource_1722284703589460496</key>
+				<integer>3844191355</integer>
+				<key>resource_1724104536075638500</key>
+				<integer>1601321077</integer>
+				<key>resource_17268018583918299150</key>
+				<integer>2878603055</integer>
+				<key>resource_17268106564801490718</key>
+				<integer>1288545937</integer>
+				<key>resource_17273355444521418216</key>
+				<integer>4815325687</integer>
+				<key>resource_17315850810346228727</key>
+				<integer>2999201763</integer>
+				<key>resource_1735006035840434675</key>
+				<integer>4342880075</integer>
+				<key>resource_17373176441039107221</key>
+				<integer>465588855</integer>
+				<key>resource_17396185161061859004</key>
+				<integer>482108051</integer>
+				<key>resource_17398650279042522913</key>
+				<integer>4191065715</integer>
+				<key>resource_17404204279942408430</key>
+				<integer>611902289</integer>
+				<key>resource_17454807282106016567</key>
+				<integer>44044359</integer>
+				<key>resource_17491435917053689539</key>
+				<integer>1980172891</integer>
+				<key>resource_17572768902334139712</key>
+				<integer>2120944411</integer>
+				<key>resource_17573076804942087259</key>
+				<integer>2231569307</integer>
+				<key>resource_17578756941794399833</key>
+				<integer>3633128263</integer>
+				<key>resource_17621369857440444036</key>
+				<integer>1623345307</integer>
+				<key>resource_17627248137007831522</key>
+				<integer>2826174183</integer>
+				<key>resource_1764858359648390617</key>
+				<integer>1356715781</integer>
+				<key>resource_17709559366348367839</key>
+				<integer>2504490271</integer>
+				<key>resource_17710809301935952574</key>
+				<integer>3219956007</integer>
+				<key>resource_17757107674660467736</key>
+				<integer>2749103735</integer>
+				<key>resource_17761266642430996005</key>
+				<integer>1316075199</integer>
+				<key>resource_17765778300887301629</key>
+				<integer>3693691815</integer>
+				<key>resource_1777292962977635002</key>
+				<integer>1617840275</integer>
+				<key>resource_17810419465346604130</key>
+				<integer>2862087959</integer>
+				<key>resource_17812739415920940033</key>
+				<integer>234365251</integer>
+				<key>resource_17850483657097403344</key>
+				<integer>4661680395</integer>
+				<key>resource_17865926585762232504</key>
+				<integer>1581922399</integer>
+				<key>resource_17868379325707873134</key>
+				<integer>1009358143</integer>
+				<key>resource_17895793876897937516</key>
+				<integer>1985677923</integer>
+				<key>resource_17903815588956920562</key>
+				<integer>4798810591</integer>
+				<key>resource_17954782856958607786</key>
+				<integer>4213094043</integer>
+				<key>resource_17961405089555626364</key>
+				<integer>4650670331</integer>
+				<key>resource_17986171519110218898</key>
+				<integer>1203082775</integer>
+				<key>resource_17995483034113923505</key>
+				<integer>3732227037</integer>
+				<key>resource_18009175803258633997</key>
+				<integer>3475309207</integer>
+				<key>resource_18047671951315912714</key>
+				<integer>2798649023</integer>
+				<key>resource_18100285640220708177</key>
+				<integer>1541285915</integer>
+				<key>resource_18145669590067933604</key>
+				<integer>606397259</integer>
+				<key>resource_18171603205634715846</key>
+				<integer>190324995</integer>
+				<key>resource_18179120346499607555</key>
+				<integer>195830027</integer>
+				<key>resource_18186079821937437202</key>
+				<integer>2104429315</integer>
+				<key>resource_18191322681766124019</key>
+				<integer>4331865909</integer>
+				<key>resource_18262316112641432985</key>
+				<integer>2303142923</integer>
+				<key>resource_18263076021362035219</key>
+				<integer>385360411</integer>
+				<key>resource_18283681151087895805</key>
+				<integer>4851501583</integer>
+				<key>resource_18302719454846937077</key>
+				<integer>110108843</integer>
+				<key>resource_18345821320245586004</key>
+				<integer>4538980425</integer>
+				<key>resource_18361781779683797629</key>
+				<integer>3048755251</integer>
+				<key>resource_18364717875397862107</key>
+				<integer>2953052055</integer>
+				<key>resource_18376555827374016759</key>
+				<integer>1557801011</integer>
+				<key>resource_18415614008259817903</key>
+				<integer>3405050403</integer>
+				<key>resource_18418941708344282069</key>
+				<integer>3059765315</integer>
+				<key>resource_18421189620542854958</key>
+				<integer>3095687291</integer>
+				<key>resource_18427847041232369507</key>
+				<integer>2476965111</integer>
+				<key>resource_1867171148381558967</key>
+				<integer>4185560683</integer>
+				<key>resource_1870724273315671371</key>
+				<integer>3258491231</integer>
+				<key>resource_1900649733360279484</key>
+				<integer>2534899015</integer>
+				<key>resource_190527219607896323</key>
+				<integer>363340283</integer>
+				<key>resource_1940936465240657182</key>
+				<integer>2936536959</integer>
+				<key>resource_1943898859259471165</key>
+				<integer>1086952847</integer>
+				<key>resource_1944743360160584404</key>
+				<integer>2391227535</integer>
+				<key>resource_1968063182062735116</key>
+				<integer>2407742631</integer>
+				<key>resource_1971230659224247533</key>
+				<integer>788087907</integer>
+				<key>resource_201007576433577558</key>
+				<integer>2153974603</integer>
+				<key>resource_2014664404618368139</key>
+				<integer>3885610163</integer>
+				<key>resource_2015930535442285237</key>
+				<integer>2164984667</integer>
+				<key>resource_2024058181900138581</key>
+				<integer>1338099427</integer>
+				<key>resource_2034020675715040613</key>
+				<integer>11010067</integer>
+				<key>resource_2051047662410880846</key>
+				<integer>2242579369</integer>
+				<key>resource_2054964040966345063</key>
+				<integer>3440177753</integer>
+				<key>resource_2086989962577214782</key>
+				<integer>2465938655</integer>
+				<key>resource_2146271191752470523</key>
+				<integer>4601125043</integer>
+				<key>resource_2160323617935322610</key>
+				<integer>157294803</integer>
+				<key>resource_2163311579879251608</key>
+				<integer>1258137195</integer>
+				<key>resource_217873545993700608</key>
+				<integer>2804154055</integer>
+				<key>resource_2184283283587711018</key>
+				<integer>4840491519</integer>
+				<key>resource_2193844353127630676</key>
+				<integer>3953788199</integer>
+				<key>resource_2214487854583773662</key>
+				<integer>1142003167</integer>
+				<key>resource_2215170877771705243</key>
+				<integer>2148469571</integer>
+				<key>resource_2217546145891640508</key>
+				<integer>2633756115</integer>
+				<key>resource_2244182016133616748</key>
+				<integer>2115439379</integer>
+				<key>resource_2257478634417504806</key>
+				<integer>4667185427</integer>
+				<key>resource_2273183707594847454</key>
+				<integer>1406281563</integer>
+				<key>resource_227328991731687698</key>
+				<integer>1338095325</integer>
+				<key>resource_2282432457729528510</key>
+				<integer>4741646719</integer>
+				<key>resource_2306504807465719004</key>
+				<integer>2628234689</integer>
+				<key>resource_2319549830321308472</key>
+				<integer>4461635551</integer>
+				<key>resource_2364880266368864570</key>
+				<integer>267395443</integer>
+				<key>resource_2365200843938366572</key>
+				<integer>1283040907</integer>
+				<key>resource_2387440446329956264</key>
+				<integer>3310936503</integer>
+				<key>resource_2407106373832630848</key>
+				<integer>3445686887</integer>
+				<key>resource_2413766221598311536</key>
+				<integer>3959293231</integer>
+				<key>resource_2434080940146407616</key>
+				<integer>4386924431</integer>
+				<key>resource_2464856782971411579</key>
+				<integer>3394040339</integer>
+				<key>resource_2483609068554603691</key>
+				<integer>2482470143</integer>
+				<key>resource_2500806974682124695</key>
+				<integer>542941931</integer>
+				<key>resource_2530159171365301613</key>
+				<integer>655946647</integer>
+				<key>resource_2557362911803345601</key>
+				<integer>2958569379</integer>
+				<key>resource_2599563526296846602</key>
+				<integer>2049116859</integer>
+				<key>resource_2610644736637762136</key>
+				<integer>2587602307</integer>
+				<key>resource_2623859168555913049</key>
+				<integer>3369132527</integer>
+				<key>resource_265943316308273777</key>
+				<integer>4478150647</integer>
+				<key>resource_2667968996549569118</key>
+				<integer>3214450975</integer>
+				<key>resource_277487146538691087</key>
+				<integer>3992335715</integer>
+				<key>resource_2799881235232816339</key>
+				<integer>1941367331</integer>
+				<key>resource_2811560611191564458</key>
+				<integer>3975820619</integer>
+				<key>resource_2812708963814897708</key>
+				<integer>1356728075</integer>
+				<key>resource_2816282462675038872</key>
+				<integer>1634355371</integer>
+				<key>resource_2831701048733823873</key>
+				<integer>537436899</integer>
+				<key>resource_2916992410504759548</key>
+				<integer>3305431471</integer>
+				<key>resource_2933136934358806622</key>
+				<integer>1034261855</integer>
+				<key>resource_3024941697943953855</key>
+				<integer>1595816047</integer>
+				<key>resource_3056067087937180034</key>
+				<integer>3263996263</integer>
+				<key>resource_306714464817275855</key>
+				<integer>423907927</integer>
+				<key>resource_3092750753035383129</key>
+				<integer>2173373283</integer>
+				<key>resource_3105864327533907037</key>
+				<integer>4149384787</integer>
+				<key>resource_3118720898962709317</key>
+				<integer>1214092839</integer>
+				<key>resource_312184892402186916</key>
+				<integer>4105344531</integer>
+				<key>resource_3131627871433141926</key>
+				<integer>3434672723</integer>
+				<key>resource_3152909454886072432</key>
+				<integer>1025873239</integer>
+				<key>resource_3158612960359314765</key>
+				<integer>3363627495</integer>
+				<key>resource_3171975831216652959</key>
+				<integer>140779707</integer>
+				<key>resource_3210734657246038778</key>
+				<integer>3710206911</integer>
+				<key>resource_3240048330886801136</key>
+				<integer>771572811</integer>
+				<key>resource_3251315445475655549</key>
+				<integer>4697594171</integer>
+				<key>resource_3254534412380792695</key>
+				<integer>104599709</integer>
+				<key>resource_325933575900981324</key>
+				<integer>3004706795</integer>
+				<key>resource_3274983208929826823</key>
+				<integer>4634155235</integer>
+				<key>resource_3283869518420421515</key>
+				<integer>1050776951</integer>
+				<key>resource_3286063390271849576</key>
+				<integer>3327451599</integer>
+				<key>resource_3291280514921589765</key>
+				<integer>4782295495</integer>
+				<key>resource_3309752720718503986</key>
+				<integer>184819963</integer>
+				<key>resource_3312411147238305642</key>
+				<integer>2270108631</integer>
+				<key>resource_3321251924182602375</key>
+				<integer>2209549179</integer>
+				<key>resource_3323528455582639969</key>
+				<integer>804603003</integer>
+				<key>resource_3336225833814259398</key>
+				<integer>3530359527</integer>
+				<key>resource_335254143617503021</key>
+				<integer>1628850339</integer>
+				<key>resource_3367860572597835348</key>
+				<integer>3427070531</integer>
+				<key>resource_3398667985615091061</key>
+				<integer>3887707323</integer>
+				<key>resource_343774147331654722</key>
+				<integer>4218599075</integer>
+				<key>resource_3439365913505936174</key>
+				<integer>1689422081</integer>
+				<key>resource_3462140391139642468</key>
+				<integer>3</integer>
+				<key>resource_3467413768005277828</key>
+				<integer>575976223</integer>
+				<key>resource_3478491300971302061</key>
+				<integer>2793143991</integer>
+				<key>resource_3496334707015279144</key>
+				<integer>2040728243</integer>
+				<key>resource_3507807327839231399</key>
+				<integer>2661285375</integer>
+				<key>resource_3525567521727857253</key>
+				<integer>835273867</integer>
+				<key>resource_3531051083565352380</key>
+				<integer>782582875</integer>
+				<key>resource_3572572840908183036</key>
+				<integer>2526510399</integer>
+				<key>resource_3578832478263598939</key>
+				<integer>1497245659</integer>
+				<key>resource_3585773816137530389</key>
+				<integer>3048751149</integer>
+				<key>resource_3623833070272403504</key>
+				<integer>2024213147</integer>
+				<key>resource_3634911318067052395</key>
+				<integer>4430964687</integer>
+				<key>resource_3668431229150752954</key>
+				<integer>2628251083</integer>
+				<key>resource_367023364240049373</key>
+				<integer>2947547023</integer>
+				<key>resource_3683368521012224248</key>
+				<integer>564962059</integer>
+				<key>resource_3695091444471770157</key>
+				<integer>104603811</integer>
+				<key>resource_3700469913281012023</key>
+				<integer>1535780883</integer>
+				<key>resource_3716537846635096421</key>
+				<integer>1208587807</integer>
+				<key>resource_3716874795421948720</key>
+				<integer>1378752303</integer>
+				<key>resource_3721204907473021506</key>
+				<integer>49549391</integer>
+				<key>resource_3724124097314185230</key>
+				<integer>2275613663</integer>
+				<key>resource_3731705478630863189</key>
+				<integer>1689434375</integer>
+				<key>resource_3754501243930244392</key>
+				<integer>3184042231</integer>
+				<key>resource_3802120040154181003</key>
+				<integer>1197577743</integer>
+				<key>resource_3824214458336955027</key>
+				<integer>3655148391</integer>
+				<key>resource_3850100284992305468</key>
+				<integer>1991182955</integer>
+				<key>resource_3860072347616104048</key>
+				<integer>3737744363</integer>
+				<key>resource_3881162225971747799</key>
+				<integer>2498985239</integer>
+				<key>resource_388825479709028678</key>
+				<integer>2851077895</integer>
+				<key>resource_3889561231132732711</key>
+				<integer>1236112967</integer>
+				<key>resource_3893615823858742594</key>
+				<integer>4273657595</integer>
+				<key>resource_3894310352929713676</key>
+				<integer>1258133093</integer>
+				<key>resource_3923024943780986263</key>
+				<integer>1400776531</integer>
+				<key>resource_3927106038423346875</key>
+				<integer>1827854751</integer>
+				<key>resource_3967772181673342301</key>
+				<integer>2845572863</integer>
+				<key>resource_3968110485581622024</key>
+				<integer>633926519</integer>
+				<key>resource_3971345174948630827</key>
+				<integer>1919343101</integer>
+				<key>resource_3975120462118978798</key>
+				<integer>1711458603</integer>
+				<key>resource_4001581506320633563</key>
+				<integer>2493480207</integer>
+				<key>resource_400183961245528938</key>
+				<integer>4030870939</integer>
+				<key>resource_4019101946659533657</key>
+				<integer>1974663757</integer>
+				<key>resource_4062034454864996775</key>
+				<integer>1442195339</integer>
+				<key>resource_406913608926565531</key>
+				<integer>2363698273</integer>
+				<key>resource_4072623744342286610</key>
+				<integer>4617640139</integer>
+				<key>resource_4081146141389872088</key>
+				<integer>1877662175</integer>
+				<key>resource_4109215812081284279</key>
+				<integer>3230966071</integer>
+				<key>resource_4111124189025214805</key>
+				<integer>1108972975</integer>
+				<key>resource_4116014160017690331</key>
+				<integer>3156504779</integer>
+				<key>resource_4155895835496786202</key>
+				<integer>3808015459</integer>
+				<key>resource_4158400380293016615</key>
+				<integer>3898717387</integer>
+				<key>resource_4169728891157171007</key>
+				<integer>1946872363</integer>
+				<key>resource_4198285041123842944</key>
+				<integer>1395271499</integer>
+				<key>resource_4254514258606699569</key>
+				<integer>1332590295</integer>
+				<key>resource_4256628065606722617</key>
+				<integer>4561012845</integer>
+				<key>resource_4274563061826443345</key>
+				<integer>3252986199</integer>
+				<key>resource_4285860027731286842</key>
+				<integer>3931755779</integer>
+				<key>resource_4289337314166018373</key>
+				<integer>992838945</integer>
+				<key>resource_4355365775669089354</key>
+				<integer>2776628895</integer>
+				<key>resource_439251353311592015</key>
+				<integer>3765269523</integer>
+				<key>resource_4406834500069176444</key>
+				<integer>1612335243</integer>
+				<key>resource_4416705942901619142</key>
+				<integer>4061300175</integer>
+				<key>resource_4444284895179829685</key>
+				<integer>3073658963</integer>
+				<key>resource_4486284744785850806</key>
+				<integer>4251633367</integer>
+				<key>resource_4488027797557338016</key>
+				<integer>4736141687</integer>
+				<key>resource_4499270487979288720</key>
+				<integer>3849696387</integer>
+				<key>resource_4503969840825451143</key>
+				<integer>978945299</integer>
+				<key>resource_4538170648286197044</key>
+				<integer>2418752695</integer>
+				<key>resource_4562281110112255174</key>
+				<integer>3874600099</integer>
+				<key>resource_4566487412938828512</key>
+				<integer>3109580939</integer>
+				<key>resource_4590075200126578161</key>
+				<integer>3893212355</integer>
+				<key>resource_460419122198770086</key>
+				<integer>906593507</integer>
+				<key>resource_4653696070982773646</key>
+				<integer>3772871715</integer>
+				<key>resource_4674718554650363372</key>
+				<integer>1530275851</integer>
+				<key>resource_4685354737470706576</key>
+				<integer>3399545371</integer>
+				<key>resource_468629889314642634</key>
+				<integer>4174550619</integer>
+				<key>resource_4718410799158556900</key>
+				<integer>2600709531</integer>
+				<key>resource_4743931759227465802</key>
+				<integer>4110849563</integer>
+				<key>resource_4812947966395619144</key>
+				<integer>319300027</integer>
+				<key>resource_4816363614949047922</key>
+				<integer>206840091</integer>
+				<key>resource_489570720278363469</key>
+				<integer>2126449443</integer>
+				<key>resource_4899601843067023646</key>
+				<integer>412885571</integer>
+				<key>resource_4900146589243768276</key>
+				<integer>374350347</integer>
+				<key>resource_4922153317857246586</key>
+				<integer>1230607935</integer>
+				<key>resource_4953554257665075811</key>
+				<integer>4550002783</integer>
+				<key>resource_5020630257673061539</key>
+				<integer>1866652111</integer>
+				<key>resource_5040606915882735946</key>
+				<integer>2385722503</integer>
+				<key>resource_5049427345860440585</key>
+				<integer>4273653493</integer>
+				<key>resource_5056136814533086083</key>
+				<integer>1722472767</integer>
+				<key>resource_5058287705554931722</key>
+				<integer>4381419399</integer>
+				<key>resource_509262272150681067</key>
+				<integer>4574124171</integer>
+				<key>resource_5109593433928636043</key>
+				<integer>2424257727</integer>
+				<key>resource_5110372796928374256</key>
+				<integer>4050273719</integer>
+				<key>resource_5117285996677440102</key>
+				<integer>4538992719</integer>
+				<key>resource_5124382254056766614</key>
+				<integer>3688182683</integer>
+				<key>resource_5165415214284388724</key>
+				<integer>998348079</integer>
+				<key>resource_5184834355865744</key>
+				<integer>2809659087</integer>
+				<key>resource_5215457011924253266</key>
+				<integer>71569519</integer>
+				<key>resource_5216430890422894466</key>
+				<integer>1645377727</integer>
+				<key>resource_5223237589893523113</key>
+				<integer>1924852235</integer>
+				<key>resource_5226004294047959959</key>
+				<integer>4587231395</integer>
+				<key>resource_5235330323324618638</key>
+				<integer>2029718179</integer>
+				<key>resource_5245558279175455521</key>
+				<integer>3970315587</integer>
+				<key>resource_5247289833768604359</key>
+				<integer>1888672239</integer>
+				<key>resource_5262952099436883175</key>
+				<integer>2347183179</integer>
+				<key>resource_527036068276053367</key>
+				<integer>352330219</integer>
+				<key>resource_5282310077973193854</key>
+				<integer>261890411</integer>
+				<key>resource_5291229732153203735</key>
+				<integer>60559455</integer>
+				<key>resource_5298623847611154107</key>
+				<integer>4094334467</integer>
+				<key>resource_5318892082205583966</key>
+				<integer>644936583</integer>
+				<key>resource_5357388167478562329</key>
+				<integer>4331853617</integer>
+				<key>resource_5381080268937298089</key>
+				<integer>2622729659</integer>
+				<key>resource_5442164955925225012</key>
+				<integer>2142964539</integer>
+				<key>resource_547409109837482875</key>
+				<integer>2556927343</integer>
+				<key>resource_5559617887845131468</key>
+				<integer>341320155</integer>
+				<key>resource_5576095501013748265</key>
+				<integer>3778376747</integer>
+				<key>resource_557771466818617461</key>
+				<integer>2771123863</integer>
+				<key>resource_5638748543871053799</key>
+				<integer>2650275311</integer>
+				<key>resource_5651021473849941638</key>
+				<integer>297017763</integer>
+				<key>resource_5655460760381362688</key>
+				<integer>2895118151</integer>
+				<key>resource_5669448063016447055</key>
+				<integer>460083823</integer>
+				<key>resource_5698260454961553629</key>
+				<integer>2515500335</integer>
+				<key>resource_5749953457022562807</key>
+				<integer>3247481167</integer>
+				<key>resource_5768999319140647903</key>
+				<integer>4240623303</integer>
+				<key>resource_5773127588778508221</key>
+				<integer>586986287</integer>
+				<key>resource_5825231053614614671</key>
+				<integer>3497329335</integer>
+				<key>resource_582825841988223457</key>
+				<integer>1475225531</integer>
+				<key>resource_584373218586266666</key>
+				<integer>4397934495</integer>
+				<key>resource_585761134314152309</key>
+				<integer>2628246981</integer>
+				<key>resource_5869525825166022432</key>
+				<integer>1411786595</integer>
+				<key>resource_5873313382005014929</key>
+				<integer>868320451</integer>
+				<key>resource_5962427481865728367</key>
+				<integer>2690907695</integer>
+				<key>resource_596336728397610339</key>
+				<integer>1263642227</integer>
+				<key>resource_5981034546981320762</key>
+				<integer>4295677723</integer>
+				<key>resource_6019984256921503362</key>
+				<integer>4036375969</integer>
+				<key>resource_6048845236379304893</key>
+				<integer>3467707015</integer>
+				<key>resource_6052877136441509372</key>
+				<integer>2242583471</integer>
+				<key>resource_6057954889626767007</key>
+				<integer>738542619</integer>
+				<key>resource_6078380354992961391</key>
+				<integer>418390603</integer>
+				<key>resource_6078799180704189307</key>
+				<integer>937264371</integer>
+				<key>resource_611331818710428192</key>
+				<integer>1294055071</integer>
+				<key>resource_6119138530511526799</key>
+				<integer>4708604235</integer>
+				<key>resource_6129352276777468738</key>
+				<integer>755057715</integer>
+				<key>resource_6143773036365367616</key>
+				<integer>766067779</integer>
+				<key>resource_6168049007270117557</key>
+				<integer>650441615</integer>
+				<key>resource_6176904361085721507</key>
+				<integer>3715711943</integer>
+				<key>resource_618003742288605090</key>
+				<integer>3162009811</integer>
+				<key>resource_6181468836075601938</key>
+				<integer>4592736427</integer>
+				<key>resource_6187358047169442562</key>
+				<integer>3338461663</integer>
+				<key>resource_621773944676770568</key>
+				<integer>1321580231</integer>
+				<key>resource_6219294345521274368</key>
+				<integer>683471807</integer>
+				<key>resource_6223156571442811532</key>
+				<integer>4246128335</integer>
+				<key>resource_6235873885561014777</key>
+				<integer>2782133927</integer>
+				<key>resource_6271492935916233714</key>
+				<integer>4414449591</integer>
+				<key>resource_6276388875641455672</key>
+				<integer>4008850811</integer>
+				<key>resource_6280998590601410240</key>
+				<integer>3026726923</integer>
+				<key>resource_6285857688769018067</key>
+				<integer>2726821471</integer>
+				<key>resource_6287490783975357143</key>
+				<integer>1656387791</integer>
+				<key>resource_6287933537533729187</key>
+				<integer>2281118695</integer>
+				<key>resource_6309594865006976877</key>
+				<integer>2131954475</integer>
+				<key>resource_6330690687933356733</key>
+				<integer>992843047</integer>
+				<key>resource_6428568415893689262</key>
+				<integer>2297637891</integer>
+				<key>resource_646138367067211724</key>
+				<integer>3032231955</integer>
+				<key>resource_6463355213194826531</key>
+				<integer>4364904303</integer>
+				<key>resource_6478155803058854571</key>
+				<integer>526426835</integer>
+				<key>resource_6504623355770673130</key>
+				<integer>1345701617</integer>
+				<key>resource_6518946397229582044</key>
+				<integer>2063010507</integer>
+				<key>resource_66332935128866011</key>
+				<integer>3043246119</integer>
+				<key>resource_6667622435773654481</key>
+				<integer>4180055651</integer>
+				<key>resource_6718592354647921845</key>
+				<integer>3524854495</integer>
+				<key>resource_6730958613413585496</key>
+				<integer>4055778749</integer>
+				<key>resource_6744961828308826915</key>
+				<integer>2982686667</integer>
+				<key>resource_675699931202008474</key>
+				<integer>3904222417</integer>
+				<key>resource_6772425092209468901</key>
+				<integer>3627623231</integer>
+				<key>resource_6776673995061798101</key>
+				<integer>3195052295</integer>
+				<key>resource_6796797141245227059</key>
+				<integer>3767366683</integer>
+				<key>resource_680779654271311104</key>
+				<integer>1667397855</integer>
+				<key>resource_6850998378493148265</key>
+				<integer>3037736985</integer>
+				<key>resource_6933559433953613084</key>
+				<integer>4628650203</integer>
+				<key>resource_6935078057041983376</key>
+				<integer>2589699467</integer>
+				<key>resource_6942300460631974070</key>
+				<integer>4864608807</integer>
+				<key>resource_694272979470209866</key>
+				<integer>598008643</integer>
+				<key>resource_695866322746184640</key>
+				<integer>1727977799</integer>
+				<key>resource_6972090875290816125</key>
+				<integer>401875507</integer>
+				<key>resource_6990102225557608323</key>
+				<integer>2093419251</integer>
+				<key>resource_6992542388485066071</key>
+				<integer>4533475395</integer>
+				<key>resource_699981254690108511</key>
+				<integer>1417291627</integer>
+				<key>resource_7036712691744127894</key>
+				<integer>3785978937</integer>
+				<key>resource_7060533737778477714</key>
+				<integer>33030195</integer>
+				<key>resource_7063839425421038524</key>
+				<integer>3189547263</integer>
+				<key>resource_7068749726253701187</key>
+				<integer>3682673551</integer>
+				<key>resource_7069355219337341905</key>
+				<integer>3622114099</integer>
+				<key>resource_7086080353004153618</key>
+				<integer>4483655679</integer>
+				<key>resource_7086947906114718767</key>
+				<integer>4083324403</integer>
+				<key>resource_7113392010766900521</key>
+				<integer>4719614299</integer>
+				<key>resource_715788476032486238</key>
+				<integer>4656175363</integer>
+				<key>resource_7169885507297968990</key>
+				<integer>4392429463</integer>
+				<key>resource_7172456462655088099</key>
+				<integer>672461743</integer>
+				<key>resource_7205658481203506292</key>
+				<integer>2672295439</integer>
+				<key>resource_7205685499106188671</key>
+				<integer>2487975175</integer>
+				<key>resource_7221490283169202550</key>
+				<integer>291512731</integer>
+				<key>resource_7248215857260882058</key>
+				<integer>1650882759</integer>
+				<key>resource_7249736982715079376</key>
+				<integer>760562747</integer>
+				<key>resource_7251081121767614034</key>
+				<integer>3462201983</integer>
+				<key>resource_7252000858979840229</key>
+				<integer>3473212047</integer>
+				<key>resource_7258021047699162647</key>
+				<integer>3688178581</integer>
+				<key>resource_7263349941597256728</key>
+				<integer>476603019</integer>
+				<key>resource_7284881615509162367</key>
+				<integer>2856582927</integer>
+				<key>resource_7304926794056965770</key>
+				<integer>661451679</integer>
+				<key>resource_732073417509712739</key>
+				<integer>3513844431</integer>
+				<key>resource_7324029330235503211</key>
+				<integer>1464215467</integer>
+				<key>resource_7352089974279861354</key>
+				<integer>1601325179</integer>
+				<key>resource_7368484464039993380</key>
+				<integer>2655780343</integer>
+				<key>resource_736958019856954538</key>
+				<integer>3948283167</integer>
+				<key>resource_7371945450566416721</key>
+				<integer>239870283</integer>
+				<key>resource_7375402291601459918</key>
+				<integer>4337375043</integer>
+				<key>resource_7394661607052500732</key>
+				<integer>217850155</integer>
+				<key>resource_7416508518321438146</key>
+				<integer>2013203083</integer>
+				<key>resource_7429285321735537528</key>
+				<integer>493118113</integer>
+				<key>resource_7481908242895122161</key>
+				<integer>777077843</integer>
+				<key>resource_7515995912047427273</key>
+				<integer>901088475</integer>
+				<key>resource_7532177747656034651</key>
+				<integer>1705953571</integer>
+				<key>resource_7539263221619536907</key>
+				<integer>2867592991</integer>
+				<key>resource_7580132220058274519</key>
+				<integer>1861147079</integer>
+				<key>resource_7609498717881518810</key>
+				<integer>201335059</integer>
+				<key>resource_7613500303419036193</key>
+				<integer>1081447815</integer>
+				<key>resource_7621407533973361990</key>
+				<integer>1563306041</integer>
+				<key>resource_7629488852807176868</key>
+				<integer>1020368207</integer>
+				<key>resource_7686211786732572453</key>
+				<integer>4121859627</integer>
+				<key>resource_7710560575943124451</key>
+				<integer>3808003165</integer>
+				<key>resource_773727477996765058</key>
+				<integer>722023423</integer>
+				<key>resource_7773375083781606112</key>
+				<integer>3377525243</integer>
+				<key>resource_7785664849462714445</key>
+				<integer>22020131</integer>
+				<key>resource_7797893112744685525</key>
+				<integer>493130407</integer>
+				<key>resource_7816454571684032795</key>
+				<integer>3137106099</integer>
+				<key>resource_7823758377175106063</key>
+				<integer>3200557327</integer>
+				<key>resource_7824360528880403330</key>
+				<integer>716518391</integer>
+				<key>resource_7828725502935588829</key>
+				<integer>3090178157</integer>
+				<key>resource_783944935286833688</key>
+				<integer>256385379</integer>
+				<key>resource_7841417392570946626</key>
+				<integer>1045271919</integer>
+				<key>resource_7852449713148011890</key>
+				<integer>1969158727</integer>
+				<key>resource_7856428526670414040</key>
+				<integer>2098924283</integer>
+				<key>resource_7914533906410980401</key>
+				<integer>4353894239</integer>
+				<key>resource_7931570880606609928</key>
+				<integer>3638633295</integer>
+				<key>resource_7955892744751003153</key>
+				<integer>2330668083</integer>
+				<key>resource_7963667104952022213</key>
+				<integer>2710306375</integer>
+				<key>resource_7980849843533563644</key>
+				<integer>4014355843</integer>
+				<key>resource_7985505394231799809</key>
+				<integer>2220559243</integer>
+				<key>resource_8001316904189672033</key>
+				<integer>710996965</integer>
+				<key>resource_8024760669008333157</key>
+				<integer>2551422311</integer>
+				<key>resource_8055334995124223199</key>
+				<integer>699986903</integer>
+				<key>resource_8070491938334887217</key>
+				<integer>3660653423</integer>
+				<key>resource_8076862226385344803</key>
+				<integer>1373247271</integer>
+				<key>resource_808326611214273278</key>
+				<integer>507028155</integer>
+				<key>resource_8100321082930930645</key>
+				<integer>2435267791</integer>
+				<key>resource_8115699470266803722</key>
+				<integer>44040257</integer>
+				<key>resource_8132602914392564348</key>
+				<integer>4066805207</integer>
+				<key>resource_8141554764100024962</key>
+				<integer>1960766011</integer>
+				<key>resource_8142090191566887896</key>
+				<integer>2545913179</integer>
+				<key>resource_8146442049561808013</key>
+				<integer>4472645615</integer>
+				<key>resource_8178340290197938315</key>
+				<integer>1738987863</integer>
+				<key>resource_8185834396227291656</key>
+				<integer>705491935</integer>
+				<key>resource_8204249760999894682</key>
+				<integer>2358193243</integer>
+				<key>resource_8237870614343544072</key>
+				<integer>1749997927</integer>
+				<key>resource_8243565449045455620</key>
+				<integer>2002193019</integer>
+				<key>resource_8247382645813109763</key>
+				<integer>1225102903</integer>
+				<key>resource_8256916920456971001</key>
+				<integer>4229613239</integer>
+				<key>resource_8276320845523925878</key>
+				<integer>4262643431</integer>
+				<key>resource_828249599190013881</key>
+				<integer>1513760755</integer>
+				<key>resource_8309147941026465222</key>
+				<integer>3502834367</integer>
+				<key>resource_8374388047458456817</key>
+				<integer>1130993103</integer>
+				<key>resource_8384272785622366233</key>
+				<integer>2413247663</integer>
+				<key>resource_8394375408022655622</key>
+				<integer>4623145171</integer>
+				<key>resource_8418043581276159270</key>
+				<integer>3915236583</integer>
+				<key>resource_842128786224630241</key>
+				<integer>3241976135</integer>
+				<key>resource_8428307236868474971</key>
+				<integer>1672902887</integer>
+				<key>resource_8466728078139813725</key>
+				<integer>4403439527</integer>
+				<key>resource_852072582449828627</key>
+				<integer>2035223211</integer>
+				<key>resource_8524461687326149445</key>
+				<integer>1841748399</integer>
+				<key>resource_8528604758445233225</key>
+				<integer>2975084475</integer>
+				<key>resource_8563187656369179770</key>
+				<integer>862811319</integer>
+				<key>resource_856331266942151636</key>
+				<integer>2699296311</integer>
+				<key>resource_8576358211365873936</key>
+				<integer>1683917051</integer>
+				<key>resource_8583539707264034220</key>
+				<integer>1502750691</integer>
+				<key>resource_8596971354366588818</key>
+				<integer>4055791043</integer>
+				<key>resource_8630708567390162615</key>
+				<integer>3704701879</integer>
+				<key>resource_863732689980077918</key>
+				<integer>1894177271</integer>
+				<key>resource_8651798611621279700</key>
+				<integer>2352688211</integer>
+				<key>resource_865531929661925258</key>
+				<integer>3677168519</integer>
+				<key>resource_8706207708005205355</key>
+				<integer>1847253431</integer>
+				<key>resource_8719278433010211193</key>
+				<integer>3277889909</integer>
+				<key>resource_871978133641410110</key>
+				<integer>1241617999</integer>
+				<key>resource_8721486007328842574</key>
+				<integer>99094679</integer>
+				<key>resource_8726140311089216196</key>
+				<integer>280502667</integer>
+				<key>resource_8750686450402308165</key>
+				<integer>168304867</integer>
+				<key>resource_8755616131484692850</key>
+				<integer>368845315</integer>
+				<key>resource_8790940752797162018</key>
+				<integer>3037741087</integer>
+				<key>resource_8801387951099003700</key>
+				<integer>4776790463</integer>
+				<key>resource_8808458112734949529</key>
+				<integer>2820669151</integer>
+				<key>resource_8815549795772791504</key>
+				<integer>2076904155</integer>
+				<key>resource_8835570441363508829</key>
+				<integer>3796993103</integer>
+				<key>resource_8849121966675751960</key>
+				<integer>4138374723</integer>
+				<key>resource_8857843958983534671</key>
+				<integer>3909731551</integer>
+				<key>resource_8886024951963688694</key>
+				<integer>1183684095</integer>
+				<key>resource_8905431934203465655</key>
+				<integer>2582093175</integer>
+				<key>resource_8925991982131441632</key>
+				<integer>3236471103</integer>
+				<key>resource_8929423087038587994</key>
+				<integer>4859103775</integer>
+				<key>resource_893494089928688812</key>
+				<integer>3942765841</integer>
+				<key>resource_8941208203170117792</key>
+				<integer>179314931</integer>
+				<key>resource_8984309963976926585</key>
+				<integer>93589647</integer>
+				<key>resource_9026026002615261678</key>
+				<integer>2396732567</integer>
+				<key>resource_9028335023332611001</key>
+				<integer>2740715119</integer>
+				<key>resource_9053208737657555441</key>
+				<integer>4581726363</integer>
+				<key>resource_9070448411501700618</key>
+				<integer>330310091</integer>
+				<key>resource_9106230675766689291</key>
+				<integer>2617224627</integer>
+				<key>resource_9132861052228140670</key>
+				<integer>677966775</integer>
+				<key>resource_9155705776428503539</key>
+				<integer>3981325651</integer>
+				<key>resource_91733737067322194</key>
+				<integer>1433806723</integer>
+				<key>resource_9264112874790067350</key>
+				<integer>3410555435</integer>
+				<key>resource_9290813534572367624</key>
+				<integer>2082409187</integer>
+				<key>resource_9298969323666338069</key>
+				<integer>3120591003</integer>
+				<key>resource_9418316603352516655</key>
+				<integer>3791488071</integer>
+				<key>resource_9448520830706115407</key>
+				<integer>471093887</integer>
+				<key>resource_9466629650895447236</key>
+				<integer>2925526895</integer>
+				<key>resource_9468661044137952496</key>
+				<integer>3440181855</integer>
+				<key>resource_9470941877154200021</key>
+				<integer>476598917</integer>
+				<key>resource_9476587763797535425</key>
+				<integer>1836243367</integer>
+				<key>resource_9496615581313229958</key>
+				<integer>1996687987</integer>
+				<key>resource_9517203265456286773</key>
+				<integer>423895633</integer>
+				<key>resource_9557845164411698689</key>
+				<integer>4306687787</integer>
+				<key>resource_9570453353243634681</key>
+				<integer>4714109267</integer>
+				<key>resource_9581921024502660230</key>
+				<integer>1125488071</integer>
+				<key>resource_9583195514056279878</key>
+				<integer>1447700371</integer>
+				<key>resource_9605290456175471275</key>
+				<integer>4519581747</integer>
+				<key>resource_9606994767985667666</key>
+				<integer>1716967735</integer>
+				<key>resource_9634229872004671182</key>
+				<integer>146284739</integer>
+				<key>resource_9637711734524859112</key>
+				<integer>666956711</integer>
+				<key>resource_9697292731503952182</key>
+				<integer>3316441535</integer>
+				<key>resource_9729644089595191511</key>
+				<integer>4503054357</integer>
+				<key>resource_9752876575538169262</key>
+				<integer>379855379</integer>
+				<key>resource_9755868676358733515</key>
+				<integer>4730636655</integer>
+				<key>resource_9776032582841947363</key>
+				<integer>622916455</integer>
+				<key>resource_9778654190626230149</key>
+				<integer>212345123</integer>
+				<key>resource_9794192090000673337</key>
+				<integer>1310570167</integer>
+				<key>resource_9860239855560314711</key>
+				<integer>2380217471</integer>
+				<key>resource_9873745299618973444</key>
+				<integer>4196574847</integer>
+				<key>resource_9890489208415537079</key>
+				<integer>1935862299</integer>
+				<key>resource_9892529664279466015</key>
+				<integer>2840067831</integer>
+				<key>resource_989873773745090374</key>
+				<integer>570471191</integer>
+				<key>resource_9913138163431989376</key>
+				<integer>2906128215</integer>
+				<key>resource_9924484978515200540</key>
+				<integer>27525163</integer>
+				<key>resource_9936410004085300941</key>
+				<integer>1269147259</integer>
+				<key>resource_995503715717737233</key>
+				<integer>223355187</integer>
+				<key>resource_9968016702593650910</key>
+				<integer>16515099</integer>
+				<key>resource_9975089209162851738</key>
+				<integer>2884108087</integer>
+				<key>resource_9975487923763210973</key>
+				<integer>2969579443</integer>
+				<key>resource_9987638109085237485</key>
+				<integer>2993696731</integer>
+			</dict>
+			<key>Resource Storage Mode</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>
