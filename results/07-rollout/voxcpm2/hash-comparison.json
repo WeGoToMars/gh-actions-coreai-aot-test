@@ -1,0 +1,33 @@
+{
+  "model": "voxcpm2",
+  "architecture": "h16g",
+  "published_manifest": "https://huggingface.co/wegotomars/VoxCPM2-CoreAI-ANE/resolve/v2.2.0/macos27/h16g/model.json",
+  "hashes": {
+    "asset:base-0": {
+      "built": "4a077d54d01a45439871ee4692614fdcf8f617ae21554d2f914cd6592b384a55",
+      "huggingface": "77eeab90bdc14a67e8f64cdc6f6334bc2e836e89ac371a05f7a8378a26748a7a",
+      "match": false
+    },
+    "asset:dit": {
+      "built": "570b213ece5403fa232f38a4ba6e603cab9d9814574f964baffea2965ef7a4cb",
+      "huggingface": "e0897a33420e0378f641252962b3d3c5279511309bf1c3351d768d893845920a",
+      "match": false
+    },
+    "asset:encoder": {
+      "built": "1eabaff8e69c3c5576dfb2ad469fe884fc3ee5393200fb64090f7c75e73fc3d8",
+      "huggingface": "47f8551796d4dd9286ebd3fed909bcf23ddd5cfcf47abfa866c6e5e39e0b2b0b",
+      "match": false
+    },
+    "asset:residual": {
+      "built": "d49689189fbdcfc722e61f974a9f2d86a4aea981c8894670163b17177acd131e",
+      "huggingface": "b27c94815d18e8a9ace3ebc5a9e4a18537207c43039444f7e8d000f1b3799872",
+      "match": false
+    },
+    "checkpoint_hash": {
+      "built": "4aad702113e9627b943d7b6e45d1f0d4575cf37725ed85ae62fb180f529a2e39",
+      "huggingface": "4aad702113e9627b943d7b6e45d1f0d4575cf37725ed85ae62fb180f529a2e39",
+      "match": true
+    }
+  },
+  "all_match": false
+}

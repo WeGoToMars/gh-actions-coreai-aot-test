@@ -1,0 +1,24 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/rollout.py",
+    "voxcpm2",
+    "compile"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 130754674688,
+    "free": 29782310912
+  },
+  "returncode": 0,
+  "seconds": 415.43555720799986,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 134268383232,
+    "free": 26268602368
+  }
+}

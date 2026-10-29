@@ -1,0 +1,48 @@
+{
+  "model": "d3-nano",
+  "architecture": "h16g",
+  "published_manifest": "https://huggingface.co/wegotomars/d3-nano-CoreAI-ANE/resolve/v2.2.0/macos27/h16g/model.json",
+  "hashes": {
+    "asset:0": {
+      "built": "b40b0c882c6460a41bcb79e713e2bfc801056acbe2c64a083941ebc8a0cceeff",
+      "huggingface": "daafc09f8da148fe641a0c7cff777a2a97ba9e3d44d981588f725738d532cf69",
+      "match": false
+    },
+    "asset:1": {
+      "built": "2a0ec069f802027e4973a1f858b536b51d9bd9eafe8f9c68aff5b3509e746d75",
+      "huggingface": "d4f94512c933267a45e509f4a82f64ff5b6fdef2136887714b29b1f1e48ac549",
+      "match": false
+    },
+    "asset:2": {
+      "built": "3db9765b9b1b15951bbc8ab8bb7167209091357bbe50d22a113da5efa446ba1b",
+      "huggingface": "6939371d5cf0f0db3e3a2866151fe8f1c8020b0b5c0eab9897d0c078ac1e81a3",
+      "match": false
+    },
+    "asset:3": {
+      "built": "a64cdf82f54ee5fe66e62a5b4ea4a63a4b420356e273dda4fd8a7086beaa2ba1",
+      "huggingface": "cd1d2586124da3f9e8f037504379299193bed4026fd810e09d8331613614e040",
+      "match": false
+    },
+    "asset:4": {
+      "built": "67de634a4903f68d3813c4819f8aea76d0708ba84c6ed1e54a3d722858470204",
+      "huggingface": "59c786a013c1740fab81b201c69740edb8535f428c0e200dc7e3ef858feb9d4e",
+      "match": false
+    },
+    "asset:5": {
+      "built": "fa9db29ce0aa6e5d64c336c3b86f2d998026205211148118d7ecf53bf4183c9c",
+      "huggingface": "546d01231bc56b065052d00b1524160b18eed81b272821aa50f61651deb983d6",
+      "match": false
+    },
+    "checkpoint_hash": {
+      "built": "b1be44fb161aae706338fc15e868d2bf7dfe1be27aa0e01d977930b96532eea8",
+      "huggingface": "b1be44fb161aae706338fc15e868d2bf7dfe1be27aa0e01d977930b96532eea8",
+      "match": true
+    },
+    "vision_source_hash": {
+      "built": "8124a199666f6507f8c9b3ff505a54889f8c852275fbd896f3a0f715af3d9d92",
+      "huggingface": "3fe17981fd8c0c8d868165075e1434b9eb92b361989a02278d06d211be0e9c62",
+      "match": false
+    }
+  },
+  "all_match": false
+}

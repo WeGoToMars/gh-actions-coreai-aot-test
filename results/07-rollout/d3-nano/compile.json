@@ -1,0 +1,24 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/rollout.py",
+    "d3-nano",
+    "compile"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 131320700928,
+    "free": 29216284672
+  },
+  "returncode": 0,
+  "seconds": 1008.473299167,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 134551900160,
+    "free": 25985085440
+  }
+}
