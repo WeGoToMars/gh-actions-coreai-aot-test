@@ -36,6 +36,19 @@ for label,path in [('local',args.local),('hosted',args.hosted)]:
                 out=args.out.parent / (args.model+'-'+label+'-'+str(seed)+'.npy'); out.parent.mkdir(parents=True,exist_ok=True); np.save(out,audio)
                 cases.append({'seed':seed,'seconds':elapsed,'samples':int(audio.size),'audio':str(out)})
     results[label]={'asset':str(path),'load_seconds':load_seconds,'cases':cases}
+comparisons=[]
+for local,hosted in zip(results['local']['cases'],results['hosted']['cases']):
+    row={'local_median_or_seconds':local.get('median_seconds',local.get('seconds')),
+         'hosted_median_or_seconds':hosted.get('median_seconds',hosted.get('seconds'))}
+    if 'probabilities' in local:
+        a=np.asarray(local['probabilities'][0]); b=np.asarray(hosted['probabilities'][0])
+        row.update(max_absolute_probability_difference=float(np.max(np.abs(a-b))), same_top_answer=bool(np.argmax(a)==np.argmax(b)))
+    else:
+        a=np.load(local['audio']); b=np.load(hosted['audio']); n=min(a.size,b.size)
+        row.update(local_samples=int(a.size),hosted_samples=int(b.size),
+                   rms_difference=float(np.sqrt(np.mean((a[:n]-b[:n])**2))) if n else None)
+    comparisons.append(row)
+results['comparisons']=comparisons
 args.out.parent.mkdir(parents=True,exist_ok=True)
 args.out.write_text(json.dumps(results,indent=2)+'\n')
 print(json.dumps(results,indent=2))
