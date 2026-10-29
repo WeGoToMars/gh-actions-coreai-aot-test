@@ -32,6 +32,7 @@ with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.j
     process = subprocess.Popen(['/usr/bin/time', '-l', *command], cwd=args.cwd,
                                stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     next_sample = 0
+    output_offset = 0
     try:
         while process.poll() is None:
             elapsed = time.monotonic() - started
@@ -52,7 +53,14 @@ with (out / f'{args.name}.log').open('w') as log, (out / f'{args.name}-samples.j
                 print('PID PPID RSS_KiB CPU COMMAND\n' + '\n'.join(rows), flush=True)
                 samples.write(json.dumps(sample) + '\n')
                 samples.flush()
-                print('\n'.join(tail(out / f'{args.name}.log').splitlines()[-8:]), flush=True)
+                with (out / f'{args.name}.log').open('rb') as output:
+                    output.seek(output_offset)
+                    fresh = output.read(65536)
+                    output_offset = output.tell()
+                if fresh:
+                    print(fresh.decode(errors='replace'), flush=True)
+                else:
+                    print('(no new model output since previous sample)', flush=True)
                 next_sample = elapsed + 15
             if elapsed > args.timeout:
                 report['timeout'] = args.timeout
