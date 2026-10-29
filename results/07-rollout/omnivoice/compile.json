@@ -1,0 +1,24 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "../scripts/rollout.py",
+    "omnivoice",
+    "compile"
+  ],
+  "cwd": "source",
+  "disk_before": {
+    "total": 160536985600,
+    "used": 128706760704,
+    "free": 31830224896
+  },
+  "returncode": 0,
+  "seconds": 2537.723075042,
+  "disk_after": {
+    "total": 160536985600,
+    "used": 130769989632,
+    "free": 29766995968
+  }
+}

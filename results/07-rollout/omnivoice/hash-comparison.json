@@ -1,0 +1,23 @@
+{
+  "model": "omnivoice",
+  "architecture": "h16g",
+  "published_manifest": "https://huggingface.co/wegotomars/OmniVoice-CoreAI-ANE/resolve/v2.2.0/macos27/h16g/model.json",
+  "hashes": {
+    "asset:diffusion": {
+      "built": "bce39f44ecfd86b9fb644fa8580243d28aceab144e3731773f48d1e26b74b4c7",
+      "huggingface": "6d159a1a70c0dacc4a52fcdcc89e264fc6c0f750843c51e9727c656f74a4a3fc",
+      "match": false
+    },
+    "asset:short": {
+      "built": "8dee34b8c3b4068e6f267008464abbc37bfa69942a2f8188fc1993f658c835a1",
+      "huggingface": "1d79c5c334d21850a3d638854d506d7153e1d64315ffc0d3c84494a455e3d636",
+      "match": false
+    },
+    "checkpoint_hash": {
+      "built": "d22c4e9a9b6ed87b8b48a23608bb1bd3ff05233b0cfd9e01cd1dbe908425eea9",
+      "huggingface": "d22c4e9a9b6ed87b8b48a23608bb1bd3ff05233b0cfd9e01cd1dbe908425eea9",
+      "match": true
+    }
+  },
+  "all_match": false
+}
