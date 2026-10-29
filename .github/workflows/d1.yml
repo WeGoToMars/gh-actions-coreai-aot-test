@@ -8,7 +8,7 @@ env:
 jobs:
   d1:
     runs-on: xcode-27
-    timeout-minutes: 60
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
@@ -36,7 +36,9 @@ jobs:
         run: |
           git -C source apply --check ../patches/ci-five-gib-floor.patch
           git -C source apply ../patches/ci-five-gib-floor.patch
-          git -C source diff -- src/tinkerbox_ane/guard.py > diagnostics/watchdog-patch.diff
+          git -C source apply --check ../patches/ci-compiler-timeout.patch
+          git -C source apply ../patches/ci-compiler-timeout.patch
+          git -C source diff -- src/tinkerbox_ane/guard.py src/tinkerbox_ane/coreai.py > diagnostics/watchdog-patch.diff
       - name: Install locked dependencies and build native host
         run: python3 scripts/measured.py setup -- uv sync --locked --python 3.12
       - name: Download pinned d1 checkpoint
@@ -62,7 +64,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
       - name: Compile full d1 bundle for standard M4 with existing watchdog
-        run: python3 scripts/measured.py compile -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
+        run: python3 scripts/measured.py compile --timeout 2400 -- uv run --locked python -m tinkerbox_ane.d1.compile artifacts/d1-source --out artifacts/d1-h16g --architecture h16g
       - name: Inspect verified compiled assets
         run: |
           xcrun coreai-build inspect source/artifacts/d1-h16g/fused.h16g.aimodelc --json > diagnostics/fused-inspect.json

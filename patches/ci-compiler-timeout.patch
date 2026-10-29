@@ -1,0 +1,12 @@
+diff --git a/src/tinkerbox_ane/coreai.py b/src/tinkerbox_ane/coreai.py
+--- a/src/tinkerbox_ane/coreai.py
++++ b/src/tinkerbox_ane/coreai.py
+@@ -67,7 +67,7 @@ def compile_asset(
+     min_deployment_version: str,
+     platform: str = "macOS",
+     expected_functions: Iterable[str] | None = None,
+-    timeout: int = 600,
++    timeout: int = 1800,
+     force: bool = False,
+     report: str = "compile",
+ ) -> Path:

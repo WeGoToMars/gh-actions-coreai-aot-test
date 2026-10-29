@@ -1,0 +1,53 @@
+  [h16g] Compiling fused.h16g.aimodelc
+    Compiler log: /Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/.d1-h16g.build/.compile-tbla4hxf/compile.log
+    compile: still running after 30s; system writes 0.2 GB; free disk 21.4 GiB
+    compile: still running after 60s; system writes 0.3 GB; free disk 21.4 GiB
+    compile: still running after 90s; system writes 0.4 GB; free disk 21.4 GiB
+    compile: still running after 120s; system writes 0.5 GB; free disk 21.4 GiB
+    compile: still running after 151s; system writes 0.5 GB; free disk 21.3 GiB
+    compile: still running after 181s; system writes 0.5 GB; free disk 21.3 GiB
+    compile: still running after 211s; system writes 0.7 GB; free disk 21.3 GiB
+    compile: still running after 241s; system writes 10.2 GB; free disk 16.9 GiB
+    compile: still running after 272s; system writes 11.4 GB; free disk 15.4 GiB
+    compile: still running after 302s; system writes 12.1 GB; free disk 15.4 GiB
+    compile: still running after 332s; system writes 12.2 GB; free disk 15.4 GiB
+    compile: still running after 362s; system writes 12.4 GB; free disk 15.4 GiB
+    compile: still running after 392s; system writes 12.6 GB; free disk 15.4 GiB
+    compile: still running after 423s; system writes 12.7 GB; free disk 15.4 GiB
+    compile: still running after 453s; system writes 12.7 GB; free disk 15.4 GiB
+    compile: still running after 483s; system writes 13.3 GB; free disk 15.4 GiB
+    compile: still running after 513s; system writes 14.7 GB; free disk 15.9 GiB
+    compile: still running after 543s; system writes 16.5 GB; free disk 17.0 GiB
+    compile: still running after 573s; system writes 16.5 GB; free disk 17.0 GiB
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/src/tinkerbox_ane/d1/compile.py", line 38, in <module>
+    main()
+  File "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/src/tinkerbox_ane/d1/compile.py", line 33, in main
+    print(compile_model(args.source, args.out, architecture=args.architecture, force=args.force,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/src/tinkerbox_ane/d1/compile.py", line 20, in compile_model
+    return compile_bundle(source, out, KIND, architecture, force=force, allow_unsupported=allow_unsupported)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/src/tinkerbox_ane/bundle.py", line 292, in compile_bundle
+    compile_asset(source / spec["asset"], target, architecture=architecture, min_deployment_version="27.0",
+  File "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/src/tinkerbox_ane/coreai.py", line 129, in compile_asset
+    raise RuntimeError(f"AOT compilation failed ({reason}); see {report}.json and {report}.log")
+RuntimeError: AOT compilation failed (deadline exceeded); see compile.json and compile.log
+      602.69 real       928.50 user        80.88 sys
+         23714168832  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             4501791  page reclaims
+             1974657  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   1  messages sent
+                   1  messages received
+                   2  signals received
+                4253  voluntary context switches
+             1383776  involuntary context switches
+            12322048  peak memory footprint

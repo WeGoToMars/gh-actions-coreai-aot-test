@@ -1,0 +1,23 @@
+{
+  "command": [
+    "xcrun",
+    "coreai-build",
+    "compile",
+    "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/d1-source/fused.aimodel",
+    "--architecture",
+    "h16g",
+    "--platform",
+    "macOS",
+    "--min-deployment-version",
+    "27.0",
+    "--preferred-compute",
+    "neural-engine",
+    "--output",
+    "/Users/runner/work/gh-actions-coreai-aot-test/gh-actions-coreai-aot-test/source/artifacts/.d1-h16g.build/.compile-tbla4hxf/fused.h16g.aimodelc"
+  ],
+  "abort": "deadline exceeded",
+  "returncode": -9,
+  "seconds": 601.145666417,
+  "system_written_bytes": 16492765184,
+  "passed": false
+}

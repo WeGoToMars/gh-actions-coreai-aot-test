@@ -89,7 +89,7 @@ This proves offline cross-compilation works on the VM for this real model asset,
 even though Core AI reports the host architecture as `unknown`. It does not
 establish full-backbone compilation or on-device inference correctness/performance.
 
-## 5. Full d1 with requested 5 GiB reserve — running
+## 5. Full d1 with requested 5 GiB reserve — compiler timed out
 
 [Run 40941582940](https://github.com/WeGoToMars/gh-actions-coreai-aot-test/actions/runs/40941582940).
 
@@ -100,3 +100,5 @@ source identity checks, function/architecture/deployment validation and full ANE
 placement verification remain in place. The local Tinkerbox checkout is unchanged.
 Diagnostic uploads now include hidden build directories so raw watchdog reports
 from incomplete bundles are retained as well.
+
+The full export succeeded in 979 seconds. The 5 GiB reserve allowed compilation to start; the watchdog stopped it after its unchanged 600-second deadline, with approximately 17 GiB free. The full backbone remains unverified. See [the reports](results/05-five-gib-floor). The next trial raises the compiler deadline to 1,800 seconds while retaining the watchdog, 5 GiB floor, write budget and ANE verification.
